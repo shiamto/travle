@@ -1,10 +1,10 @@
 "use client"
 
 import Link from "next/link";
-import { useEffect } from "react";
-import { usePathname } from "next/navigation";
+import {useEffect} from "react";
+import {usePathname} from "next/navigation";
 
-const Sidebar = ({ title, menu }) => {
+const Sidebar = ({title, menu}) => {
 
     useEffect(() => {
         const items = document.querySelectorAll('.menu > li');
@@ -29,19 +29,19 @@ const Sidebar = ({ title, menu }) => {
         items.forEach(item => {
             item.classList.remove('active')
             let itemParent = item.parentElement.parentElement
-            if (itemParent.classList.contains('submenu')) {
+            if(itemParent.classList.contains('submenu')) {
                 itemParent.classList.remove('active')
                 itemParent.style.maxHeight = 0
                 itemParent.parentElement.firstChild?.classList?.remove('active')
             }
-            if (item.href === window.location.href) {
+            if(item.href === window.location.href) {
                 activeItem = item
             }
         })
-        if (activeItem) {
+        if(activeItem) {
             activeItem.classList.add('active')
             let itemParent = activeItem.parentElement.parentElement
-            if (itemParent.classList.contains('submenu')) {
+            if(itemParent.classList.contains('submenu')) {
                 itemParent.classList.add('active')
                 itemParent.style.maxHeight = itemParent.scrollHeight + "px"
                 itemParent.parentElement.firstChild?.classList?.add('active')
@@ -57,8 +57,8 @@ const Sidebar = ({ title, menu }) => {
                     window.document.querySelector('.sidebar').classList.toggle('open')
                     window.document.querySelector('.sidebar-overlay').classList.toggle('open')
                 }}
-                className="sidebar-overlay" />
-            <aside className="sidebar  !z-20 ">
+                className="sidebar-overlay"/>
+            <aside className="sidebar">
                 <div className="title">
                     {title}
                 </div>
@@ -67,12 +67,7 @@ const Sidebar = ({ title, menu }) => {
                         <li key={index}>
                             {item.menu && <div className="nav-menu">{item.menu}</div>}
                             {item.label && !item.child && (
-                                <Link href={item.href || '#!'} className="nav-link"
-                                    onClick={() => {
-                                        window.document.querySelector('.sidebar').classList.toggle('open')
-                                        window.document.querySelector('.sidebar-overlay').classList.toggle('open')
-                                    }}
-                                >
+                                <Link href={item.href || '#!'} className="nav-link">
                                     {item.icon && <span className="icon">{item.icon}</span>}
                                     <span className="label">{item.label}</span>
                                 </Link>
@@ -86,12 +81,7 @@ const Sidebar = ({ title, menu }) => {
                                     <ul className="submenu">
                                         {item.child.map((item, index) => (
                                             <li key={index}>
-                                                <Link href={item.href || '#!'} className="nav-link"
-                                                    onClick={() => {
-                                                        window.document.querySelector('.sidebar').classList.toggle('open')
-                                                        window.document.querySelector('.sidebar-overlay').classList.toggle('open')
-                                                    }}
-                                                >
+                                                <Link href={item.href || '#!'} className="nav-link">
                                                     {item.label}
                                                 </Link>
                                             </li>
@@ -102,7 +92,7 @@ const Sidebar = ({ title, menu }) => {
                         </li>
                     ))}
                 </ul>
-            </aside >
+            </aside>
         </>
 
     )

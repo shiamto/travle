@@ -1,6 +1,6 @@
-import { DatePicker, Form } from 'antd';
+import {DatePicker, Form} from 'antd';
 
-const FormInput = ({ label, name, placeholder, required, isEmail, initialValue, rules = [], textArea, type, readOnly, onChange }) => {
+const FormInput = ({label, name, required, isEmail, initialValue, rules = [], textArea, type, readOnly, onChange}) => {
     let initRules = [
         {
             required: required,
@@ -8,12 +8,12 @@ const FormInput = ({ label, name, placeholder, required, isEmail, initialValue, 
         },
     ]
     if (isEmail) {
-        initRules.push({ type: 'email', message: 'Please enter a valid email address' })
+        initRules.push({type: 'email', message: 'Please enter a valid email address'})
     }
 
-    let input = <input className="form-input" type={type} onChange={onChange} placeholder={placeholder} readOnly={readOnly} />
-    textArea && (input = <textarea className="form-input" />)
-    type === 'date' && (input = <DatePicker />)
+    let input = <input className="form-input" type={type} onChange={onChange} readOnly={readOnly}/>
+    textArea && (input = <textarea className="form-input"/>)
+    type === 'date' && (input = <DatePicker/>)
 
     return (
         <Form.Item
@@ -22,7 +22,6 @@ const FormInput = ({ label, name, placeholder, required, isEmail, initialValue, 
             rules={[...initRules, ...rules]}
             className="mb-4"
             initialValue={initialValue || ''}
-            placeholder={placeholder}
         >
             {input}
         </Form.Item>
@@ -32,14 +31,14 @@ const FormInput = ({ label, name, placeholder, required, isEmail, initialValue, 
 export default FormInput;
 
 
-export const HiddenInput = ({ name, initialValue }) => {
+export const HiddenInput = ({name, initialValue,}) => {
     return (
         <Form.Item
             name={name}
             initialValue={initialValue || ''}
             hidden
         >
-            <input className="form-input" />
+            <input className="form-input"/>
         </Form.Item>
     )
 }

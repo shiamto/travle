@@ -1,16 +1,10 @@
-import Link from "next/link";
-import { Fragment } from "react";
-import styles from './button.module.css'; // Adjust the path as needed
-
-const Button = ({ children, href, className, ...props }) => {
-    let Wrapper = !!href ? ({ children }) => <Link href={href}>{children}</Link> : Fragment
-
+const Button = ({children, className, ...props}) => {
     return (
-        <Wrapper>
-            <button {...props} className={`${styles.button} ${className}`}>
-                <span className={styles['button-content']}>{children}</span>
-            </button>
-        </Wrapper>
+        <button
+            {...props}
+            className={'bg-indigo-500 text-white rounded px-4 py-2 text-sm font-medium ' + (className || '')}>
+            {children}
+        </button>
     )
 }
 
