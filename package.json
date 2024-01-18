@@ -1,0 +1,43 @@
+{
+  "name": "dahlia-travel",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Appstick-Ltd/dahlia-travel-frontend.git",
+  "author": "Appstick <info@appstick.com.bd>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@fontsource/inter": "^5.0.15",
+    "@headlessui/react": "^1.7.17",
+    "@react-google-maps/api": "^2.19.2",
+    "antd": "^5.9.3",
+    "antd-img-crop": "^4.18.0",
+    "autoprefixer": "^10.4.15",
+    "axios": "^1.5.1",
+    "bson": "4.7.2",
+    "bufferutil": "^4.0.8",
+    "dayjs": "^1.11.10",
+    "draft-js": "^0.11.7",
+    "draftjs-to-html": "^0.9.1",
+    "html-to-draftjs": "^1.5.0",
+    "moment": "^2.29.4",
+    "next": "^13.4.19",
+    "postcss": "^8.4.29",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-draft-wysiwyg": "^1.15.0",
+    "react-geocode": "^1.0.0-alpha.1",
+    "react-icons": "^4.11.0",
+    "react-loading-skeleton": "^3.3.1",
+    "react-medium-image-zoom": "^5.1.9",
+    "react-paginate": "^8.2.0",
+    "sass": "^1.67.0",
+    "sweetalert2": "^11.7.32",
+    "tailwindcss": "^3.3.3",
+    "use-timer": "^2.0.1"
+  }
+}
