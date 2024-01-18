@@ -20,7 +20,7 @@ const Layout = ({children}) => {
                 hideLoader()
                 setUser(data)
             } else {
-                router.push('/login')
+                router.push('/admin/login')
             }
         })
     }, [])

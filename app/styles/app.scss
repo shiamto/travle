@@ -6,6 +6,17 @@ body {
   font-family: Inter, sans-serif;
 }
 
+.container {
+  max-width: 1320px !important;
+  margin: auto;
+  @media screen and (max-width: 1320px) {
+    padding: 0 20px;
+  }
+  @media screen and (max-width: 1280px) {
+    padding: 0 30px;
+  }
+}
+
 .sidebar {
   @apply w-0 overflow-hidden md:w-60 h-screen fixed left-0 z-10 top-0 bg-gray-800 transition-all duration-300;
   .title {

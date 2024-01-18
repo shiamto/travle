@@ -1,9 +1,12 @@
 import React from 'react';
+import Hero from '../components/frontend/home/hero';
+import Spotlight from '../components/frontend/home/spotlight';
 
 const HomePage = () => {
     return (
         <div>
-            <h1>Home Page</h1>
+            <Hero />
+            <Spotlight />
         </div>
     );
 };
