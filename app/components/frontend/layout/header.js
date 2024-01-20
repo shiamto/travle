@@ -20,12 +20,12 @@ const FrontHeader = () => {
                                     <img className="w-auto h-8 lg:h-10" src="./logo.png" alt="" />
                                 </a>
                             </div>
-<button type="button" className="inline-flex p-2 text-primary transition-all duration-200 rounded-md lg:hidden focus:bg-gray-800 hover:bg-gray-800" onClick={() => handleMenuToggle()}>
+                            <button type="button" className="inline-flex p-2 text-primary transition-all duration-200 rounded-md lg:hidden focus:bg-gray-800 hover:bg-gray-800" onClick={() => handleMenuToggle()}>
                                 <svg className="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
                                 </svg>
                             </button>
-                            
+
 
                             <div className="hidden lg:flex lg:items-center lg:space-x-10">
                                 <a href="#" title="" className="text-base font-medium text-white"> Features </a>

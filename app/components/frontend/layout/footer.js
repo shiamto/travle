@@ -1,15 +1,24 @@
+"use client"
 import React from 'react';
 
+import 'react-medium-image-zoom/dist/styles.css'
+import dynamic from 'next/dynamic';
+
+const Zoom = dynamic(() => import('react-medium-image-zoom'), { ssr: false });
+
+
 const FrontFooter = () => {
+    const currentYear = new Date().getFullYear();
+
     return (
         <div className="">
-            <section className="py-10 bg-gray-50 sm:pt-16 lg:pt-24">
+            <section className="py-10 bg-primary sm:pt-16 lg:pt-24">
                 <div className="mx-auto max-w-7xl">
                     <div className="grid grid-cols-2 md:col-span-3 lg:grid-cols-6 gap-y-16 gap-x-12">
                         <div className="col-span-2 md:col-span-3 lg:col-span-2 lg:pr-8">
                             <img className="w-auto h-9" src="./logo.png" alt="" />
 
-                            <p className="text-base leading-relaxed text-gray-600 mt-7">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.</p>
+                            <p className="text-base leading-relaxed text-white mt-7">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.</p>
 
                             <ul className="flex items-center space-x-3 mt-9">
                                 <li>
@@ -61,19 +70,19 @@ const FrontFooter = () => {
 
                             <ul className="mt-6 space-y-4">
                                 <li>
-                                    <a href="#" title="" className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> About </a>
+                                    <a href="#" title="" className="flex text-base text-white transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> About </a>
                                 </li>
 
                                 <li>
-                                    <a href="#" title="" className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Features </a>
+                                    <a href="#" title="" className="flex text-base text-white transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Features </a>
                                 </li>
 
                                 <li>
-                                    <a href="#" title="" className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Works </a>
+                                    <a href="#" title="" className="flex text-base text-white transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Works </a>
                                 </li>
 
                                 <li>
-                                    <a href="#" title="" className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Career </a>
+                                    <a href="#" title="" className="flex text-base text-white transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Career </a>
                                 </li>
                             </ul>
                         </div>
@@ -83,19 +92,19 @@ const FrontFooter = () => {
 
                             <ul className="mt-6 space-y-4">
                                 <li>
-                                    <a href="#" title="" className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Customer Support </a>
+                                    <a href="#" title="" className="flex text-base text-white transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Customer Support </a>
                                 </li>
 
                                 <li>
-                                    <a href="#" title="" className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Delivery Details </a>
+                                    <a href="#" title="" className="flex text-base text-white transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Delivery Details </a>
                                 </li>
 
                                 <li>
-                                    <a href="#" title="" className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Terms & Conditions </a>
+                                    <a href="#" title="" className="flex text-base text-white transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Terms & Conditions </a>
                                 </li>
 
                                 <li>
-                                    <a href="#" title="" className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Privacy Policy </a>
+                                    <a href="#" title="" className="flex text-base text-white transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Privacy Policy </a>
                                 </li>
                             </ul>
                         </div>
@@ -103,55 +112,67 @@ const FrontFooter = () => {
                         <div className="col-span-2 md:col-span-1 lg:col-span-2 lg:pl-8">
                             <p className="text-sm font-semibold tracking-widest text-gray-400 uppercase">Gallery</p>
 
-                            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 mt-4">
+                            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 mt-4">
 
-                                <div class="group cursor-pointer relative">
-                                    <img
-                                        src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHw1fHxuYXR1cmV8ZW58MHwwfHx8MTY5NDA5OTcyOXww&ixlib=rb-4.0.3&q=80&w=1080"
-                                        alt="Image 1"
-                                        class="w-auto h-20 object-cover rounded-lg transition-transform transform scale-100 group-hover:scale-105"
-                                    />
-                                    
+                                <div className="group cursor-pointer relative">
+                                    <Zoom>
+                                        <img
+                                            src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHw1fHxuYXR1cmV8ZW58MHwwfHx8MTY5NDA5OTcyOXww&ixlib=rb-4.0.3&q=80&w=1080"
+                                            alt="Image 1"
+                                            className="w-auto h-20 object-cover rounded-lg transition-transform transform scale-100 group-hover:scale-105"
+                                        />
+                                    </Zoom>
+
                                 </div>
 
-                                <div class="group cursor-pointer relative">
-                                    <img
-                                        src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHw5fHxuYXR1cmV8ZW58MHwwfHx8MTY5NDA5OTcyOXww&ixlib=rb-4.0.3&q=80&w=1080"
-                                        alt="Image 1"
-                                        class="w-auto h-20 object-cover rounded-lg transition-transform transform scale-100 group-hover:scale-105"
-                                    />
+                                <div className="group cursor-pointer relative">
+                                    <Zoom>
+                                        <img
+                                            src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHw5fHxuYXR1cmV8ZW58MHwwfHx8MTY5NDA5OTcyOXww&ixlib=rb-4.0.3&q=80&w=1080"
+                                            alt="Image 1"
+                                            className="w-auto h-20 object-cover rounded-lg transition-transform transform scale-100 group-hover:scale-105"
+                                        />
+                                    </Zoom>
                                 </div>
 
-                                <div class="group cursor-pointer relative">
-                                    <img
-                                        src="https://images.unsplash.com/photo-1501854140801-50d01698950b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHwxMHx8bmF0dXJlfGVufDB8MHx8fDE2OTQwOTk3Mjl8MA&ixlib=rb-4.0.3&q=80&w=1080"
-                                        alt="Image 1"
-                                        class="w-auto h-20 object-cover rounded-lg transition-transform transform scale-100 group-hover:scale-105"
-                                    />
+                                <div className="group cursor-pointer relative">
+                                    <Zoom>
+                                        <img
+                                            src="https://images.unsplash.com/photo-1501854140801-50d01698950b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHwxMHx8bmF0dXJlfGVufDB8MHx8fDE2OTQwOTk3Mjl8MA&ixlib=rb-4.0.3&q=80&w=1080"
+                                            alt="Image 1"
+                                            className="w-auto h-20 object-cover rounded-lg transition-transform transform scale-100 group-hover:scale-105"
+                                        />
+                                    </Zoom>
                                 </div>
 
-                                <div class="group cursor-pointer relative">
-                                    <img
-                                        src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHwyfHxuYXR1cmV8ZW58MHwwfHx8MTY5NDA5OTcyOXww&ixlib=rb-4.0.3&q=80&w=1080"
-                                        alt="Image 1"
-                                        class="w-auto h-20 object-cover rounded-lg transition-transform transform scale-100 group-hover:scale-105"
-                                    />
+                                <div className="group cursor-pointer relative">
+                                    <Zoom>
+                                        <img
+                                            src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHwyfHxuYXR1cmV8ZW58MHwwfHx8MTY5NDA5OTcyOXww&ixlib=rb-4.0.3&q=80&w=1080"
+                                            alt="Image 1"
+                                            className="w-auto h-20 object-cover rounded-lg transition-transform transform scale-100 group-hover:scale-105"
+                                        />
+                                    </Zoom>
                                 </div>
 
-                                <div class="group cursor-pointer relative">
-                                    <img
-                                        src="https://images.unsplash.com/photo-1505765050516-f72dcac9c60e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHwxNHx8bmF0dXJlfGVufDB8MHx8fDE2OTQwOTk3Mjl8MA&ixlib=rb-4.0.3&q=80&w=1080"
-                                        alt="Image 1"
-                                        class="w-auto h-20 object-cover rounded-lg transition-transform transform scale-100 group-hover:scale-105"
-                                    />
+                                <div className="group cursor-pointer relative">
+                                    <Zoom>
+                                        <img
+                                            src="https://images.unsplash.com/photo-1505765050516-f72dcac9c60e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHwxNHx8bmF0dXJlfGVufDB8MHx8fDE2OTQwOTk3Mjl8MA&ixlib=rb-4.0.3&q=80&w=1080"
+                                            alt="Image 1"
+                                            className="w-auto h-20 object-cover rounded-lg transition-transform transform scale-100 group-hover:scale-105"
+                                        />
+                                    </Zoom>
                                 </div>
 
-                                <div class="group cursor-pointer relative">
-                                    <img
-                                        src="https://images.unsplash.com/photo-1475924156734-496f6cac6ec1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHwxMXx8bmF0dXJlfGVufDB8MHx8fDE2OTQwOTk3Mjl8MA&ixlib=rb-4.0.3&q=80&w=1080"
-                                        alt="Image 1"
-                                        class="w-auto h-20 object-cover rounded-lg transition-transform transform scale-100 group-hover:scale-105"
-                                    />
+                                <div className="group cursor-pointer relative">
+                                    <Zoom>
+                                        <img
+                                            src="https://images.unsplash.com/photo-1475924156734-496f6cac6ec1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHwxMXx8bmF0dXJlfGVufDB8MHx8fDE2OTQwOTk3Mjl8MA&ixlib=rb-4.0.3&q=80&w=1080"
+                                            alt="Image 1"
+                                            className="w-auto h-20 object-cover rounded-lg transition-transform transform scale-100 group-hover:scale-105"
+                                        />
+                                    </Zoom>
                                 </div>
                             </div>
 
@@ -160,7 +181,7 @@ const FrontFooter = () => {
 
                     <hr className="mt-16 mb-10 border-gray-200" />
 
-                    <p className="text-sm text-center text-gray-600">© Copyright 2021, All Rights Reserved by Postcraft</p>
+                    <p className="text-sm text-center text-white">© Copyright {currentYear}, All Rights Reserved by Dahlia</p>
                 </div>
             </section>
 
