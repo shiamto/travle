@@ -66,7 +66,7 @@ const Spotlight = () => {
             <div className="container">
                 <div className="flex flex-col items-center justify-center text-center py-12">
                     <h2 className="text-2xl font-semibold text-gray-800">Discovery Extraordinary Places</h2>
-                    <p className='text-base'>
+                    <p className='text-base mt-2'>
                         Explore our handpicked destinations that promise to ignite your wanderlust. From exotic
                         corners of Vietnam to renowned landmarks, our collection includes diverse landscapes,
                         vibrant cultures, and hidden gems waiting to be uncovered.

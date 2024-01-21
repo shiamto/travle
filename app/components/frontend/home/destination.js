@@ -36,10 +36,10 @@ const destinationList = [
 
 const Destination = () => {
 	return (
-		<div className="container">
+		<div className="container py-12">
 			<h2 className="text-2xl font-semibold text-gray-800">Popular Destinations</h2>
 
-			<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 mt-3 gap-4">
+			<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-5 mt-4">
 				{destinationList?.map((val) => (
 					<div>
 						<div className="relative">
