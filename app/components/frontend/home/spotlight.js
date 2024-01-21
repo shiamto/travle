@@ -65,8 +65,8 @@ const Spotlight = () => {
         <div>
             <div className="container">
                 <div className="flex flex-col items-center justify-center text-center py-12">
-                    <h1 className="text-2xl text-primary">Discovery Extraordinary Places</h1>
-                    <p>
+                    <h2 className="text-2xl font-semibold text-gray-800">Discovery Extraordinary Places</h2>
+                    <p className='text-base'>
                         Explore our handpicked destinations that promise to ignite your wanderlust. From exotic
                         corners of Vietnam to renowned landmarks, our collection includes diverse landscapes,
                         vibrant cultures, and hidden gems waiting to be uncovered.
@@ -84,12 +84,12 @@ const Spotlight = () => {
                     loop={true}
                     spaceBetween={10}
                     centeredSlides={false}
-                    slidesPerView={2}
+                    slidesPerView={1}
                     navigation={false}
                     breakpoints={{
                         768: {
                             height: "auto",
-                            slidesPerView: 3,
+                            slidesPerView: 2,
                         },
                         1024: {
                             height: "500px",

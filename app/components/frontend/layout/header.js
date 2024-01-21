@@ -1,16 +1,30 @@
 'use client';
 import Link from 'next/link';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const FrontHeader = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isNavbarFixed, setIsNavbarFixed] = useState(false);
 
     const handleMenuToggle = () => {
         setIsMenuOpen((isMenuOpen) => !isMenuOpen);
     };
 
+    useEffect(() => {
+        const handleScroll = () => {
+            const scrollY = window.scrollY || document.documentElement.scrollTop;
+            setIsNavbarFixed(scrollY > 0);
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
     return (
-        <div className='container'>
+        <div className={`container ${isNavbarFixed ? 'fixed top-0 inset-x-0 bg-white shadow' : ''}`}>
             <header className=''>
                 <div className="relative bg-transparent" style={{ zIndex: 999 }}>
                     <div className="relative">
@@ -37,7 +51,7 @@ const FrontHeader = () => {
                                 <a href="#" title="" className="text-base font-medium text-white"> Pricing </a>
                             </div>
 
-                            <a href="#" title="" className="items-center justify-center hidden px-6 py-3 text-base font-semibold text-black transition-all duration-200 bg-yellow-400 border border-transparent rounded-full lg:inline-flex hover:bg-yellow-500 focus:bg-yellow-500" role="button"> Join Now </a>
+                            <a href="#" title="" className="items-center justify-center hidden px-6 py-3 text-base font-semibold text-white transition-all duration-200 bg-[#FF0143] border border-transparent rounded-full lg:inline-flex hover:bg-yellow-500 focus:bg-[#FF0143]" role="button"> Book Now </a>
                         </nav>
                     </div>
                 </div>
@@ -71,7 +85,7 @@ const FrontHeader = () => {
                         </nav>
 
                         <div className="flex flex-col items-start">
-                            <a href="#" title="" className="inline-flex items-center justify-center w-auto px-6 py-3 mt-auto text-base font-semibold text-black transition-all duration-200 bg-yellow-400 border border-transparent rounded-full hover:bg-yellow-500 focus:bg-yellow-500" role="button"> Join Now </a>
+                            <a href="#" title="" className="inline-flex items-center justify-center w-auto px-6 py-3 mt-auto text-base font-semibold text-black transition-all duration-200 bg-[#FF0143] border border-transparent rounded-full hover:bg-yellow-500 focus:bg-[#FF0143]" role="button"> Book Now </a>
                         </div>
                     </div>
                 </nav>

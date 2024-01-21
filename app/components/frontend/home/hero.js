@@ -1,61 +1,82 @@
 'use client';
-import React, { useEffect } from 'react';
-import { useState } from "react";
+import React, { useState } from 'react';
+
+const sliders = [
+    {
+        _id: 1,
+        img: './s1.jpg'
+    },
+    {
+        _id: 2,
+        img: './s2.jpg'
+    },
+    {
+        _id: 3,
+        img: './s3.jpg'
+    },
+    {
+        _id: 4,
+        img: './s4.jpg'
+    },
+    {
+        _id: 5,
+        img: './s6.jpg'
+    },
+];
 
 export const Hero = () => {
     const [currentSlider, setCurrentSlider] = useState(0);
-    const sliders = [{ img: "https://source.unsplash.com/1200x640/?nature", title: "Escape 1", des: "A Symphony of Tranquility. Experience the perfect blend of relaxation and excitement." }, { img: "https://source.unsplash.com/1200x640/?hill", title: "Escape 2", des: "A Symphony of Tranquility. Experience the perfect blend of relaxation and excitement." }, { img: "https://source.unsplash.com/1200x640/?mountain", title: "Escape 3", des: "A Symphony of Tranquility. Experience the perfect blend of relaxation and excitement." }, { img: "https://source.unsplash.com/1200x640/?river", title: "Escape 4", des: "A Symphony of Tranquility. Experience the perfect blend of relaxation and excitement." }, { img: "https://source.unsplash.com/1200x640/?sea", title: "Escape 5", des: "A Symphony of Tranquility. Experience the perfect blend of relaxation and excitement." },];
-    const prevSlider = () => setCurrentSlider((currentSlider) => currentSlider === 0 ? sliders.length - 1 : currentSlider - 1);
-    const nextSlider = () => setCurrentSlider((currentSlider) => currentSlider === sliders.length - 1 ? 0 : currentSlider + 1);
-    // const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 768);
 
+    const prevSlider = () =>
+        setCurrentSlider((currentSlider) => (currentSlider === 0 ? sliders.length - 1 : currentSlider - 1));
 
-    // useEffect(() => {
-    //     const handleResize = () => {
-    //         setIsSmallScreen(window.innerWidth <= 768);
-    //     };
-
-    //     window.addEventListener('resize', handleResize);
-
-    //     return () => {
-    //         window.removeEventListener('resize', handleResize);
-    //     };
-    // }, []);
-
+    const nextSlider = () =>
+        setCurrentSlider((currentSlider) => (currentSlider === sliders.length - 1 ? 0 : currentSlider + 1));
 
     return (
-        <div className="w-full h-72 -mt-20 sm:h-96 md:h-[540px] lg:h-[640px] xl:h-[780px] flex flex-col xl:flex-row items-center justify-center gap-5 lg:gap-10 relative bg-cover before:absolute before:bg-black/50 before:inset-0 transform duration-1000 ease-linear z-50 overflow-hidden"
-            style={{ backgroundImage: `url(${currentSlider === 0 ? sliders[sliders.length - 1].img : sliders[currentSlider - 1].img})` }}>
-            {/* arrow */}
-            <div className="absolute bottom-1/4 flex gap-3 z-50 px-5">
-                {/* arrow left */}
-                <button onClick={prevSlider} className="flex justify-center items-center hover:bg-white/30 rounded-full w-6 h-6 md:w-8 md:h-8">
-                    <svg viewBox="0 0 1024 1024" className="w-4 h-4 md:w-6 md:h-6 icon" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"><path fill="#0095FF" d="M685.248 104.704a64 64 0 010 90.496L368.448 512l316.8 316.8a64 64 0 01-90.496 90.496L232.704 557.248a64 64 0 010-90.496l362.048-362.048a64 64 0 0190.496 0z"></path></g></svg>
+        <div className="w-full h-72 -mt-20 sm:h-96 md:h-[540px] lg:h-[640px] xl:h-[780px] flex flex-col xl:flex-row items-center justify-center gap-5 lg:gap-10 relative bg-cover before:absolute before:bg-black/50 before:inset-0 transform duration-1000 ease-linear overflow-hidden object-cover"
+            style={{
+                backgroundImage: `url(${currentSlider === 0 ? sliders[sliders.length - 1].img : sliders[currentSlider - 1].img})`,
+            }}>
+
+
+            <div className="absolute bottom-1/4 flex justify-end w-full px-5 z-50">
+
+                <button onClick={prevSlider} className="flex items-center hover:bg-white/30 rounded-full w-6 h-6 md:w-8 md:h-8">
+                    <svg viewBox="0 0 1024 1024" className="w-4 h-4 md:w-6 md:h-6 icon" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"><path fill="#FF0143" d="M685.248 104.704a64 64 0 010 90.496L368.448 512l316.8 316.8a64 64 0 01-90.496 90.496L232.704 557.248a64 64 0 010-90.496l362.048-362.048a64 64 0 0190.496 0z"></path></g></svg>
                 </button>
-                {/* arrow right */}
-                <button onClick={nextSlider} className="flex justify-center items-center hover:bg-white/30 rounded-full w-6 h-6 md:w-8 md:h-8">
-                    <svg viewBox="0 0 1024 1024" className="w-4 h-4 md:w-6 md:h-6 icon" xmlns="http://www.w3.org/2000/svg" fill="#000000" transform="rotate(180)"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"><path fill="#0095FF" d="M685.248 104.704a64 64 0 010 90.496L368.448 512l316.8 316.8a64 64 0 01-90.496 90.496L232.704 557.248a64 64 0 010-90.496l362.048-362.048a64 64 0 0190.496 0z"></path></g></svg>
+
+                <button onClick={nextSlider} className="flex items-center hover:bg-white/30 rounded-full w-6 h-6 md:w-8 md:h-8">
+                    <svg viewBox="0 0 1024 1024" className="w-4 h-4 md:w-6 md:h-6 icon" xmlns="http://www.w3.org/2000/svg" fill="#000000" transform="rotate(180)"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"><path fill="#FF0143" d="M685.248 104.704a64 64 0 010 90.496L368.448 512l316.8 316.8a64 64 0 01-90.496 90.496L232.704 557.248a64 64 0 010-90.496l362.048-362.048a64 64 0 0190.496 0z"></path></g></svg>
                 </button>
             </div>
-            {/* text container here */}
-            <div className="w-1/2 px-4 left-0 absolute drop-shadow-lg text-white rounded-lg">
-                <h1 className="lg:text-3xl mb-3">{sliders[currentSlider].title}</h1>
-                <p className="text-xs sm:text-sm md:text-base lg:text-lg">{sliders[currentSlider].des}</p>
+
+            <div className="lg:-mt-12">
+                <div className="w-full z-50 px-4 left-0 drop-shadow-lg text-white rounded-lg flex justify-center items-center flex-col">
+                    <h1 className="lg:text-5xl mb-3">Welcome to Wilh. Loesch Travel</h1>
+                    <h1 className="text-lg font-bold uppercase text-[#FF0143]">A Journey Beyond The Ordinary!</h1>
+                </div>
             </div>
-            {/* slider container */}
-            <div className="w-1/2 ml-auto overflow-hidden  absolute -right-5 lg:-right-16 z-50 px-4 py-24">
-                <div className="ease-linear duration-300 flex gap-4 items-center"
+
+            <div className="w-1/2 ml-auto overflow-hidden absolute -right-5 lg:-right-16 px-4 lg:pt-[36rem] pt-[13rem]">
+                <div
+                    className="ease-linear duration-300 flex gap-4 items-center z-50"
                     style={{ transform: `translateX(-${currentSlider * 20}%)` }}>
                     {/* sliders */}
                     {sliders.map((slide, inx) => (
-                        <img key={inx} src={slide.img}
-                            className={`h-[180px] sm:h-[200px] lg:h-[320px] min-w-[90px] lg:min-w-[184px] ${currentSlider - 1 === inx ? 'scale-0' : 'scale-100 delay-500'
-                                } drop-shadow-lg shadow-lg shadow-black bg-black/50 duration-300 rounded-lg z-50`}
-                            alt={slide.title} />
+                        <img
+                            key={inx}
+                            src={slide.img}
+                            className={`lg:h-[180px] min-w-[90px] lg:min-w-[184px] ${currentSlider - 1 === inx ? 'scale-0' : 'scale-100 delay-500'
+                                } drop-shadow-lg shadow-lg shadow-black bg-black/50 duration-300 rounded-lg`}
+                            alt="Slider"
+
+                        />
                     ))}
                 </div>
             </div>
         </div>
-    )
+    );
 };
+
 export default Hero;
