@@ -3,6 +3,7 @@ import Hero from '../components/frontend/home/hero';
 import Spotlight from '../components/frontend/home/spotlight';
 import Destination from '../components/frontend/home/destination';
 import Explore from '../components/frontend/home/explore';
+import Reviews from '../components/frontend/home/reviews';
 
 const HomePage = () => {
     return (
@@ -11,6 +12,7 @@ const HomePage = () => {
             <Spotlight />
             <Destination />
             <Explore />
+            <Reviews></Reviews>
         </div>
     );
 };
