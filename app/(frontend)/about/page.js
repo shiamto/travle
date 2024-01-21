@@ -1,0 +1,131 @@
+import React from 'react'
+import Banner from '../../components/common/banner'
+import { FaCheck } from "react-icons/fa6";
+
+const page = () => {
+    return (
+        <div className="">
+            <div className='relative'>
+                <div className="h-[100vh] w-full fixed -top-[100px] left-0 right-0 bottom-0 -z-10">
+                    <img src="/banner.jpg" alt="" className=' object-cover' />
+                </div>
+                <Banner title="About Us" page="About" />
+                <div className=" bg-thm_gray ">
+                    <div className="relative">
+                        <div className="absolute top-0">
+                            <img src="/leaf.png" alt="" />
+                        </div>
+                        <div className=" absolute top-10 left-[200px] ">
+                            <img src="/sun.png" alt="" />
+                        </div>
+                        <div className="container mx-auto py-20 text-center relative z-10">
+                            <div className="relative inline-block  mb-16">
+                                <h1 className='uppercase font-barlow text-[100px] text-primary'>Enjoy your trips</h1>
+                                <h2 className='font-satisfy text-[60px] text-[#ff0143] absolute -bottom-8 right-0'>Like Never Before!</h2>
+                            </div>
+
+                            <div className=" grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 ">
+                                <div className="border-dashed p-2 bg-white border-primary border border-opacity-40">
+                                    <img src="/gallery1.jpg" className='w-full h-full' alt="" />
+                                </div>
+                                <div className="border-dashed p-2 bg-white border-primary border border-opacity-40">
+                                    <img src="/gallery1.jpg" className='w-full h-full' alt="" />
+                                </div>
+                                <div className="border-dashed p-2 bg-white border-primary border border-opacity-40">
+                                    <img src="/gallery1.jpg" className='w-full h-full' alt="" />
+                                </div>
+                                <div className="border-dashed p-2 bg-white border-primary border border-opacity-40">
+                                    <img src="/gallery1.jpg" className='w-full h-full' alt="" />
+                                </div>
+                                <div className="border-dashed p-2 bg-white border-primary border border-opacity-40">
+                                    <img src="/gallery1.jpg" className='w-full h-full' alt="" />
+                                </div>
+                            </div>
+                        </div>
+                        <div className="absolute right-0 top-1/2">
+                            <img src="/plane.png" alt="" />
+                        </div>
+                    </div>
+
+                </div>
+                <div className="bg-thm_gray py-20">
+                    <div className="container">
+                        <div className="flex gap-6">
+                            <div className="basis-1/2 p-4 border-dashed border-2 border-gray-500">
+                                <img src="/cta.jpg" alt="" className='h-full w-full' />
+                            </div>
+                            <div className="basis-1/2">
+                                <h1 className='text-[50px] font-barlow font-bold text-primary'>Transforming Trips into Tales</h1>
+                                <p className=' leading-[30px]'>Wilh. Loesch Travel was born from a legacy of exploration and a dedication to sharing the world's wonders with fellow wanderers. With expertise in the travel industry, our team curates immersive journeys that reflect our passion for adventure, culture and authenticity. Every trip we plan is a testament to our commitment to excellence and personalized service.</p>
+                                <div className="my-6">
+                                    <ul className=' text-secondaryText space-y-2'>
+                                        <li className='text-[20px] flex items-center'><span className='text-secondary text-base mr-3'><FaCheck /></span> <p>Meticulously Planned Itineraries</p></li>
+                                        <li className='text-[20px] flex items-center'><span className='text-secondary text-base mr-3'><FaCheck /></span> <p>Exclusive Tours & Sightseeing</p></li>
+                                        <li className='text-[20px] flex items-center'><span className='text-secondary text-base mr-3'><FaCheck /></span> <p>Luxury Accommodations & Stays</p></li>
+                                        <li className='text-[20px] flex items-center'><span className='text-secondary text-base mr-3'><FaCheck /></span> <p>Expert Guidance & Local Insights</p></li>
+                                        <li className='text-[20px] flex items-center'><span className='text-secondary text-base mr-3'><FaCheck /></span> <p>Personalized Concierge Services</p></li>
+                                        <li className='text-[20px] flex items-center'><span className='text-secondary text-base mr-3'><FaCheck /></span> <p>Private Transport Arrangements</p></li>
+                                        <li className='text-[20px] flex items-center'><span className='text-secondary text-base mr-3'><FaCheck /></span> <p>Curated Dining Experiences</p></li>
+                                        <li className='text-[20px] flex items-center'><span className='text-secondary text-base mr-3'><FaCheck /></span> <p>Curated Dining Experiences</p></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className="bg-[#ECEEEF] py-20">
+                <div className="container mx-auto">
+                    <div className="text-center max-w-[720px] mx-auto">
+                        <h1 className='text-[50px] font-barlow font-semibold text-primary'>Our partnership with Makhan Bhog</h1>
+                        <p className='leading-[25px] text-secondaryText py-3'>Our partnership with Makhan Bhog, founded in 2019, epitomizes our steadfast commitment to excellence. This esteemed alliance signifies our dedication to delivering unmatched destination management services with extraordinary experiences.</p>
+                    </div>
+                    <div className="grid grid-cols-1 lg:grid-cols-3 my-8">
+                        <div className="">
+                            <img src="/brand1.png" className='' alt="" />
+                        </div>
+                        <div className="">
+                            <img src="/brand2.png" className='' alt="" />
+                        </div>
+                        <div className="">
+                            <img src="/brand3.png" className='' alt="" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className="bg-white py-20">
+                <div className="container mx-auto">
+                    <div className="text-center max-w-[720px] mx-auto">
+                        <h1 className='text-[50px] font-barlow font-semibold text-primary'>Time to Pack and Travel!</h1>
+                    </div>
+                    <div className="grid items-center text-center grid-cols-1 lg:grid-cols-3 my-8">
+                        <div className="">
+                           <div className="h-[200px] w-[200px] mx-auto rounded-full justify-center items-center flex text-white bg-[#6ebd32]">
+                                
+                           </div>
+                           <h1 className='text-[24px] my-5 font-semibold'>verety</h1>
+                           <p>Explore diverse destinations, from vibrant  cities to serene natural wonders, for a personalized kaleidoscope of travel experiences.</p>
+                        </div>
+                        <div className="">
+                           <div className="h-[200px] w-[200px] mx-auto rounded-full justify-center items-center flex text-white bg-secondary">
+
+                           </div>
+                           <h1 className='text-[24px] my-5 font-semibold'>verety</h1>
+                           <p>Explore diverse destinations, from vibrant  cities to serene natural wonders, for a personalized kaleidoscope of travel experiences.</p>
+                        </div>
+                        <div className="">
+                           <div className="h-[200px] w-[200px] mx-auto rounded-full justify-center items-center flex text-white bg-[#40b9eb]">
+
+                           </div>
+                           <h1 className='text-[24px] my-5 font-semibold'>verety</h1>
+                           <p>Explore diverse destinations, from vibrant  cities to serene natural wonders, for a personalized kaleidoscope of travel experiences.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    )
+}
+
+export default page
