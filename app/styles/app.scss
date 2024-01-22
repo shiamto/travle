@@ -2,8 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Satisfy&display=swap");
 
 // @keyframes wave {
 //   0% { transform: rotate( 0.0deg) }
@@ -25,7 +25,6 @@
   font-weight: 400;
   font-style: normal;
 }
-
 
 body {
   font-family: Inter, sans-serif;
@@ -166,7 +165,6 @@ body {
 
 .ant-select-selector {
   @apply block w-full min-h-[40px] outline-0 border border-gray-300 rounded-md shadow-sm focus:border-indigo-500 px-3 py-1 #{!important};
-
 }
 
 .ant-select-borderless {
@@ -195,17 +193,14 @@ body {
   @apply text-gray-700 mb-4 #{!important};
 }
 
-.ant-slider-rail{
+.ant-slider-rail {
   background-color: rgb(236, 236, 236) !important ;
   height: 10px !important;
   border-radius: 10px !important;
 }
-.ant-slider-track{
+.ant-slider-track {
   background-color: red !important;
-.date {
-  @apply border-2 px-2 py-1 rounded-md text-sm md:text-base
-}
-
-.font-custom {
-    font-family: var(--heading-font);
+  .date {
+    @apply border-2 px-2 py-1 rounded-md text-sm md:text-base;
   }
+}
