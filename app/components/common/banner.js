@@ -6,7 +6,7 @@ const Banner = ({title, page}) => {
 
     <div className="w-full">
           <div className="container mx-auto ">
-            <div className=" !h-[400px] flex items-center justify-center ">
+            <div className=" flex items-center justify-center md:py-[100px] py-10 ">
                 <div className=" text-center">
                     <h1 className='md:text-[60px] text-[35px] text-white font-semibold'>{title}</h1>
                    <div className=" text-white text-[16px]">

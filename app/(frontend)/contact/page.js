@@ -11,8 +11,8 @@ const page = () => {
                 <img src="/banner.jpg" alt="" className='h-full w-full object-cover' />
             </div>
             <Banner title="Contact Us" page="Contact" />
-            <div className=" bg-white">
-                <div className="container mx-auto py-20">
+            <div className=" bg-white py-20">
+                <div className="container mx-auto ">
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                         <div className="flex justify-center items-center border md:p-10 p-5  hover:shadow-[1px_2px_10px_0px_rgba(0,0,0,0.2)]">
                             <div className="bg-secondary text-white h-[60px] min-w-[60px] rounded-full flex items-center justify-center mr-5">
