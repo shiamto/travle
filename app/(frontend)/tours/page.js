@@ -1,67 +1,236 @@
 "use client"
-import { Checkbox, Collapse, Radio, Space } from 'antd';
 import React, { useState } from 'react'
 import { IoFilter } from "react-icons/io5";
 import { FaAngleDown } from "react-icons/fa6";
-import { FaMinus, FaPlus } from 'react-icons/fa';
-import IconSlider from '../../components/common/IconSlider';
-import { Slider } from 'antd';
-const onChange = (value) => {
-    console.log('onChange: ', value);
-};
+import { Form, Modal, Slider } from 'antd';
+import TourCard from '../../components/frontend/TourCard';
+import Banner from '../../components/common/banner';
+
 const onChangeComplete = (value) => {
     console.log('onChangeComplete: ', value);
 };
 
+const tours = [
+    {
+        id: 1,
+        title: 'Usa East And West Coast',
+        image: "/banner.jpg",
+        price: 20000,
+        country: 1,
+        city: 5,
+        tag: "U3",
+        duration: "12N/13D",
+        month: [
+            "jan",
+            "apr",
+            "may",
+            "jun",
+            "jul",
+            "aug",
+            "oct",
+            "nov",
+            "dec"
+        ]
+    },
+    {
+        id: 2,
+        title: 'Usa East And West Coast',
+        image: "/gallery-1.jpg",
+        price: 20000,
+        country: 1,
+        city: 5,
+        tag: "U3",
+        duration: "12N/13D",
+        month: [
+            "feb",
+            "mar",
+            "may",
+            "jun",
+            "jul",
+            "aug",
+            "nov",
+            "dec"
+        ]
+    }
+]
+
+
 const page = () => {
     const [durationActive, setdurationActive] = useState(false);
-    return (
-        <div>
-            <div className="container mx-auto">
-                <div className="">
-                    <h1>Afica Tour Package</h1>
-                    <p>Sensational South Africa Kenya Tours</p>
+    const [depratureActive, setDepratureActive] = useState(true);
+    const [itours, setItours] = useState(false);
+    const [price, setPrice] = useState(false);
+    const [min, setmin] = useState(2);
+    const [max, setmax] = useState(20);
+    const [pmin, setpmin] = useState(1000);
+    const [pmax, setpmax] = useState(50000);
 
-                    <p>Venture into the Wild! South Africa is one of the most enthralling destinations for travellers from all over the world, as it has seemingly endless numbers of natural parks, beautiful mountains, and lunar-like landscapes vigilantly carved by nature. With savannas and never-ending safari adventures, South Africa Kenya Tours are a must. From the wild grasslands of Kruger Park to prehistoric caves, from the pristine Boulders Beach to Gold Reef City, you really do have a world in one country. Kesari's South </p>
+    return (
+        <div className=''>
+            <div className="relative">
+                <div className="w-full fixed -top-[100px] left-0 right-0 bottom-0 -z-10">
+                    <img src="/banner.jpg" alt="" className='h-full w-full object-cover' />
                 </div>
-                <hr className='my-10' />
-                <div className="flex gap-10">
-                    <div className="min-w-[320px]">
-                        <div className="text-[1.6rem] text-white bg-primary px-5 py-4 flex items-center font-semibold rounded-md">
-                            <IoFilter className='mr-3 text-4xl' />
-                            <p>Sort & Filter</p>
-                        </div>
-                        <div className="border border-gray-300 my-5">
-                            <div className="">
-                                <div className="flex justify-between items-center px-6 py-2 text-2xl font-normal text-primary" onClick={() => setdurationActive(!durationActive)}>
-                                    <h1>Duration</h1>
-                                    <FaAngleDown className={`text-gray-500 cursor-pointer duration-300 ${durationActive && "rotate-[180deg]"}`} />
-                                </div>
-                                <div className="px-5">
-                                    <div className="">
-                                        <div className="flex justify-between items-center text-[14px]">
-                                            <h1 className='font-semibold'>Min. <span className='font-normal ms-4'>Duration</span></h1>
-                                            <h1 className='font-semibold'>Max. <span className='font-normal ms-4'>Duration</span></h1>
+                <Banner title="Tours" page="tours" />
+                <div className="bg-white py-20">
+                     <div className="container mx-auto">
+                    <div className="">
+                        <h1 className='text-2xl font-semibold'>Afica Tour Package</h1>
+                        <p className='text-xl my-3'>Sensational South Africa Kenya Tours</p>
+
+                        <p>Venture into the Wild! South Africa is one of the most enthralling destinations for travellers from all over the world, as it has seemingly endless numbers of natural parks, beautiful mountains, and lunar-like landscapes vigilantly carved by nature. With savannas and never-ending safari adventures, South Africa Kenya Tours are a must. From the wild grasslands of Kruger Park to prehistoric caves, from the pristine Boulders Beach to Gold Reef City, you really do have a world in one country. Kesari's South </p>
+                    </div>
+                    <hr className='my-10' />
+                    <div className="lg:flex gap-10 my-10 " >
+                        <div className="min-w-[320px]">
+                            <div className="text-[1.3rem] text-white bg-secondary px-5 py-4 flex items-center font-semibold rounded-md">
+                                <IoFilter className='mr-3 text-2xl' />
+                                <p>Sort & Filter</p>
+                            </div>
+                            <div className="border border-gray-300 my-5">
+                                <div className="">
+                                    <div className="flex justify-between items-center px-6 py-3 text-xl font-normal text-primary" onClick={() => setdurationActive(!durationActive)}>
+                                        <h1>Duration</h1>
+                                        <FaAngleDown className={`text-gray-500 cursor-pointer duration-300 ${durationActive && "rotate-[180deg]"}`} />
+                                    </div>
+                                    {
+                                        durationActive && <div className="px-5">
+                                            <div className="">
+                                                <div className="flex justify-between items-center text-[14px]">
+                                                    <h1 className='font-semibold'>Min. <span className='font-normal ms-1'>{min} days</span></h1>
+                                                    <h1 className='font-semibold'>Max. <span className='font-normal ms-1'>{max} days</span></h1>
+                                                </div>
+                                            </div>
+                                            <div className="my-7">
+                                                <Slider
+                                                    range
+                                                    step={1}
+                                                    defaultValue={[2, 20]}
+                                                    min={2}
+                                                    max={20}
+                                                    onChange={(value) => {
+                                                        setmin(value[0]);
+                                                        setmax(value[1]);
+                                                    }}
+                                                    onChangeComplete={onChangeComplete}
+                                                />
+                                            </div>
                                         </div>
+                                    }
+
+
+                                </div>
+                                <div className="border-t">
+                                    <div className="flex justify-between items-center px-6 py-3 text-xl font-normal text-primary" onClick={() => setDepratureActive(!depratureActive)}>
+                                        <h1>Departure Date</h1>
+                                        <FaAngleDown className={`text-gray-500 cursor-pointer duration-300 ${depratureActive && "rotate-[180deg]"}`} />
                                     </div>
-                                    <div className="">
-                                        <Slider
-                                            range
-                                            step={10}
-                                            defaultValue={[20, 50]}
-                                            onChange={onChange}
-                                            onChangeComplete={onChangeComplete}
-                                        />
+                                    {
+                                        depratureActive && <div className="px-5">
+
+                                            <div className="">
+                                                <div className="flex justify-between items-center my-4">
+                                                    <div className=" flex justify-center items-center">
+                                                        <input type="checkbox" className='largerCheckbox mr-2' name='date' />
+                                                        <label htmlFor="">January-2024</label>
+                                                    </div>
+                                                    <div className="">
+                                                        <span className='text-[12px]'>20+</span>
+                                                    </div>
+                                                </div>
+                                                <div className="flex justify-between items-center my-4">
+                                                    <div className=" flex justify-center items-center">
+                                                        <input type="checkbox" className='largerCheckbox mr-2' name='date' />
+                                                        <label htmlFor="">January-2024</label>
+                                                    </div>
+                                                    <div className="">
+                                                        <span className='text-[12px]'>20+</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+
+
+                                </div>
+                                <div className="border-t">
+                                    <div className="flex justify-between items-center px-6 py-3 text-xl font-normal text-primary" onClick={() => setItours(!itours)}>
+                                        <h1>India Tour</h1>
+                                        <FaAngleDown className={`text-gray-500 cursor-pointer duration-300 ${itours && "rotate-[180deg]"}`} />
                                     </div>
+                                    {
+                                        itours && <div className="px-5">
+                                            <div className="">
+                                                <div className="flex justify-between items-center my-4">
+                                                    <div className=" flex justify-center items-center">
+                                                        <input type="checkbox" className='largerCheckbox mr-2' name='date' />
+                                                        <label htmlFor="">Andaman</label>
+                                                    </div>
+                                                    <div className="">
+                                                        <span className='text-[12px]'>20+</span>
+                                                    </div>
+                                                </div>
+                                                <div className="flex justify-between items-center my-4">
+                                                    <div className=" flex justify-center items-center">
+                                                        <input type="checkbox" className='largerCheckbox mr-2' name='date' />
+                                                        <label htmlFor="">Andhra Pradesh</label>
+                                                    </div>
+                                                    <div className="">
+                                                        <span className='text-[12px]'>20+</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+
+
+                                </div>
+                                <div className="border-t">
+                                    <div className="flex justify-between items-center px-6 py-3 text-xl font-normal text-primary" onClick={() => setPrice(!price)}>
+                                        <h1>Price</h1>
+                                        <FaAngleDown className={`text-gray-500 cursor-pointer duration-300 ${price && "rotate-[180deg]"}`} />
+                                    </div>
+                                    {
+                                        price && <div className="px-5">
+                                            <div className="">
+                                                <div className="flex justify-between items-center text-[14px]">
+                                                    <h1 className='font-semibold'>Min. <span className='font-normal ms-1'> ₹{pmin} </span></h1>
+                                                    <h1 className='font-semibold'>Max. <span className='font-normal ms-1'> ₹{pmax}</span></h1>
+                                                </div>
+                                            </div>
+                                            <div className="my-7">
+                                                <Slider
+                                                    range
+                                                    step={1000}
+                                                    defaultValue={[1000, 50000]}
+                                                    min={1000}
+                                                    max={50000}
+                                                    onChange={(value) => {
+                                                        setpmin(value[0]);
+                                                        setpmax(value[1]);
+                                                    }}
+                                                    onChangeComplete={onChangeComplete}
+                                                />
+                                            </div>
+                                        </div>
+                                    }
+
 
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div className="">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia deleniti repellendus exercitationem quasi dolorum esse quaerat ipsum expedita ducimus modi, doloremque maiores fugiat necessitatibus aspernatur similique veniam itaque, illo corporis cum error animi? Pariatur dicta expedita inventore illum doloremque modi sunt odio ipsam ducimus iure, in quas dolore recusandae perferendis obcaecati corporis rerum optio placeat dignissimos! Ducimus unde vitae eos velit mollitia porro veritatis, eum quia quibusdam consectetur, corrupti blanditiis, nihil consequatur ut aperiam corporis nisi! Nemo quae voluptatibus commodi maiores qui suscipit ad, praesentium dolor adipisci dolore accusantium, reprehenderit excepturi tenetur sapiente eos repellat perferendis aliquam atque? Iste perferendis soluta amet accusantium ipsa labore architecto corporis alias aliquam explicabo? Totam sapiente, nulla quas perferendis id esse ut neque, animi laudantium pariatur accusantium ipsa ratione exercitationem sed laboriosam voluptas minus sequi fugit in nisi. Temporibus consequatur omnis reiciendis quisquam unde alias repellendus vel nulla laudantium. Libero ratione possimus facilis officia consectetur nam fugiat voluptatem facere, voluptate ut corrupti blanditiis laborum earum voluptates nemo, quae, est numquam ex cupiditate eum aperiam. Harum laboriosam saepe numquam unde vel, quam beatae placeat iste ut cupiditate alias ipsam id asperiores libero et nam adipisci eaque atque porro. Accusamus sequi vel error ipsa quidem possimus voluptates laudantium obcaecati, distinctio, asperiores quo deleniti natus quibusdam quas veritatis, sit impedit consectetur accusantium quae non ullam. Unde atque adipisci quasi nisi ipsam velit blanditiis, dolore quia qui deleniti autem veniam, at cum magnam maxime, veritatis rerum itaque exercitationem deserunt reprehenderit debitis dicta quo quae ipsum! Repudiandae officiis rerum similique natus aperiam ut, assumenda iste quos nam expedita laborum et, placeat exercitationem fuga sed itaque. Voluptate voluptatibus assumenda similique error totam dolores nostrum deserunt laboriosam sunt, doloribus ex ducimus impedit, sed dolorum, dicta excepturi nihil autem pariatur architecto recusandae et modi amet itaque. Quaerat fugiat sequi in facilis magnam!</p>
+                        <div className="">
+                            {
+                                tours?.map(tour => (
+                                    <TourCard key={tour.id} item={tour} />
+                                ))
+                            }
+
+                        </div>
                     </div>
                 </div>
+                </div>
+               
             </div>
 
         </div>
