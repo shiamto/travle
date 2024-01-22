@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 
 
@@ -32,6 +33,16 @@ const destinationList = [
 		image: '/d1.jpg',
 		title: 'Kashmir'
 	},
+	{
+		_id: 7,
+		image: '/d3.jpg',
+		title: 'Gangtok'
+	},
+	{
+		_id: 8,
+		image: '/d4.jpg',
+		title: 'Darjeling'
+	}
 ]
 
 const Destination = () => {
@@ -56,7 +67,7 @@ const Destination = () => {
 									<div className="flex-shrink-0">
 										<h1 className='text-2xl text-white'>{val?.title}</h1>
 									</div>
-									<a href="#" title="" className="items-center justify-center hidden px-6 py-3 text-base font-semibold text-white hover:text-primary transition-all duration-200 bg-transparent border border-white rounded-full lg:inline-flex hover:bg-white focus:bg-white" role="button"> View All </a>
+									<Link href="/tours/details" title="" className="items-center justify-center hidden px-4 py-2 text-base font-semibold text-white hover:text-white transition-all duration-200 bg-transparent border border-white rounded-full ease-in-out lg:inline-flex hover:border-none hover:bg-secondary focus:bg-secondary" role="button"> View All </Link>
 								</div>
 							</div>
 						</div>

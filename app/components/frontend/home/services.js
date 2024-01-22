@@ -13,19 +13,19 @@ const serviceData = [
         _id: 2,
         title: "Adventure & Nature Tours",
         description: "Our curated tours blend excitement with serene landscapes, promising unforgettable experiences.",
-        icon: './ser1.png'
+        icon: './hiking.png'
     },
     {
         _id: 3,
         title: "Culinary Delights",
         description: "Indulge your palate in the exquisite flavors of Vietnam, from street food to gourmet cuisine.",
-        icon: './ser1.png'
+        icon: './culinary.png'
     },
     {
         _id: 4,
         title: "Luxury Escape",
         description: "Experience opulence and relaxation with our curated luxury escapes, ensuring an extraordinary stay",
-        icon: './ser1.png'
+        icon: './beach.png'
     },
 
 ]

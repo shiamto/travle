@@ -201,6 +201,6 @@ body {
 .ant-slider-track {
   background-color: red !important;
   .date {
-    @apply border-2 px-2 py-1 rounded-md text-sm md:text-base;
+    @apply border-2 border-gray-300 px-2 py-1 rounded-md text-sm md:text-base;
   }
 }

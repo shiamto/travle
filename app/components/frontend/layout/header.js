@@ -76,7 +76,7 @@ const FrontHeader = () => {
                         <nav className={` items-center justify-between h-16 lg:h-20 ${isMenuOpen ? "fixed" : "flex"} `}>
                             <div className="flex-shrink-0">
                                 <Link href="/" title="" className="flex">
-                                    <img className="w-auto h-8 lg:h-10" src="./logo.png" alt="" />
+                                    <img className="w-auto h-8 lg:h-10" src="../logo.png" alt="" />
                                 </Link>
                             </div>
                             <button
@@ -114,27 +114,32 @@ const FrontHeader = () => {
                                                 <div className='w-1/2'>
                                                     <h1 className='text-secondary text-lg font-semibold'>International</h1>
                                                     <div className="grid lg:grid-cols-3 gap-3 mt-2">
-                                                        <p className='text-gray-500'>Europe</p>
-                                                        <p className='text-gray-500'>Europe</p>
-                                                        <p className='text-gray-500'>Europe</p>
-                                                        <p className='text-gray-500'>Europe</p>
-                                                        <p className='text-gray-500'>Europe</p>
-                                                        <p className='text-gray-500'>Europe</p>
-                                                        <p className='text-gray-500'>Europe</p>
-                                                        <p className='text-gray-500'>Europe</p>
+                                                        <p className='text-gray-500 hover:text-secondary cursor-pointer'>Africa</p>
+                                                        <p className='text-gray-500 hover:text-secondary cursor-pointer'>America</p>
+                                                        <p className='text-gray-500 hover:text-secondary cursor-pointer'>Australia</p>
+                                                        <p className='text-gray-500 hover:text-secondary cursor-pointer'>Newzealand</p>
+                                                        <p className='text-gray-500 hover:text-secondary cursor-pointer'>Bhutan</p>
+                                                        <p className='text-gray-500 hover:text-secondary cursor-pointer'>Dubai</p>
+                                                        <p className='text-gray-500 hover:text-secondary cursor-pointer'>MiddleEast</p>
+                                                        <p className='text-gray-500 hover:text-secondary cursor-pointer'>Nepal</p>
+                                                        <p className='text-gray-500 hover:text-secondary cursor-pointer'>Europe</p>
                                                     </div>
                                                 </div>
 
                                                 <div className='w-1/2'>
                                                     <h1 className='text-secondary text-lg font-semibold'>Domestic</h1>
                                                     <div className="grid lg:grid-cols-3 gap-3 mt-2">
-                                                        <p className='text-gray-500'>Europe</p>
-                                                        <p className='text-gray-500'>Europe</p>
-                                                        <p className='text-gray-500'>Europe</p>
-                                                        <p className='text-gray-500'>Europe</p>
-                                                        <p className='text-gray-500'>Europe</p>
-                                                        <p className='text-gray-500'>Europe</p>
-                                                        <p className='text-gray-500'>Europe</p>
+                                                        <p className='text-gray-500 hover:text-secondary cursor-pointer'>Andaman</p>
+                                                        <p className='text-gray-500 hover:text-secondary cursor-pointer'>Goa</p>
+                                                        <p className='text-gray-500 hover:text-secondary cursor-pointer'>Himachal</p>
+                                                        <p className='text-gray-500 hover:text-secondary cursor-pointer'>Gujrat</p>
+                                                        <p className='text-gray-500 hover:text-secondary cursor-pointer'>Orissa</p>
+                                                        <p className='text-gray-500 hover:text-secondary cursor-pointer'>Punjab</p>
+                                                        <p className='text-gray-500 hover:text-secondary cursor-pointer'>Kashmir</p>
+                                                        <p className='text-gray-500 hover:text-secondary cursor-pointer'>Ladakh</p>
+                                                        <p className='text-gray-500 hover:text-secondary cursor-pointer'>Gangtok</p>
+                                                        <p className='text-gray-500 hover:text-secondary cursor-pointer'>Chennai</p>
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -148,7 +153,7 @@ const FrontHeader = () => {
                                 <Link href="/contact" title="" className="text-base font-medium text-white"> Contact </Link>
                             </div>
 
-                            <a href="#" title="" className="items-center justify-center hidden px-6 py-3 text-base font-semibold text-white transition-all duration-600 bg-[#FF0143] border border-transparent rounded-full lg:inline-flex hover:bg-primary focus:bg-[#FF0143]" role="button"> Book Now </a>
+                            <a href="#" title="" className="items-center justify-center hidden px-4 py-2 text-base font-semibold text-white transition-all duration-600 bg-[#FF0143] border border-transparent rounded-full lg:inline-flex hover:bg-primary focus:bg-[#FF0143]" role="button"> Book Now </a>
                         </nav>
                     </div>
                 </div>

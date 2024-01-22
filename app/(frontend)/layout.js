@@ -4,8 +4,8 @@ import FrontHeader from "../components/frontend/layout/header"
 import "../styles/app.scss"
 
 export const metadata = {
-    title: 'Dahlia Ecommerce',
-    description: 'Dahlia Ecommerce',
+    title: 'Wilhloesch Travel',
+    description: 'Wilhloesch Travel',
 }
 
 

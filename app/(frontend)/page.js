@@ -13,8 +13,8 @@ const HomePage = () => {
             <Spotlight />
             <Services />
             <Destination />
-            <Explore />
             <Reviews />
+            <Explore />
         </div>
     );
 };

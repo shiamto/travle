@@ -19,7 +19,7 @@ const Reviews = () => {
     return (
         <div className=' bg-slate-200'>
             <div className='container p-16'>
-                <h1 className="text-3xl text-center font-semibold text-gray-800 pt-16 md:pt-0">Ture Reviews</h1>
+                <h1 className="text-3xl text-center font-semibold text-gray-800 pt-16 md:pt-0">Tour Reviews</h1>
                 <div className='mt-12 pb-10'>
                     <Swiper
                         slidesPerView={1}
@@ -47,14 +47,14 @@ const Reviews = () => {
                                             <FaStar />
                                         </div>
                                     </div>
-                                    <h1 className='text-2xl font-semibold'>UI components to enrich your web applications</h1>
-                                    <p className='z-20 relative'> Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.  Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                                    <h1 className='text-2xl font-semibold italic'>An Unforgottable Journey with Loesch Travel</h1>
+                                    <p className='z-20 relative'> Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit </p>
                                     <div className='rounded-lg bg-white w-28 h-28 rotate-45 absolute -bottom-1 left-[calc(50%-56px)]'></div>
                                 </div>
                                 <div className='flex justify-center mt-14'>
                                     <div>
-                                        <div className='flex justify-center'><Image className='w-20 h-20' src="/loader.png" width={300} height={300} alt="image" /></div>
-                                        <h1 className='text-2xl font-semibold text-center'> consectetur adipiscing</h1>
+                                        <div className='flex justify-center'><Image className='w-20 h-20' src="/dahlia.png" width={200} height={200} alt="image" /></div>
+                                        <h1 className='text-sm font-semibold text-center'>Dahlia User</h1>
                                     </div>
                                 </div>
                             </SwiperSlide>)
@@ -78,7 +78,6 @@ const Reviews = () => {
                         {open && <div className='absolute left-0 rounded-lg top-[calc(100%+10px)] z-30 bg-white p-6'>
                             <div className='grid grid-cols-3 gap-4 w-60 md:w-96 lg:w-full'>
                                 <div className='space-y-3'>
-
                                     <h1 className='date'>January 2022</h1>
                                     <h1 className='date'>January 2022</h1>
                                     <h1 className='date'>January 2022</h1>

@@ -19,19 +19,19 @@ const destinations = [
     },
     {
         _id: 2,
-        title: 'Deals of the week',
+        title: 'Amazing Europe Tour',
         description: 'Limited Time Offer Packed with adventure and savings.',
         image: './tour2.jpg',
     },
     {
         _id: 3,
-        title: 'Deals of the week',
+        title: 'Spiritual Tour',
         description: 'Limited Time Offer Packed with adventure and savings.',
         image: './tour3.jpg',
     },
     {
         _id: 4,
-        title: 'Deals of the week',
+        title: 'Amazing Europe Tour',
         description: 'Limited Time Offer Packed with adventure and savings.',
         image: './tour2.jpg',
     },
@@ -43,7 +43,7 @@ const destinations = [
     },
     {
         _id: 6,
-        title: 'Deals of the week',
+        title: 'Spiritual Tour',
         description: 'Limited Time Offer Packed with adventure and savings.',
         image: './tour3.jpg',
     },
@@ -112,12 +112,12 @@ const Spotlight = () => {
                                             </a>
                                             <div className="p-5">
                                                 <a href="#">
-                                                    <h5 className="text-gray-900 font-bold text-2xl tracking-tight mb-2">
+                                                    <h5 className="text-primary font-semibold text-xl tracking-tight mb-2">
                                                         {val?.title}
                                                     </h5>
                                                 </a>
-                                                <p className="font-normal text-gray-700 mb-3 lg:block hidden">{val?.description}</p>
-                                                <button className="text-sm mt-2 px-3 py-1 rounded-lg before:block before:absolute hover:before:bg-primary before:w-0 before:h-0 hover:before:h-20 hover:before:w-40 before:-bottom-2 before:-right-2 before:duration-500 before:rounded-xl before:-z-10 relative inline-block transform hover:text-white text-primary bg-transparent border-2 overflow-hidden border-primary duration-700">
+                                                <p className="text-sm text-gray-700 mb-3 lg:block hidden">{val?.description}</p>
+                                                <button className="text-sm mt-2 px-3 py-1 rounded-lg before:block before:absolute hover:before:bg-secondary before:w-0 before:h-0 hover:before:h-20 hover:before:w-40 before:-bottom-2 before:-right-2 before:duration-500 before:rounded-xl before:-z-10 relative inline-block transform hover:text-white text-primary bg-transparent border overflow-hidden border-secondary duration-700">
                                                     View Details
                                                 </button>
                                             </div>
