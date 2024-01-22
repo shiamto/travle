@@ -32,8 +32,8 @@ const Reviews = () => {
                             pauseOnMouseEnter: true,
                             pauseOnMouseEnter: true,
 
-                            }}
-                        >
+                        }}
+                    >
 
                         {
                             Array.from({ length: 4 }).map((_, index) => <SwiperSlide key={index}>
@@ -60,7 +60,7 @@ const Reviews = () => {
                             </SwiperSlide>)
                         }
 
-                        </Swiper>
+                    </Swiper>
 
                 </div>
             </div>
@@ -75,6 +75,31 @@ const Reviews = () => {
                         <CiCalendar className='text-3xl mr-2' />
                         <input className='w-full py-4 outline-none rounded-xl md:rounded-none group-hover:bg-slate-200' type="text" placeholder='When?' />
 
+                        {open && <div className='absolute left-0 rounded-lg top-[calc(100%+10px)] z-30 bg-white p-6'>
+                            <div className='grid grid-cols-3 gap-4 w-60 md:w-96 lg:w-full'>
+                                <div className='space-y-3'>
+
+                                    <h1 className='date'>January 2022</h1>
+                                    <h1 className='date'>January 2022</h1>
+                                    <h1 className='date'>January 2022</h1>
+                                    <h1 className='date'>January 2022</h1>
+                                </div>
+                                <div className='space-y-3'>
+
+                                    <h1 className='date'>January 2022</h1>
+                                    <h1 className='date'>January 2022</h1>
+                                    <h1 className='date'>January 2022</h1>
+                                    <h1 className='date'>January 2022</h1>
+                                </div>
+                                <div className='space-y-3'>
+
+                                    <h1 className='date'>January 2022</h1>
+                                    <h1 className='date'>January 2022</h1>
+                                    <h1 className='date'>January 2022</h1>
+                                    <h1 className='date'>January 2022</h1>
+                                </div>
+                            </div>
+                        </div>}
                     </div>
                     <button className='py-4 px-16 bg-orange-600 text-white rounded-full'>Search</button>
                 </div>

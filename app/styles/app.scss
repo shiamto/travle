@@ -176,7 +176,7 @@ body {
 }
 
 .ant-picker {
-  @apply w-full rounded-md min-h-[40] outline-0 shadow-none border-gray-300 focus:border-indigo-500 hover:border-gray-300 #{!important};
+  @apply w-full rounded-md min-h-[40px] outline-0 shadow-none border-gray-300 focus:border-indigo-500 hover:border-gray-300 #{!important};
 }
 
 .ant-select-arrow {
