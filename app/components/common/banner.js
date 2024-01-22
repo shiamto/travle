@@ -4,7 +4,7 @@ import React from 'react'
 const Banner = ({title, page}) => {
   return (
 
-    <div className="bg-[rgba(0,0,0,0.3)]  w-full">
+    <div className="w-full">
           <div className="container mx-auto ">
             <div className=" !h-[400px] flex items-center justify-center ">
                 <div className=" text-center">

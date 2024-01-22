@@ -14,7 +14,7 @@ const HomePage = () => {
             <Services />
             <Destination />
             <Explore />
-            <Reviews></Reviews>
+            <Reviews />
         </div>
     );
 };

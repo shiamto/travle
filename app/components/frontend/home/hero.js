@@ -41,7 +41,7 @@ export const Hero = () => {
 
 
             <div className="lg:-mt-12">
-                <div className="w-full z-50 px-4 left-0 drop-shadow-lg text-white rounded-lg flex justify-center items-center flex-col">
+                <div className="w-full px-4 left-0 drop-shadow-lg text-white flex justify-center items-center flex-col">
                     <h1 className="lg:text-5xl mb-3">Welcome to Wilh. Loesch Travel</h1>
                     <h1 className="text-lg font-bold uppercase text-[#FF0143]">A Journey Beyond The Ordinary!</h1>
                 </div>

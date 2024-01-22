@@ -1,10 +1,27 @@
 'use client';
+import { Dropdown, Menu } from 'antd';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
+import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
+
+import { GoChevronDown } from "react-icons/go";
+
+
+function getItem(label, key, icon, children, type) {
+    return {
+        key,
+        icon,
+        children,
+        label,
+        type,
+    };
+}
+
 
 const FrontHeader = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isNavbarFixed, setIsNavbarFixed] = useState(false);
+    const [isGroupTour, setIsGroupTour] = useState(false);
 
     const handleMenuToggle = () => {
         setIsMenuOpen((isMenuOpen) => !isMenuOpen);
@@ -22,6 +39,34 @@ const FrontHeader = () => {
             window.removeEventListener('scroll', handleScroll);
         };
     }, []);
+
+    const items = [
+        {
+            key: 'sub1',
+            label: <span className='text-primary'>International</span>,
+            children: [
+                { key: '1', label: 'Item 1', icon: null, children: [{ key: '1', label: 'Option 1' }, { key: '2', label: 'Option 2' }], type: 'group' },
+                { key: '2', label: 'Item 2', icon: null, children: [{ key: '3', label: 'Option 3' }, { key: '4', label: 'Option 4' }], type: 'group' },
+            ],
+        },
+        {
+            key: 'sub2',
+            label: <span className="text-primary">Domestic</span>,
+            children: [
+                { key: '5', label: 'Option 5', icon: null },
+                { key: '6', label: 'Option 6', icon: null },
+            ],
+        },
+    ];
+
+    const onClick = (e) => {
+        console.log('click', e);
+    };
+
+    const handleTour = () => {
+        setIsGroupTour((isGroupTour) => !isGroupTour);
+    }
+
 
     return (
         <div className="container">
@@ -46,23 +91,64 @@ const FrontHeader = () => {
                                     viewBox="0 0 24 24"
                                     stroke="currentColor"
                                 >
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7" />
                                 </svg>
                             </button>
 
 
 
                             <div className="hidden lg:flex lg:items-center lg:space-x-10">
+
+                                <Link href="/" title="" className="text-base font-medium text-white"> Home </Link>
                                 <Link href="/about" title="" className="text-base font-medium text-white"> About </Link>
 
-                                <Link href="/contact" title="" className="text-base font-medium text-white"> Solutions </Link>
+                                <div className="flex items-center justify-center gap-x-1" onClick={handleTour}>
+                                    <a href="#" title="" className="text-base relative font-medium text-white"> Group Tours </a>
+                                    <GoChevronDown size={20} className='text-white font-bold cursor-pointer' />
+                                </div>
 
-                                <a href="#" title="" className="text-base font-medium text-white"> Resources </a>
+                                {isGroupTour &&
+                                    <div className='absolute left-0 right-0 z-10 top-20'>
+                                        <div className='w-full shadow-xl'>
+                                            <div className="flex justify-between bg-white p-6 rounded-lg shadow-xl">
+                                                <div className='w-1/2'>
+                                                    <h1 className='text-secondary text-lg font-semibold'>International</h1>
+                                                    <div className="grid lg:grid-cols-3 gap-3 mt-2">
+                                                        <p className='text-gray-500'>Europe</p>
+                                                        <p className='text-gray-500'>Europe</p>
+                                                        <p className='text-gray-500'>Europe</p>
+                                                        <p className='text-gray-500'>Europe</p>
+                                                        <p className='text-gray-500'>Europe</p>
+                                                        <p className='text-gray-500'>Europe</p>
+                                                        <p className='text-gray-500'>Europe</p>
+                                                        <p className='text-gray-500'>Europe</p>
+                                                    </div>
+                                                </div>
 
-                                <a href="#" title="" className="text-base font-medium text-white"> Pricing </a>
+                                                <div className='w-1/2'>
+                                                    <h1 className='text-secondary text-lg font-semibold'>Domestic</h1>
+                                                    <div className="grid lg:grid-cols-3 gap-3 mt-2">
+                                                        <p className='text-gray-500'>Europe</p>
+                                                        <p className='text-gray-500'>Europe</p>
+                                                        <p className='text-gray-500'>Europe</p>
+                                                        <p className='text-gray-500'>Europe</p>
+                                                        <p className='text-gray-500'>Europe</p>
+                                                        <p className='text-gray-500'>Europe</p>
+                                                        <p className='text-gray-500'>Europe</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                }
+
+                                <Link href="/gallery" title="" className="text-base font-medium text-white"> Gallery </Link>
+
+                                <Link href="/contact" title="" className="text-base font-medium text-white"> Contact </Link>
                             </div>
 
-                            <a href="#" title="" className="items-center justify-center hidden px-6 py-3 text-base font-semibold text-white transition-all duration-200 bg-[#FF0143] border border-transparent rounded-full lg:inline-flex hover:bg-yellow-500 focus:bg-[#FF0143]" role="button"> Book Now </a>
+                            <a href="#" title="" className="items-center justify-center hidden px-6 py-3 text-base font-semibold text-white transition-all duration-600 bg-[#FF0143] border border-transparent rounded-full lg:inline-flex hover:bg-primary focus:bg-[#FF0143]" role="button"> Book Now </a>
                         </nav>
                     </div>
                 </div>
@@ -91,21 +177,32 @@ const FrontHeader = () => {
                                         viewBox="0 0 24 24"
                                         stroke="currentColor"
                                     >
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
                                     </svg>
                                 </button>
                             </div>
                         </div>
                         <div className="flex flex-col flex-grow h-full container">
                             <nav className="flex flex-col mt-10 space-y-2">
-                                <Link href="/about" onClick={() => { setIsMenuOpen(false) }}
-                                    title="" className="flex w-full py-2 font-medium text-white transition-all duration-200 focus:text-opacity-70">About</Link>
+                                <Link href="/" onClick={() => { setIsMenuOpen(false) }}
+                                    title="" className="flex w-full py-2 font-medium text-white transition-all duration-200 focus:text-opacity-70">Home</Link>
 
-                                <Link href="#" title="" className="flex w-full py-2 font-medium text-white transition-all duration-200 focus:text-opacity-70"> Contact </Link>
+                                <Link href="/about" title="" className="flex w-full py-2 font-medium text-white transition-all duration-200 focus:text-opacity-70"> About </Link>
 
-                                <a href="#" title="" className="flex w-full py-2 font-medium text-white transition-all duration-200 focus:text-opacity-70"> Resources </a>
+                                <div className='py-2'>
+                                    <Dropdown arrow={false} overlay={(
+                                        <Menu onClick={onClick} style={{ width: 128 }} mode="vertical" items={items} />
+                                    )}>
+                                        <div className="flex gap-2 rounded md:max-h-[670px]">
+                                            <p className='text-base font-medium text-white'>Group Tours</p>
+                                        </div>
+                                    </Dropdown>
+                                </div>
 
-                                <a href="#" title="" className="flex w-full py-2 font-medium text-white transition-all duration-200 focus:text-opacity-70"> Pricing </a>
+
+                                <Link href="/gallery" title="" className="flex w-full py-2 font-medium text-white transition-all duration-200 focus:text-opacity-70"> Gallery </Link>
+
+                                <Link href="/contact" title="" className="flex w-full py-2 font-medium text-white transition-all duration-200 focus:text-opacity-70"> Contact </Link>
                             </nav>
 
                             <div className="flex flex-col items-start mt-6">

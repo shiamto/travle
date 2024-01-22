@@ -69,7 +69,7 @@ const Spotlight = () => {
                     </p>
                 </div>
                 <div className='relative'>
-                    <div className='absolute -left-4 top-[calc(50%-14px)]  text-2xl z-20  swiper-button-next bg-slate-200 pl-3 pr-1 py-2 rounded-full swiper-button-prev'>
+                    <div className='absolute -left-4 top-[calc(50%-14px)]  text-2xl z-20 cursor-pointer swiper-button-next bg-white pl-3 pr-1 py-2 rounded-full shadow-lg swiper-button-prev'>
                         <MdArrowBackIos></MdArrowBackIos>
                     </div>
                     <div>
@@ -127,7 +127,7 @@ const Spotlight = () => {
                             ))}
                         </Swiper>
                     </div>
-                    <div className='absolute -right-4 top-[calc(50%-14px)] text-2xl z-20  swiper-button-next bg-slate-200 p-2 rounded-full'>
+                    <div className='absolute -right-4 top-[calc(50%-14px)] text-2xl z-20  swiper-button-next bg-white shadow-lg cursor-pointer p-2 rounded-full'>
                     <MdArrowForwardIos></MdArrowForwardIos>
                         
                     </div>
