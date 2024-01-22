@@ -114,31 +114,31 @@ const FrontHeader = () => {
                                                 <div className='w-1/2'>
                                                     <h1 className='text-secondary text-lg font-semibold'>International</h1>
                                                     <div className="grid lg:grid-cols-3 gap-3 mt-2">
-                                                        <p className='text-gray-500 hover:text-secondary cursor-pointer'>Africa</p>
-                                                        <p className='text-gray-500 hover:text-secondary cursor-pointer'>America</p>
-                                                        <p className='text-gray-500 hover:text-secondary cursor-pointer'>Australia</p>
-                                                        <p className='text-gray-500 hover:text-secondary cursor-pointer'>Newzealand</p>
-                                                        <p className='text-gray-500 hover:text-secondary cursor-pointer'>Bhutan</p>
-                                                        <p className='text-gray-500 hover:text-secondary cursor-pointer'>Dubai</p>
-                                                        <p className='text-gray-500 hover:text-secondary cursor-pointer'>MiddleEast</p>
-                                                        <p className='text-gray-500 hover:text-secondary cursor-pointer'>Nepal</p>
-                                                        <p className='text-gray-500 hover:text-secondary cursor-pointer'>Europe</p>
+                                                        <Link href="/tours" className='text-gray-500 hover:text-secondary cursor-pointer'>Africa</Link>
+                                                        <Link href="/tours" className='text-gray-500 hover:text-secondary cursor-pointer'>America</Link>
+                                                        <Link href="/tours" className='text-gray-500 hover:text-secondary cursor-pointer'>Australia</Link>
+                                                        <Link href="/tours" className='text-gray-500 hover:text-secondary cursor-pointer'>Newzealand</Link>
+                                                        <Link href="/tours" className='text-gray-500 hover:text-secondary cursor-pointer'>Bhutan</Link>
+                                                        <Link href="/tours" className='text-gray-500 hover:text-secondary cursor-pointer'>Dubai</Link>
+                                                        <Link href="/tours" className='text-gray-500 hover:text-secondary cursor-pointer'>MiddleEast</Link>
+                                                        <Link href="/tours" className='text-gray-500 hover:text-secondary cursor-pointer'>Nepal</Link>
+                                                        <Link href="/tours" className='text-gray-500 hover:text-secondary cursor-pointer'>Europe</Link>
                                                     </div>
                                                 </div>
 
                                                 <div className='w-1/2'>
                                                     <h1 className='text-secondary text-lg font-semibold'>Domestic</h1>
                                                     <div className="grid lg:grid-cols-3 gap-3 mt-2">
-                                                        <p className='text-gray-500 hover:text-secondary cursor-pointer'>Andaman</p>
-                                                        <p className='text-gray-500 hover:text-secondary cursor-pointer'>Goa</p>
-                                                        <p className='text-gray-500 hover:text-secondary cursor-pointer'>Himachal</p>
-                                                        <p className='text-gray-500 hover:text-secondary cursor-pointer'>Gujrat</p>
-                                                        <p className='text-gray-500 hover:text-secondary cursor-pointer'>Orissa</p>
-                                                        <p className='text-gray-500 hover:text-secondary cursor-pointer'>Punjab</p>
-                                                        <p className='text-gray-500 hover:text-secondary cursor-pointer'>Kashmir</p>
-                                                        <p className='text-gray-500 hover:text-secondary cursor-pointer'>Ladakh</p>
-                                                        <p className='text-gray-500 hover:text-secondary cursor-pointer'>Gangtok</p>
-                                                        <p className='text-gray-500 hover:text-secondary cursor-pointer'>Chennai</p>
+                                                        <Link href="/tours" className='text-gray-500 hover:text-secondary cursor-pointer'>Andaman</Link>
+                                                        <Link href="/tours" className='text-gray-500 hover:text-secondary cursor-pointer'>Goa</Link>
+                                                        <Link href="/tours" className='text-gray-500 hover:text-secondary cursor-pointer'>Himachal</Link>
+                                                        <Link href="/tours" className='text-gray-500 hover:text-secondary cursor-pointer'>Gujrat</Link>
+                                                        <Link href="/tours" className='text-gray-500 hover:text-secondary cursor-pointer'>Orissa</Link>
+                                                        <Link href="/tours" className='text-gray-500 hover:text-secondary cursor-pointer'>Punjab</Link>
+                                                        <Link href="/tours" className='text-gray-500 hover:text-secondary cursor-pointer'>Kashmir</Link>
+                                                        <Link href="/tours" className='text-gray-500 hover:text-secondary cursor-pointer'>Ladakh</Link>
+                                                        <Link href="/tours" className='text-gray-500 hover:text-secondary cursor-pointer'>Gangtok</Link>
+                                                        <Link href="/tours" className='text-gray-500 hover:text-secondary cursor-pointer'>Chennai</Link>
 
                                                     </div>
                                                 </div>
