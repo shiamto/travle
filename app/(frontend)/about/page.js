@@ -9,16 +9,17 @@ const page = () => {
         <div className="">
             <div className='relative'>
                 <div className="h-[100vh] w-full fixed left-0 right-0 bottom-0 -z-10">
-                    <img src="/banner.jpg" alt="" className=' w-full object-cover' />
+                    <img src="/banner.jpg" alt="" className='h-full w-full object-cover' />
                 </div>
                 <Banner title="About Us" page="About" />
                 <div className=" bg-thm_gray ">
                     <div className="relative">
+                    
                         <div className="absolute top-0 lg:block hidden">
                             <img src="/leaf.png" alt="" />
                         </div>
                         <div className=" absolute top-10 left-[200px] lg:block hidden">
-                            <img src="/sun.png" alt="" />
+                            <img className='animate-rotate-sun' src="/sun.png" alt="" />
                         </div>
                         <div className="container mx-auto py-20 text-center relative z-10">
                             <div className="relative inline-block  mb-16">
@@ -44,8 +45,8 @@ const page = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="absolute right-0 top-1/2">
-                            <img src="/plane.png" alt="" />
+                        <div className="absolute right-0 animate-plane top-1/2">
+                            <img className='' src="/plane.png" alt="" />
                         </div>
                     </div>
 

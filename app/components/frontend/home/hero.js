@@ -50,11 +50,11 @@ export const Hero = () => {
             <div className="w-1/2 ml-auto overflow-hidden absolute -right-5 px-4 lg:pt-[36rem] pt-[14rem]">
                 <div className="absolute bottom-1/4 flex justify-between">
 
-                    <button onClick={prevSlider} className="flex items-center hover:bg-white/30 rounded-full w-6 h-6 md:w-8 md:h-8">
+                    <button onClick={prevSlider} className="flex items-center justify-center hover:bg-white/30 rounded-full w-6 h-6 md:w-8 md:h-8">
                         <svg viewBox="0 0 1024 1024" className="w-4 h-4 md:w-6 md:h-6 icon" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"><path fill="#FF0143" d="M685.248 104.704a64 64 0 010 90.496L368.448 512l316.8 316.8a64 64 0 01-90.496 90.496L232.704 557.248a64 64 0 010-90.496l362.048-362.048a64 64 0 0190.496 0z"></path></g></svg>
                     </button>
 
-                    <button onClick={nextSlider} className="flex items-center hover:bg-white/30 rounded-full w-6 h-6 md:w-8 md:h-8">
+                    <button onClick={nextSlider} className="flex items-center justify-center hover:bg-white/30 rounded-full w-6 h-6 md:w-8 md:h-8">
                         <svg viewBox="0 0 1024 1024" className="w-4 h-4 md:w-6 md:h-6 icon" xmlns="http://www.w3.org/2000/svg" fill="#000000" transform="rotate(180)"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"><path fill="#FF0143" d="M685.248 104.704a64 64 0 010 90.496L368.448 512l316.8 316.8a64 64 0 01-90.496 90.496L232.704 557.248a64 64 0 010-90.496l362.048-362.048a64 64 0 0190.496 0z"></path></g></svg>
                     </button>
                 </div>
