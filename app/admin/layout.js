@@ -130,7 +130,8 @@ const menu = [
         ]
     },
     {
-        label: "Reports",
+        label: "Gallery Page",
+        href: "/admin/gallery",
         icon: <FaPrint />,
     },
     {
