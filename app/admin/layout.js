@@ -2,51 +2,49 @@
 
 import Sidebar from "../components/layout/sidebar";
 import Header from "../components/layout/header";
-import {FaCartPlus, FaHome, FaPrint, FaShoppingBag, FaUniversity, FaWallet, FaWrench} from "react-icons/fa";
-import {FaBoxArchive} from "react-icons/fa6";
-import {useEffect, useState} from "react";
-import {fetchUser} from "../helpers/backend";
-import MainLoader, {hideLoader} from "../components/common/loader";
-import {useRouter} from "next/navigation";
+import { FaCartPlus, FaHome, FaPrint, FaShoppingBag, FaUniversity, FaWallet, FaWrench } from "react-icons/fa";
+import { FaBoxArchive } from "react-icons/fa6";
+import { useEffect, useState } from "react";
+import { fetchUser } from "../helpers/backend";
+import MainLoader, { hideLoader } from "../components/common/loader";
+import { useRouter } from "next/navigation";
 import UserContext from "../contexts/user";
 
-const Layout = ({children}) => {
+const Layout = ({ children }) => {
     const router = useRouter()
     const [user, setUser] = useState(null)
 
     useEffect(() => {
-        fetchUser().then(({error, data}) => {
-            if(error === false) {
+        fetchUser().then(({ success, data }) => {
+            if (success === true) {
                 hideLoader()
                 setUser(data)
             } else {
-                router.push('/admin/login')
+                router.push('/login')
             }
         })
     }, [])
 
 
-    if(!user) {
+    if (!user) {
         return (
             <>
-                <MainLoader/>
+                <MainLoader />
             </>
         )
     }
 
     return (
         <div className="min-h-screen bg-gray-100">
-            {!!user && (
-                <UserContext.Provider value={user}>
-                    <Sidebar title="AccountA" menu={menu}/>
-                    <Header title="AccountA"/>
-                    <div className="content">
-                        <div className="p-4">
-                            {children}
-                        </div>
+            <UserContext.Provider value={user}>
+                <Sidebar title="Wilhloesch Travel" menu={menu} />
+                <Header title="Wilhloesch Travel" />
+                <div className="content">
+                    <div className="p-4">
+                        {children}
                     </div>
-                </UserContext.Provider>
-            )}
+                </div>
+            </UserContext.Provider>
         </div>
     )
 }
@@ -61,11 +59,11 @@ const menu = [
     {
         label: "Dashboard",
         href: "/",
-        icon: <FaHome/>
+        icon: <FaHome />
     },
     {
         label: "Products",
-        icon: <FaBoxArchive/>,
+        icon: <FaBoxArchive />,
         child: [
             {
                 label: "Products",
@@ -79,7 +77,7 @@ const menu = [
     },
     {
         label: "Sales",
-        icon: <FaCartPlus/>,
+        icon: <FaCartPlus />,
         child: [
             {
                 label: "Sales",
@@ -93,7 +91,7 @@ const menu = [
     },
     {
         label: "Purchases",
-        icon: <FaWallet/>,
+        icon: <FaWallet />,
         child: [
             {
                 label: "Purchases",
@@ -107,7 +105,7 @@ const menu = [
     },
     {
         label: "Banking",
-        icon: <FaUniversity/>,
+        icon: <FaUniversity />,
         child: [
             {
                 label: "Accounts",
@@ -133,11 +131,11 @@ const menu = [
     },
     {
         label: "Reports",
-        icon: <FaPrint/>,
+        icon: <FaPrint />,
     },
     {
         label: "Settings",
         href: "/settings",
-        icon: <FaWrench/>
+        icon: <FaWrench />
     },
 ]

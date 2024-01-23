@@ -1,29 +1,51 @@
+import imageCompression from 'browser-image-compression';
 
-export const statusClass = {
-    'Under Approval': 'status-warning',
-    'Approved': 'status-info',
-    'Published': 'status-success',
-    'Unpublished': 'status-secondary',
-    'Rejected': 'status-danger',
-    'suspended': 'status-danger',
-    'pending': 'status-warning',
-    'approved': 'status-info',
-    'rejected': 'status-danger',
-    'processing': 'status-info',
-    'active': 'status-info',
-    'completed': 'status-success',
-    'complete': 'status-success',
-    'cancelled': 'status-danger',
-    'failed': 'status-danger',
-    'refunded': 'status-danger',
-    'on-hold': 'status-warning',
-    'trash': 'status-info',
-    'accepted': 'status-info',
-    'started': 'status-success',
-    'driver_pending': 'status-danger',
-    'user_pending': 'status-danger',
-    'ride': 'status-danger',
-    'add_money': 'status-success',
-    'paid': 'status-fuchsia',
-    'break': 'status-warning',
+
+export const parseJSON = (d, or = {}) => {
+    try {
+        return JSON.parse(d)
+    } catch (e) {
+        return or
+    }
+}
+
+
+export const getFilePathFromGalleryImage = (file) => {
+    const backend_url = process.env.backend_url;
+    const base_path = file[0]?.path?.split('uploaded_files')[1];
+    return backend_url + "uploaded_files" + base_path;
+}
+
+
+
+export function objectToKeyValuePair(obj) {
+    let details = [];
+    const keys = Object?.keys(obj);
+    const values = Object?.values(obj);f
+    for (let i = 0; i < keys?.length; i++) {
+        details.push(
+            {
+                key: keys[i],
+                value: values[i],
+            }
+        )
+    }
+    return details;
+}
+
+export function capitalizeFirstLetter(string) {
+    return string?.charAt(0)?.toUpperCase() + string?.slice(1);
+}
+
+
+export function handleImageUploadCompression(e) {
+    const imageFile = e
+    const options = {
+        maxSizeMB: 2,
+        maxWidthOrHeight: 1920,
+        useWebWorker: true
+    }
+    const myImg = imageCompression(imageFile, options)
+    console.log(myImg)
+    return myImg
 }

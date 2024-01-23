@@ -8,6 +8,9 @@ export const postResetPassword = (data) => post("/user/reset-password", data);
 export const postChangePassword = (data) => post("/user/password", data);
 
 export const fetchAllCountry = (data) => get("/countries", data);
-export const fetchUser = (data) => get("/user", data);
 export const updateUser = (data) => patchForm("/user", data);
+
+
+export const postAdminLogin = (data) => post("/admin/login", data);
+export const fetchUser = (data) => get("/admin/user-info", data);
 
