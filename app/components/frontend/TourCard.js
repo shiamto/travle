@@ -17,7 +17,7 @@ const TourCard = ({ item }) => {
     };
     return (
         <div className="md:flex justify-between rounded-md mb-5" style={{ boxShadow: "0 0 12px #00000026" }}>
-            <div className="w-full basis-1/3">
+            <div className="md:w-[400px] ">
                 <img src={item.image} className='w-full h-full' alt="" />
             </div>
             <div className="p-5 basis-2/3 ">
