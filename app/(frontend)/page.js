@@ -5,14 +5,16 @@ import Destination from '../components/frontend/home/destination';
 import Explore from '../components/frontend/home/explore';
 import Services from '../components/frontend/home/services';
 import Reviews from '../components/frontend/home/reviews';
+import WhyChoose from '../components/frontend/home/whyChoose';
+import Discover from '../components/frontend/home/discover';
 
 const HomePage = () => {
     return (
         <div>
             <Hero />
-            <Spotlight />
+            <WhyChoose />
             <Services />
-            <Destination />
+            <Discover/>
             <Reviews />
             <Explore />
         </div>

@@ -228,5 +228,16 @@ input.largerCheckbox {
   @apply border-2 px-2 py-1 rounded-md text-center;
 }
 
+// custom overlay 
+
+.overlay{
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 49%,
+      rgba(0, 0, 0, 0.98) 99%,
+      rgba(0, 0, 0, 1) 100%
+    );
+}
+
 
 
