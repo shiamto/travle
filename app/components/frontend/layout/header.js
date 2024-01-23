@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react';
 import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
 
 import { GoChevronDown } from "react-icons/go";
+import { FaFacebook, FaPhone, FaRegEnvelope } from 'react-icons/fa6';
 
 
 function getItem(label, key, icon, children, type) {
@@ -69,7 +70,24 @@ const FrontHeader = () => {
 
 
     return (
-        <div className="container">
+        <div className="">
+            {/* <div className="">
+                <div className="">
+                    <div className=" text-secondary cursor-pointer hover:text-primary duration-300 flex items-center">
+                        <FaRegEnvelope className='mr-2' />
+                        <p> travel@wilhloesch.com</p>
+                    </div>
+                    <div className=" text-secondary cursor-pointer hover:text-primary duration-300 flex items-center mt-2">
+                        <FaPhone className='mr-2' />
+                        <p>+84 584072398</p>
+                    </div>
+                </div>
+                <div className="">
+                    <ul>
+                        <li><Link><FaFacebook></FaFacebook></Link></li>
+                    </ul>
+                </div>
+            </div> */}
             <header className=''>
                 <div className="relative bg-transparent" style={{ zIndex: 999 }}>
                     <div className="relative">
