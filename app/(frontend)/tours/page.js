@@ -82,7 +82,7 @@ const page = () => {
                     </div>
                     <hr className='my-10' />
                     <div className="lg:flex gap-10 my-10 " >
-                        <div className="min-w-[320px]">
+                        <div className="md:min-w-[320px]">
                             <div className="text-[1.3rem] text-white bg-secondary px-5 py-4 flex items-center font-semibold rounded-md">
                                 <IoFilter className='mr-3 text-2xl' />
                                 <p>Sort & Filter</p>
