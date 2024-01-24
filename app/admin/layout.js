@@ -146,7 +146,7 @@ const menu = [
     },
     {
         label: "Settings",
-        href: "/settings",
+        href: "/admin/settings",
         icon: <FaWrench />
     },
 ]

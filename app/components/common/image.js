@@ -13,7 +13,6 @@ import { AiOutlineCheckCircle } from "react-icons/ai";
 const FormImage = ({name, label, max = 1, required, disabled, ...rest }) => {
     const [files, getFiles] = useFetch(fetchFiles)
     const [visible, setVisible] = useState(false)
-
     let initRules = [
         { required: required, message: `Please provide ${typeof label === 'string' && label?.toLowerCase() || 'a value'}` },
     ]
