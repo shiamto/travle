@@ -67,14 +67,14 @@ const page = () => {
 
     const [tourList, setTourList] = useState(null)
 
-useEffect(() => {
-    fetchTourList().then(({ success, data }) => {
-        if (success === true) {
-            setTourList(data)
-        } 
-    })
-}, [])
-console.log(tourList);
+    useEffect(() => {
+        fetchTourList().then(({ success, data }) => {
+            if (success === true) {
+                setTourList(data)
+            }
+        })
+    }, [])
+    console.log(tourList);
 
     return (
         <div className=''>
@@ -84,13 +84,13 @@ console.log(tourList);
                 </div>
                 <Banner title="Tours" page="tours" />
                 <div className="bg-white py-20">
-                     <div className="container mx-auto">
-                    <div className="">
-                        <h1 className='text-2xl font-semibold'>Afica Tour Package</h1>
-                       
-                    </div>
-                    <div className="" >
-                        {/* <div className="md:min-w-[320px]">
+                    <div className="container mx-auto">
+                        <div className="">
+                            <h1 className='text-2xl font-semibold'>Afica Tour Package</h1>
+
+                        </div>
+                        <div className="" >
+                            {/* <div className="md:min-w-[320px]">
                             <div className="text-[1.3rem] text-white bg-secondary px-5 py-4 flex items-center font-semibold rounded-md">
                                 <IoFilter className='mr-3 text-2xl' />
                                 <p>Sort & Filter</p>
@@ -227,18 +227,18 @@ console.log(tourList);
                                 </div>
                             </div>
                         </div> */}
-                        <div className=" py-10">
-                            {
-                                tourList?.map((tour,i) => (
-                                    <TourCard key={tour?.id} item={tour} />
-                                ))
-                            }
+                            <div className=" py-10">
+                                {
+                                    tourList?.map((tour, i) => (
+                                        <TourCard key={tour?.id} item={tour} />
+                                    ))
+                                }
 
+                            </div>
                         </div>
                     </div>
                 </div>
-                </div>
-               
+
             </div>
 
         </div>
