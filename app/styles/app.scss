@@ -4,6 +4,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+@import "partials/card";
 
 // @keyframes wave {
 //   0% { transform: rotate( 0.0deg) }
@@ -243,4 +244,40 @@ input.largerCheckbox {
 }
 
 
+.form-control {
+  -webkit-appearance: none;
+  appearance: none;
+  background-clip: padding-box;
+  background-color: #fff;
+  border: 1px solid #ced4da;
+  font-family: "Poppins", sans-serif;
+  border-radius: .25rem;
+  color: #495057;
+  display: block;
+  font-size: .8125rem;
+  font-weight: 400;
+  line-height: 1.5;
+  padding: .47rem .75rem;
+  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+  box-shadow: none !important;
+  width: 100%;
+  &::placeholder {
+    color: #adb5bd;
+  }
 
+  &.form-image {
+    padding: 0;
+    height: auto;
+    span {
+      padding: .47rem .75rem;
+      display: inline-block;
+    }
+    span:first-child {
+      padding: .47rem 1rem;
+      background: rgba(143, 151, 171, 0.15);
+      border-bottom-left-radius: .25rem;
+      border-top-left-radius: .25rem;
+      border-right: 1px solid rgba(143, 151, 171, 0.3);
+    }
+  }
+}
