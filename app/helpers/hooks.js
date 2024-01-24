@@ -53,10 +53,16 @@ export const useAction = async (func, data, reload, alert = true, t) => {
     }
 }
 
-export const useActionConfirm = async (func, data, reload, message, confirmText, t, alert = true) => {
-    const { isConfirmed } = await swalAlert.confirm(t ? t(message) : message, t ? t(confirmText) : confirmText, t)
+
+export const useActionConfirm = async (func, data, reload, message, confirmText, alert = true) => {
+    const { isConfirmed } = await Swal.fire({
+        title: 'Are you sure?',
+        text: message,
+        icon: 'warning',
+        showCancelButton: true,
+    })
     if (isConfirmed) {
-        await useAction(func, data, reload, alert, t)
+        await useAction(func, data, reload, alert)
     }
 }
 
