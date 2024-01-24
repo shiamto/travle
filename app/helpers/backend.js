@@ -17,3 +17,6 @@ export const fetchFiles = data => get('/admin/gallery', data)
 export const postFiles = (data) => post('/admin/upload-image', data)
 
 export const postGallery = (data) => post('/admin/gallery-page', data)
+
+
+export const fetchTourList = (data) => get('/tour-list', data)

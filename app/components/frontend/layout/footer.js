@@ -14,7 +14,7 @@ const FrontFooter = () => {
     return (
         <>
             <section className=" bg-[url('/footerbg.png')] bg-no-repeat bg-cover ">
-            <hr className='mt-20 border-t border-[0px] bg-gray-500'/>
+            <hr className=' border-t border-[0px] bg-gray-500'/>
                 <div className="bg-[rgba(255,255,255,0.9)] text-secondaryText py-20">
                     <div className="mx-auto container">
                         <div className="grid grid-cols-2 md:col-span-3 lg:grid-cols-6 gap-y-16 gap-x-12">
