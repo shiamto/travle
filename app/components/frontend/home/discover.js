@@ -65,9 +65,9 @@ const Discover = () => {
             <div className="mx-auto max-w-[1000px] text-center">
                  <h1 className='text-primary font-barlow text-[50px] font-semibold text-center'>Discover Extraordinary Places</h1>
                 <p className='text-secondaryText mb-10' >Explore our handpicked destinations that promise to ignite your wanderlust. From exotic corners of Vietnam to renowned landmarks, our collection includes diverse landscapes, vibrant cultures and hidden gems waiting to be uncovered.</p>
+            </div> 
             </div>
-               
-                <div className="relative">
+            <div className="relative mx-10">
                     <Swiper
                         slidesPerView={1}
                         spaceBetween={24}
@@ -78,11 +78,11 @@ const Discover = () => {
                                 spaceBetween: 20,
                             },
                             768: {
-                                slidesPerView: 2,
+                                slidesPerView: 3,
                                 spaceBetween: 20,
                             },
                             1024: {
-                                slidesPerView: 3,
+                                slidesPerView: 4,
                                 spaceBetween: 24,
                             },
                         }}
@@ -124,7 +124,6 @@ const Discover = () => {
                     </Swiper>
 
                 </div>
-            </div>
         </div>
     )
 }
