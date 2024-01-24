@@ -244,3 +244,8 @@ input.largerCheckbox {
 
 
 
+.discover .swiper-pagination{
+  position: absolute !important; 
+  // bottom: -10px !important;
+  z-index: 999 !important;
+}
