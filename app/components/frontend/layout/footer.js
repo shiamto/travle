@@ -147,12 +147,10 @@ const FrontFooter = () => {
             </section>
             <section className='bg-[#ECEEEF]'>
                 <hr className=" border-gray-200" />
-                <div className="flex justify-between items-center container">
-                    <div className="">
-                        <p className="text-sm text-center  my-10">© Copyright {currentYear}, All Rights Reserved by Dahlia</p>
-                    </div>
-                    <div className="">
-                        <ul className="flex items-center space-x-3 mt-9">
+                <div className="flex justify-between lg:flex-row flex-col items-center container">
+                   
+                    <div className="py-4">
+                        <ul className="flex items-center space-x-3">
                             <li>
                                 <a href="#" title="" className="flex items-center justify-center text-primary transition-all duration-200 bg-white rounded-full w-10 h-10 hover:bg-[#007bff] hover:text-white">
                                     <svg className="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
@@ -195,6 +193,10 @@ const FrontFooter = () => {
                                 </a>
                             </li>
                         </ul>
+                    </div>
+
+                    <div className="lg:py-0 py-1">
+                        <p className="text-sm text-center">© Copyright {currentYear}, All Rights Reserved by Dahlia</p>
                     </div>
                 </div>
 

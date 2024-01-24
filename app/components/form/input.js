@@ -1,6 +1,6 @@
 import {DatePicker, Form} from 'antd';
 
-const FormInput = ({label, name, required, isEmail, initialValue, rules = [], textArea, type, readOnly, onChange}) => {
+const FormInput = ({label, name, placeholder, required, isEmail, initialValue, rules = [], textArea, type, readOnly, onChange}) => {
     let initRules = [
         {
             required: required,
@@ -11,8 +11,8 @@ const FormInput = ({label, name, required, isEmail, initialValue, rules = [], te
         initRules.push({type: 'email', message: 'Please enter a valid email address'})
     }
 
-    let input = <input className="form-input" type={type} onChange={onChange} readOnly={readOnly}/>
-    textArea && (input = <textarea className="form-input"/>)
+    let input = <input placeholder={placeholder} className="form-input" type={type} onChange={onChange} readOnly={readOnly}/>
+    textArea && (input = <textarea placeholder={placeholder} className="form-input"/>)
     type === 'date' && (input = <DatePicker/>)
 
     return (
@@ -22,6 +22,7 @@ const FormInput = ({label, name, required, isEmail, initialValue, rules = [], te
             rules={[...initRules, ...rules]}
             className="mb-4"
             initialValue={initialValue || ''}
+        
         >
             {input}
         </Form.Item>

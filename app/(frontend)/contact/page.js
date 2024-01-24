@@ -1,10 +1,19 @@
+"use client";
 import React from 'react'
 import Banner from '../../components/common/banner'
 import { FaLocationDot, FaPhoneVolume } from "react-icons/fa6";
 import { IoMailOpenOutline } from "react-icons/io5";
 import { Form } from 'antd';
+import FormInput from '../../components/form/input';
 
 const page = () => {
+
+    const [form] = Form.useForm();
+
+    const handleFinish = (values) => {
+        console.log('Form values:', values);
+    }
+
     return (
         <div className='relative'>
             <div className="h-[100vh] w-full fixed -top-[100px] left-0 right-0 bottom-0 -z-10">
@@ -88,17 +97,17 @@ const page = () => {
                             </ul>
                         </div>
                         <div className="basis-1/2 lg:mt-0 mt-10">
-                            <Form>
-                                <div className="flex flex-col md:flex-row gap-5">
-                                    <input type="text" name='name' placeholder='Your Name' className='text-secondaryText border-gray-300 text-lg outline-none border px-4 py-4 w-full' />
-                                    <input type="text" name='email' placeholder='Email Address' className='text-secondaryText border-gray-300 text-lg outline-none border px-4 py-4 w-full' />
+                            <Form form={form} onFinish={handleFinish}>
+                                <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-3">
+                                    <FormInput  type="text" name='name' placeholder='Your Name' />
+                                    <FormInput isEmail name='email' placeholder='Email Address' className='text-secondaryText border-gray-300 text-lg outline-none border px-4 py-4 w-full' />
                                 </div>
-                                <div className="flex flex-col md:flex-row gap-5 my-4">
-                                    <input type="text" name='number ' placeholder='phone' className='text-secondaryText border-gray-300 text-lg outline-none border px-4 py-4 w-full' />
-                                    <input type="text" name='text' placeholder='Subject' className='text-secondaryText border-gray-300 text-lg outline-none border px-4 py-4 w-full' />
+                                <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-3">
+                                    <FormInput type="number" name='number' placeholder='Phone Number' />
+                                    <FormInput type="text" name='subject' placeholder='Subject' />
                                 </div>
-                                <textarea name="" id="" cols="30" className='text-secondaryText border-gray-300 text-lg outline-none border px-4 py-4 w-full' placeholder='Write Message'></textarea>
-                                <button className="btn btn-primary mt-4 bg-[#ffa801] hover:bg-[#40b9eb] duration-300 text-white text-2xl px-5 py-2">Submit</button>
+                                <FormInput textArea name="message" id="" cols="30" placeholder="Write Your Message" />
+                                <button type='submit' className="btn btn-primary mt-4 bg-[#ffa801] hover:bg-[#40b9eb] duration-300 text-white text-2xl px-5 py-2">Submit</button>
                             </Form>
                         </div>
                     </div>

@@ -28,7 +28,8 @@ const sliders = [
 ];
 
 
-export const Hero = () => {
+export const Hero = ({ hero }) => {
+    const heroTitle = hero?.data?.content?.hero_section?.title;
 
     return (
         <div className="relative">
@@ -42,18 +43,20 @@ export const Hero = () => {
                 </Carousel>
                 <div className="absolute top-0 left-0 right-0 bottom-0 flex justify-center items-center text-center hero-overlay">
                     <div className="relative">
-                        <h1 className='text-secondary font-satisfy lg:text-[130px] md:text-[80px] text-[40px] absolute -top-20 right-0 left-0'>Step into</h1>
-                        <h1 className='lg:text-[150px] md:text-[100px] text-[60px] font-barlow text-white font-extrabold'>MAGNIFICENCE</h1>
+                        <h1 className='text-secondary font-satisfy lg:text-[130px] md:text-[80px] text-[40px] absolute -top-20 right-0 left-0'>{ hero?.data?.content?.hero_section?.title }</h1>
+                        <h1 className='lg:text-[150px] md:text-[100px] text-[60px] font-barlow text-white font-extrabold'>{hero?.data?.content?.hero_section?.sub_title}</h1>
                     </div>
                 </div>
             </div>
-             <div className="lg:mx-20 mx-5 bg-white p-5 text-center -mt-10 z-50 relative shadow-lg">
-                    <div className="">
-                        <h1 className='text-[40px] text-primary font-semibold font-barlow'>Welcome to Wilh. Loesch Travel - A Journey Beyond The Ordinary!</h1>
-                        <p className='text-secondaryText mt-2'>Embark on a journey of discovery with Wilh. Loesch Travel. As passionate explorers, we're committed to crafting bespoke travel experiences that transcend the ordinary. Whether you seek cultural immersion, thrilling adventures or serene escapes, we're here to make your travel dreams a reality.</p>
-                    </div>
-
+            <div className="lg:mx-20 mx-5 bg-white p-5 text-center -mt-10 z-50 relative shadow-lg">
+                <div className="">
+                    <h1 className='text-[40px] text-primary font-semibold font-barlow'>{ hero?.data?.content?.hero_section?.card?.title}</h1>
+                    <p className='text-secondaryText mt-2'>
+                    { hero?.data?.content?.hero_section?.card?.sub_title}
+                    </p>
                 </div>
+
+            </div>
         </div>
     );
 };
