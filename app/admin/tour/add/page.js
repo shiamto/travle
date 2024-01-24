@@ -18,6 +18,7 @@ const TourPage = () => {
 		<div className="">
 			<div className='bg-white shadow-lg p-4'>
 				<Form form={form} layout='vertical' onFinish={(values) => {
+					console.log("🚀 ~ LandingPage ~ values:", values)
 					// const data = {
 					// 	name: values.name,
 					// 	category_id: values.category_id,
@@ -42,11 +43,11 @@ const TourPage = () => {
 					// 	departures: values?.departures?.map((departure) => departure),
 
 					// }
-
 					return useAction(postAdminTour, { ...values }, () => {
 						getTourData()
 					})
 				}}>
+
 					{/* Hero Section */}
 
 
@@ -59,7 +60,24 @@ const TourPage = () => {
 						</div>
 
 						<div className=''>
-							<Form.Item name={['duration']} label="Duration">
+							<Form.Item name={['duration']} label="Duration" rules={[
+								() => ({
+									validator(_, value) {
+										if (value && value < 0) {
+											return Promise.reject(new Error("Duration Cannot be negative"))
+										}
+										return Promise.resolve()
+									}
+								}),
+								() => ({
+									validator(_, value) {
+										if (isNaN(value)) {
+											return Promise.reject(new Error("Duration should be number"))
+										}
+										return Promise.resolve()
+									}
+								})
+							]}>
 								<FormInput />
 							</Form.Item>
 						</div>
@@ -74,19 +92,70 @@ const TourPage = () => {
 					<h2 className='text-lg font-bold'>Duration Details</h2>
 					<div className='grid sm:grid-cols-1 lg:grid-cols-3 gap-x-4'>
 						<div className=''>
-							<Form.Item name={['duration_details', 'days']} label="Total Days">
+							<Form.Item name={['duration_details', 'days']} label="Total Days" rules={[
+								() => ({
+									validator(_, value) {
+										if (value && value < 0) {
+											return Promise.reject(new Error("Days cannot be negative"))
+										}
+										return Promise.resolve()
+									}
+								}),
+								() => ({
+									validator(_, value) {
+										if (isNaN(value)) {
+											return Promise.reject(new Error("Days should be number"))
+										}
+										return Promise.resolve()
+									}
+								})
+							]}>
 								<FormInput />
 							</Form.Item>
 						</div>
 
 						<div className=''>
-							<Form.Item name={['duration_details', 'countries']} label="How Many Countries">
+							<Form.Item name={['duration_details', 'countries']} label="How Many Countries" rules={[
+								() => ({
+									validator(_, value) {
+										if (value && value < 0) {
+											return Promise.reject(new Error("Countries Cannot be negative"))
+										}
+										return Promise.resolve()
+									}
+								}),
+								() => ({
+									validator(_, value) {
+										if (isNaN(value)) {
+											return Promise.reject(new Error("Country should be number"))
+										}
+										return Promise.resolve()
+									}
+								})
+							]}>
 								<FormInput />
 							</Form.Item>
 						</div>
 
 						<div className=''>
-							<Form.Item name={['duration_details', 'cities']} label="How Many Cities">
+							<Form.Item name={['duration_details', 'cities']} label="How Many Cities" rules={[
+								() => ({
+									validator(_, value) {
+										if (value && value < 0) {
+											return Promise.reject(new Error("Cities Cannot be negative"))
+										}
+										return Promise.resolve()
+									}
+								}),
+								() => ({
+									validator(_, value) {
+										if (isNaN(value)) {
+											return Promise.reject(new Error("Cities should be number"))
+										}
+										return Promise.resolve()
+									}
+								})
+							]}>
 								<FormInput />
 							</Form.Item>
 						</div>
@@ -127,7 +196,24 @@ const TourPage = () => {
 
 					<div className='grid sm:grid-cols-1 lg:grid-cols-3 gap-x-4'>
 						<div>
-							<Form.Item name={['min_day']} label="Min Day">
+							<Form.Item name={['min_day']} label="Min Day" rules={[
+								() => ({
+									validator(_, value) {
+										if (value && value < 0) {
+											return Promise.reject(new Error("Day Cannot be negative"))
+										}
+										return Promise.resolve()
+									}
+								}),
+								() => ({
+									validator(_, value) {
+										if (isNaN(value)) {
+											return Promise.reject(new Error("Day should be number"))
+										}
+										return Promise.resolve()
+									}
+								})
+							]}>
 								<FormInput />
 							</Form.Item>
 						</div>
@@ -139,7 +225,24 @@ const TourPage = () => {
 						</div>
 
 						<div>
-							<Form.Item name={['start_price']} label="Start Price">
+							<Form.Item name={['start_price']} label="Start Price" rules={[
+								() => ({
+									validator(_, value) {
+										if (value && value < 0) {
+											return Promise.reject(new Error("Price Cannot be negative"))
+										}
+										return Promise.resolve()
+									}
+								}),
+								() => ({
+									validator(_, value) {
+										if (isNaN(value)) {
+											return Promise.reject(new Error("Price should be number"))
+										}
+										return Promise.resolve()
+									}
+								})
+							]}>
 								<FormInput />
 							</Form.Item>
 						</div>
@@ -154,7 +257,24 @@ const TourPage = () => {
 						</div>
 
 						<div>
-							<Form.Item name={['discount']} label="Discount">
+							<Form.Item name={['discount']} label="Discount" rules={[
+								() => ({
+									validator(_, value) {
+										if (value && value < 0) {
+											return Promise.reject(new Error("Discount Cannot be negative"))
+										}
+										return Promise.resolve()
+									}
+								}),
+								() => ({
+									validator(_, value) {
+										if (isNaN(value)) {
+											return Promise.reject(new Error("Discount should be number"))
+										}
+										return Promise.resolve()
+									}
+								})
+							]}>
 								<FormInput />
 							</Form.Item>
 						</div>
@@ -208,6 +328,24 @@ const TourPage = () => {
 												<Form.Item
 													name={[name, 'nights']}
 													label="Nights"
+													rules={[
+														() => ({
+															validator(_, value) {
+																if (value && value < 0) {
+																	return Promise.reject(new Error("Nights Cannot be negative"))
+																}
+																return Promise.resolve()
+															}
+														}),
+														() => ({
+															validator(_, value) {
+																if (isNaN(value)) {
+																	return Promise.reject(new Error("Nights should be number"))
+																}
+																return Promise.resolve()
+															}
+														})
+													]}
 												>
 													<FormInput />
 												</Form.Item>
@@ -370,65 +508,6 @@ const TourPage = () => {
 						</Form.List>
 					</div>
 
-					{/* <div>
-						<Form.List label="Plans" name={['plans']}>
-							{(fields, { add, remove }) => (
-								<>
-									{fields.map(({ key, name }) => (
-										<div key={key} className="grid grid-cols-1 md:grid-cols-4 items-center gap-4">
-
-											<div className="col-span-1 mt-4">
-												<Form.Item
-													name={[name, 'day']}
-													label="Day"
-												>
-													<FormInput />
-												</Form.Item>
-											</div>
-
-											<div className="col-span-1 mt-4">
-												<Form.Item
-													name={[name, 'description']}
-													label="Description"
-												>
-													<FormInput textArea={true} />
-												</Form.Item>
-											</div>
-
-											<div className="col-span-1 mt-4">
-												<Form.Item
-													name={[name, 'meal']}
-													label="Meal"
-												>
-													<FormInput />
-												</Form.Item>
-											</div>
-
-											<div className="col-span-1 mt-4">
-												<Form.Item
-													name={[name, 'extra_topping']}
-													label="Extra Topping"
-												>
-													<FormInput />
-												</Form.Item>
-											</div>
-
-											<div className="col-span-1">
-												<FiTrash
-													onClick={() => remove(name)}
-													className="mt-2.5 text-secondary cursor-pointer"
-													role="button" size={18}
-													title='Remove file'
-												/>
-											</div>
-										</div>
-									))}
-									<Button type="button" className='bg-indigo-400 text-white' onClick={() => add()}>+ Add Plans</Button>
-								</>
-							)}
-						</Form.List>
-					</div> */}
-
 					<Form.List label="Plans" name={['plans']}>
 						{(fields, { add, remove }) => (
 							<>
@@ -437,7 +516,24 @@ const TourPage = () => {
 										<div className="col-span-1 mt-4">
 											<Form.Item
 												name={[name, 'day']}
-												label="Day"
+												label="Day" rules={[
+													() => ({
+														validator(_, value) {
+															if (value && value < 0) {
+																return Promise.reject(new Error("Day Cannot be negative"))
+															}
+															return Promise.resolve()
+														}
+													}),
+													() => ({
+														validator(_, value) {
+															if (isNaN(value)) {
+																return Promise.reject(new Error("Day should be number"))
+															}
+															return Promise.resolve()
+														}
+													})
+												]}
 											>
 												<FormInput />
 											</Form.Item>
@@ -459,6 +555,7 @@ const TourPage = () => {
 																{...rest}
 																key={pointsKey}
 																label="Meal"
+
 															>
 																<FormInput name={[mealsName]} placeholder="Write something.." required />
 															</Form.Item>
