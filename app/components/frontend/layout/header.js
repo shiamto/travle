@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
 
 import { GoChevronDown } from "react-icons/go";
-import { FaFacebook, FaPhone, FaRegEnvelope } from 'react-icons/fa6';
+import { FaFacebook, FaInstagram, FaLinkedin, FaPhone, FaRegEnvelope, FaXTwitter } from 'react-icons/fa6';
 
 
 function getItem(label, key, icon, children, type) {
@@ -70,25 +70,28 @@ const FrontHeader = () => {
 
 
     return (
-        <div className="">
-            {/* <div className="">
-                <div className="">
-                    <div className=" text-secondary cursor-pointer hover:text-primary duration-300 flex items-center">
+        <div className="relative">
+            <div className="md:flex hidden justify-between bg-primary py-2 px-20 ">
+                <div className="flex items-center text-sm">
+                    <div className=" text-gray-300 cursor-pointer hover:text-white duration-300 flex items-center">
                         <FaRegEnvelope className='mr-2' />
                         <p> travel@wilhloesch.com</p>
                     </div>
-                    <div className=" text-secondary cursor-pointer hover:text-primary duration-300 flex items-center mt-2">
+                    <div className=" text-gray-300 cursor-pointer hover:text-white duration-300 flex items-center ml-5">
                         <FaPhone className='mr-2' />
                         <p>+84 584072398</p>
                     </div>
                 </div>
-                <div className="">
-                    <ul>
-                        <li><Link><FaFacebook></FaFacebook></Link></li>
+                <div className="text-gray-300 ">
+                    <ul className='flex space-x-4'>
+                        <li><Link href={"/"} className='hover:text-[#ffa801] duration-300'><FaFacebook/></Link></li>
+                        <li><Link href={"/"} className='hover:text-[#ffa801] duration-300'><FaXTwitter/></Link></li>
+                        <li><Link href={"/"} className='hover:text-[#ffa801] duration-300'><FaInstagram/></Link></li>
+                        <li><Link href={"/"} className='hover:text-[#ffa801] duration-300'><FaLinkedin/></Link></li>
                     </ul>
                 </div>
-            </div> */}
-            <header className=''>
+            </div>
+            <header className='px-20 absolute md:top-10 top-0 left-0 right-0'>
                 <div className="relative bg-transparent" style={{ zIndex: 999 }}>
                     <div className="relative">
                         <nav className={` items-center justify-between h-16 lg:h-20 ${isMenuOpen ? "fixed" : "flex"} `}>
@@ -115,13 +118,13 @@ const FrontHeader = () => {
 
 
 
-                            <div className="hidden lg:flex lg:items-center lg:space-x-10">
+                            <div className="hidden lg:flex lg:items-center lg:space-x-10 font-barlow">
 
-                                <Link href="/" title="" className="text-base font-medium text-white"> Home </Link>
-                                <Link href="/about" title="" className="text-base font-medium text-white"> About </Link>
+                                <Link href="/" title="" className="text-lg font-medium text-white"> Home </Link>
+                                <Link href="/about" title="" className="text-lg font-medium text-white"> About </Link>
 
                                 <div className="flex items-center justify-center gap-x-1" onClick={handleTour}>
-                                    <a href="#" title="" className="text-base relative font-medium text-white"> Group Tours </a>
+                                    <a href="#" title="" className="text-lg relative font-medium text-white"> Group Tours </a>
                                     <GoChevronDown size={20} className='text-white font-bold cursor-pointer' />
                                 </div>
 
@@ -166,12 +169,12 @@ const FrontHeader = () => {
                                     </div>
                                 }
 
-                                <Link href="/gallery" title="" className="text-base font-medium text-white"> Gallery </Link>
+                                <Link href="/gallery" title="" className="text-lg font-medium text-white"> Gallery </Link>
 
-                                <Link href="/contact" title="" className="text-base font-medium text-white"> Contact </Link>
+                                <Link href="/contact" title="" className="text-lg font-medium text-white"> Contact </Link>
                             </div>
 
-                            <a href="#" title="" className="items-center justify-center hidden px-4 py-2 text-base font-semibold text-white transition-all duration-600 bg-[#FF0143] border border-transparent rounded-full lg:inline-flex hover:bg-primary focus:bg-[#FF0143]" role="button"> Book Now </a>
+                            <a href="#" title="" className="items-center justify-center hidden px-4 py-2 text-base font-semibold text-primary transition-all duration-600 bg-[#ffa801] hover:bg-[#007bff] border border-transparent  lg:inline-flex hover:text-white duration-300" role="button"> Book Now </a>
                         </nav>
                     </div>
                 </div>

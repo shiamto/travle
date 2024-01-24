@@ -42,10 +42,12 @@ const data =[
 
 const WhyChoose = () => {
     return (
-        <div className='py-20'>
+        <div className='py-20 pt-40'>
             <div className="container mx-auto">
                 <h1 className='text-primary font-barlow text-[50px] font-semibold text-center'>Why Choose Wilh. Loesch?</h1>
-                <div className="grid lg:grid-cols-6 md:grid-cols-3 grid-cols-1 gap-5 mt-12">
+                
+            </div>
+            <div className="grid lg:grid-cols-6 md:grid-cols-3 grid-cols-1 gap-5 mt-12 mx-8">
                     {
                         data?.map((val,i) => (
                             <ChooseCard key={i} item={val} />
@@ -53,7 +55,6 @@ const WhyChoose = () => {
                     }
                        
                 </div>
-            </div>
         </div>
     )
 }
