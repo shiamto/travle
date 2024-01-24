@@ -9,6 +9,7 @@ import { useRouter } from 'next/navigation';
 const GalleryPage = () => {
     const { push } = useRouter()
     const [form] = Form.useForm();
+    
 
     // const handleSubmit = (values) => {
     //     console.log(values)

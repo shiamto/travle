@@ -1,16 +1,17 @@
 "use client";
 import React from 'react';
-import { Form, Row, Col, Button } from 'antd';
-import FormImage from '../../components/common/image';
+import { Form, Row, Col, Button, TimePicker } from 'antd';
+import FormImage from '../../../components/common/image';
 import { FiTrash } from 'react-icons/fi';
-import FormInput from '../../components/form/input';
+import FormInput from '../../../components/form/input';
+import FormDatePicker from '../../../components/form/date_picker';
 
 
 const TourPage = () => {
 	const [form] = Form.useForm()
 
 	return (
-		<div className="container">
+		<div className="">
 			<div className='bg-white shadow-lg p-4'>
 				<Form form={form} layout='vertical' onFinish={(values) => {
 					const data = {
@@ -43,36 +44,47 @@ const TourPage = () => {
 					{/* Hero Section */}
 
 
-					<h1 className='text-2xl font-bold'>Hero Section</h1>
-					<div>
-						<div>
+					<h1 className='text-2xl font-bold'>Add Tour</h1>
+					<div className='grid sm:grid-cols-1 lg:grid-cols-3 gap-x-4'>
+						<div className=''>
 							<Form.Item name={['name']} label="Name">
 								<FormInput />
 							</Form.Item>
 						</div>
-						<div className="grid grid-cols-1 md:grid-col-2 gap-x-4">
-							<Form.Item name={['category_id']} label="Category">
+
+						<div className=''>
+							<Form.Item name={['duration']} label="Duration">
 								<FormInput />
 							</Form.Item>
-							<Form.Item name={['duration']} label="Duration">
+						</div>
+
+						<div className=''>
+							<Form.Item name={['explorer']} label="Explorer">
 								<FormInput />
 							</Form.Item>
 						</div>
 					</div>
 
-
-					<h2 className='text-lg font-bold'>Card</h2>
-					<div className='grid grid-cols-1 md:grid-cols-2 gap-x-4'>
-						<div>
-							<Form.Item name={['explorer']} label="Explorer">
+					<h2 className='text-lg font-bold'>Duration Details</h2>
+					<div className='grid sm:grid-cols-1 lg:grid-cols-3 gap-x-4'>
+						<div className=''>
+							<Form.Item name={['duration_details', 'days']} label="Total Days">
 								<FormInput />
 							</Form.Item>
 						</div>
-						<div>
-							<Form.Item name={['duration_details']} label="Duration Details">
-								<FormInput textArea={true} />
+
+						<div className=''>
+							<Form.Item name={['duration_details', 'countries']} label="How Many Countries">
+								<FormInput />
 							</Form.Item>
 						</div>
+
+						<div className=''>
+							<Form.Item name={['duration_details', 'cities']} label="How Many Cities">
+								<FormInput />
+							</Form.Item>
+						</div>
+
 					</div>
 
 
@@ -94,59 +106,71 @@ const TourPage = () => {
 											<div className="col-span-1">
 												<FiTrash
 													onClick={() => remove(name)}
-													className="mt-2.5 text-danger cursor-pointer"
+													className="mt-2.5 text-secondary cursor-pointer"
 													role="button" size={18}
 													title='Remove file'
 												/>
 											</div>
 										</div>
 									))}
-									<Button type="button" className='bg-secondary text-white' onClick={() => add()}>Add</Button>
+									<Button type="button" className='bg-indigo-400 text-white' onClick={() => add()}>+ Add Location</Button>
 								</>
 							)}
 						</Form.List>
 					</div>
 
-					<div>
-						<Form.Item name={['min_day']} label="Min Day">
-							<FormInput />
-						</Form.Item>
+					<div className='grid sm:grid-cols-1 lg:grid-cols-3 gap-x-4'>
+						<div>
+							<Form.Item name={['min_day']} label="Min Day">
+								<FormInput />
+							</Form.Item>
+						</div>
+
+						<div>
+							<Form.Item name={['start_end_city']} label="Start End City">
+								<FormInput />
+							</Form.Item>
+						</div>
+
+						<div>
+							<Form.Item name={['start_price']} label="Start Price">
+								<FormInput />
+							</Form.Item>
+						</div>
 					</div>
 
-					<div>
-						<Form.Item name={['start_end_city']} label="Start End City">
-							<FormInput />
-						</Form.Item>
+
+					<div className='grid sm:grid-cols-1 lg:grid-cols-3 gap-x-4'>
+						<div>
+							<Form.Item name={['offer_name']} label="Offer Name">
+								<FormInput />
+							</Form.Item>
+						</div>
+
+						<div>
+							<Form.Item name={['discount']} label="Discount">
+								<FormInput />
+							</Form.Item>
+						</div>
+
+						<div>
+							<Form.Item name={['is_percentage_discount']} label="Is Percentage Discount">
+								<FormInput />
+							</Form.Item>
+						</div>
 					</div>
 
-					<div>
-						<Form.Item name={['start_price']} label="Start Price">
-							<FormInput />
-						</Form.Item>
-					</div>
-
-					<div>
-						<Form.Item name={['discount']} label="Discount">
-							<FormInput />
-						</Form.Item>
-					</div>
-
-					<div>
-						<Form.Item name={['is_percentage_discount']} label="Is Percentage Discount">
-							<FormInput />
-						</Form.Item>
-					</div>
-
-					<div>
-						<Form.Item name={['highlights']} label="Highlights">
-							<FormInput textArea={true} />
-						</Form.Item>
-					</div>
-
-					<div>
-						<Form.Item name={['notes']} label="Notes">
-							<FormInput textArea={true} />
-						</Form.Item>
+					<div className='grid sm:grid-cols-1 lg:grid-cols-2 gap-x-4'>
+						<div>
+							<Form.Item name={['highlights']} label="Highlights">
+								<FormInput textArea={true} />
+							</Form.Item>
+						</div>
+						<div>
+							<Form.Item name={['notes']} label="Notes">
+								<FormInput textArea={true} />
+							</Form.Item>
+						</div>
 					</div>
 
 					<div>
@@ -186,56 +210,31 @@ const TourPage = () => {
 											<div className="col-span-1">
 												<FiTrash
 													onClick={() => remove(name)}
-													className="mt-2.5 text-danger cursor-pointer"
+													className="mt-2.5 text-secondary cursor-pointer"
 													role="button" size={18}
 													title='Remove file'
 												/>
 											</div>
 										</div>
 									))}
-									<Button type="button" className='bg-secondary text-white' onClick={() => add()}>Add</Button>
+									<Button type="button" className='bg-indigo-400 text-white' onClick={() => add()}>+ Add Hotels</Button>
 								</>
 							)}
 						</Form.List>
 					</div>
 
-					<div>
+					<div className='grid sm:grid-cols-1 lg:grid-cols-2 gap-x-4'>
+						<div>
+							<Form.Item name={['Hotel_notes']} label="Hotel Notes">
+								<FormInput textArea={true} />
+							</Form.Item>
+						</div>
 
-						<Form.Item name={['Hotel_notes']} label="Hotel Notes">
-							<FormInput textArea={true} />
-						</Form.Item>
-					</div>
-
-					<div>
-						<Form.List label="Images" name={['images']}>
-							{(fields, { add, remove }) => (
-								<>
-									{fields.map(({ key, name }) => (
-										<div key={key} className="grid grid-cols-1 md:grid-cols-4 items-center gap-4">
-
-											<div className="col-span-1 mt-4">
-												<Form.Item
-													name={[name]}
-													label="Image"
-												>
-													<FormInput />
-												</Form.Item>
-											</div>
-											<div className="col-span-1">
-												<FiTrash
-													onClick={() => remove(name)}
-													className="mt-2.5 text-danger cursor-pointer"
-													role="button" size={18}
-													title='Remove file'
-												/>
-											</div>
-										</div>
-									))}
-									<Button type="button" className='bg-secondary text-white' onClick={() => add()}>Add</Button>
-								</>
-							)}
-
-						</Form.List>
+						<div>
+							<Form.Item name={['images']} label="Images">
+								<FormInput />
+							</Form.Item>
+						</div>
 					</div>
 
 					<div>
@@ -243,7 +242,7 @@ const TourPage = () => {
 							{(fields, { add, remove }) => (
 								<>
 									{fields.map(({ key, name }) => (
-										<div key={key} className="grid grid-cols-1 md:grid-cols-4 items-center gap-4">
+										<div key={key} className="grid grid-cols-1 lg:grid-cols-3 items-center gap-4">
 
 											<div className="col-span-1 mt-4">
 												<Form.Item
@@ -266,14 +265,14 @@ const TourPage = () => {
 											<div className="col-span-1">
 												<FiTrash
 													onClick={() => remove(name)}
-													className="mt-2.5 text-danger cursor-pointer"
+													className="mt-2.5 text-secondary cursor-pointer"
 													role="button" size={18}
 													title='Remove file'
 												/>
 											</div>
 										</div>
 									))}
-									<Button type="button" className='bg-secondary text-white' onClick={() => add()}>Add</Button>
+									<Button type="button" className='bg-indigo-400 text-white' onClick={() => add()}>+ Add Places</Button>
 								</>
 							)}
 						</Form.List>
@@ -316,14 +315,14 @@ const TourPage = () => {
 											<div className="col-span-1">
 												<FiTrash
 													onClick={() => remove(name)}
-													className="mt-2.5 text-danger cursor-pointer"
+													className="mt-2.5 text-secondary cursor-pointer"
 													role="button" size={18}
 													title='Remove file'
 												/>
 											</div>
 										</div>
 									))}
-									<Button type="button" className='bg-secondary text-white' onClick={() => add()}>Add</Button>
+									<Button type="button" className='bg-indigo-400 text-white' onClick={() => add()}>+ Add Destinations</Button>
 								</>
 							)}
 						</Form.List>
@@ -357,20 +356,20 @@ const TourPage = () => {
 											<div className="col-span-1">
 												<FiTrash
 													onClick={() => remove(name)}
-													className="mt-2.5 text-danger cursor-pointer"
+													className="mt-2.5 text-secondary cursor-pointer"
 													role="button" size={18}
 													title='Remove file'
 												/>
 											</div>
 										</div>
 									))}
-									<Button type="button" className='bg-secondary text-white' onClick={() => add()}>Add</Button>
+									<Button type="button" className='bg-indigo-400 text-white' onClick={() => add()}>+ Add Itineraries</Button>
 								</>
 							)}
 						</Form.List>
 					</div>
 
-					<div>
+					{/* <div>
 						<Form.List label="Plans" name={['plans']}>
 							{(fields, { add, remove }) => (
 								<>
@@ -416,32 +415,102 @@ const TourPage = () => {
 											<div className="col-span-1">
 												<FiTrash
 													onClick={() => remove(name)}
-													className="mt-2.5 text-danger cursor-pointer"
+													className="mt-2.5 text-secondary cursor-pointer"
 													role="button" size={18}
 													title='Remove file'
 												/>
 											</div>
 										</div>
 									))}
-									<Button type="button" className='bg-secondary text-white' onClick={() => add()}>Add</Button>
+									<Button type="button" className='bg-indigo-400 text-white' onClick={() => add()}>+ Add Plans</Button>
 								</>
 							)}
 						</Form.List>
-					</div>
+					</div> */}
+
+					<Form.List label="Plans" name={['plans']}>
+						{(fields, { add, remove }) => (
+							<>
+								{fields.map(({ key, name }) => (
+									<div key={key} className="grid grid-cols-1 md:grid-cols-5 items-center gap-4">
+										<div className="col-span-1 mt-4">
+											<Form.Item
+												name={[name, 'day']}
+												label="Day"
+											>
+												<FormInput />
+											</Form.Item>
+										</div>
+										<div className="col-span-1 mt-4">
+											<Form.Item
+												name={[name, 'description']}
+												label="Description"
+											>
+												<FormInput textArea={true} />
+											</Form.Item>
+										</div>
+										<div className="col-span-1 mt-4">
+											<Form.List name={[name, 'meal']} label="Meal">
+												{(mealFields, mealOps) => (
+													<>
+														{mealFields.map(({ key: pointsKey, name: mealsName, fieldKey, ...rest }) => (
+															<Form.Item
+																{...rest}
+																key={pointsKey}
+																label="Meal"
+															>
+																<FormInput name={[mealsName]} placeholder="Write something.." required />
+															</Form.Item>
+														))}
+														<Button
+															type="button"
+															className='bg-indigo-400 text-white'
+															onClick={() => mealOps.add()}
+														>
+															Add Meal
+														</Button>
+													</>
+												)}
+											</Form.List>
+										</div>
+
+										<div className="col-span-1 mt-4">
+											<Form.Item
+												name={['extra_topping']}
+												label="Extra Topping"
+											>
+												<FormInput />
+											</Form.Item>
+										</div>
+
+										<div className="col-span-1">
+											<FiTrash
+												onClick={() => remove(name)}
+												className="mt-2.5 text-secondary cursor-pointer"
+												role="button" size={18}
+												title='Remove file'
+											/>
+										</div>
+									</div>
+								))}
+								<Button type="button" className='bg-indigo-400 text-white' onClick={() => add()}>+ Add Plans</Button>
+							</>
+						)}
+					</Form.List>
 
 					<div>
 						<Form.List label="Departures" name={['departures']}>
 							{(fields, { add, remove }) => (
 								<>
 									{fields.map(({ key, name }) => (
-										<div key={key} className="grid grid-cols-1 md:grid-cols-5 items-center gap-4">
+										<div key={key} className="grid grid-cols-1 md:grid-cols-4 items-center gap-4">
 
 											<div className="col-span-1 mt-4">
 												<Form.Item
 													name={[name, 'from']}
 													label="From"
 												>
-													<FormInput />
+													<FormDatePicker />
 												</Form.Item>
 											</div>
 
@@ -450,7 +519,7 @@ const TourPage = () => {
 													name={[name, 'to']}
 													label="To"
 												>
-													<FormInput />
+													<FormDatePicker />
 												</Form.Item>
 											</div>
 
@@ -459,57 +528,30 @@ const TourPage = () => {
 													name={[name, 'time']}
 													label="Time"
 												>
-													<FormInput />
+													<TimePicker defaultValue={null} format={'HH:mm'} />
 												</Form.Item>
 											</div>
-
-											{/* <div className="col-span-1 mt-4">
-												<Form.Item
-													name={[name, 'duration']}
-													label="Duration"
-												>
-													<FormInput />
-												</Form.Item>
-											</div> */}
-
-											{/* <div className="col-span-1 mt-4">
-												<Form.Item
-													name={[name, 'price']}
-													label="Price"
-												>
-													<FormInput />
-												</Form.Item>
-											</div> */}
-
-											{/* <div className="col-span-1 mt-4">
-												<Form.Item
-													name={[name, 'offer_price']}
-													label="Offer Price"
-												>
-													<FormInput />
-												</Form.Item>
-											</div> */}
 
 											<div className="col-span-1">
 												<FiTrash
 													onClick={() => remove(name)}
-													className="mt-2.5 text-danger cursor-pointer"
+													className="mt-2.5 text-secondary cursor-pointer"
 													role="button" size={18}
 													title='Remove file'
 												/>
 											</div>
 										</div>
 									))}
-									<Button type="button" className='bg-secondary text-white' onClick={() => add()}>Add</Button>
+									<Button type="button" className='bg-indigo-400 text-white' onClick={() => add()}>+ Add Departures</Button>
 								</>
-							)}	
+							)}
 						</Form.List>
 					</div>
 
 					{/* Submit Button */}
 					<Form.Item>
-						<Button type="primary" htmlType="submit">
-							Save Changes
+						<Button className='bg-indigo-500 text-white mt-2' type='primary' htmlType='submit'>
+							Submit
 						</Button>
 					</Form.Item>
 				</Form>

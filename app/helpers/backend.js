@@ -1,4 +1,4 @@
-import { del, get, patch, post, put } from "./api";
+import { del, get, patch, post, postForm, put } from "./api";
 
 export const sendOtp = (data) => post("/user/send-otp", data);
 export const postRegister = (data) => post("/user/registration", data);
@@ -17,3 +17,11 @@ export const fetchFiles = data => get('/admin/gallery', data)
 export const postFiles = (data) => post('/admin/upload-image', data)
 
 export const postGallery = (data) => post('/admin/gallery-page', data)
+
+export const fetchTourList = (data) => get('/admin/tour-list', data)
+
+export const fetchLandingPage = (data) => get('landing-page', data)
+export const fetchAboutPage = (data) => get('/about-page', data)
+
+export const postAdminAbout = (data) => postForm('admin/about-page', data)
+export const postAdminLandingPage = (data) => postForm('admin/landing-page', data)

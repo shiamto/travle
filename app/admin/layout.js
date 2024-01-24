@@ -62,16 +62,16 @@ const menu = [
         icon: <FaHome />
     },
     {
-        label: "Products",
+        label: "Tour",
         icon: <FaBoxArchive />,
         child: [
             {
-                label: "Products",
-                href: "/products",
+                label: "Add Tour",
+                href: "/admin/tour/add",
             },
             {
-                label: "Categories",
-                href: "/categories",
+                label: "Tour List",
+                href: "/admin/tour/list",
             }
         ]
     },
@@ -130,8 +130,8 @@ const menu = [
         ]
     },
     {
-        label: "Add Tours",
-        href: "/admin/tour",
+        label: "About Page",
+        href: "/admin/about-page",
         icon: <FaPrint />,
     },
     {

@@ -27,6 +27,13 @@ export async function post(url, data, config = {}) {
     .then(response => response.data)
 }
 
+export async function postForm(url, data, config = {}) {
+  axiosApi.defaults.headers.common["Authorization"] = `Bearer ${localStorage.getItem("token") ?? ''}`
+  return axiosApi
+    .post(url, { ...data }, { ...config })
+    .then(response => response.data)
+}
+
 export async function put(url, data, config = {}) {
   axiosApi.defaults.headers.common["Authorization"] = `Bearer ${localStorage.getItem("token") ?? ''}`
   return axiosApi

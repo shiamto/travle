@@ -1,7 +1,9 @@
+"use client"
 import { useEffect, useState } from "react";
 import { hideLoader, showLoader } from "../components/common/loader";
 import { notification } from "antd";
 import Swal from "sweetalert2";
+
 
 export const useFetch = (func, query = {}, load = true) => {
     const [data, setData] = useState();
@@ -19,13 +21,13 @@ export const useFetch = (func, query = {}, load = true) => {
         setLoading(true)
         setError('')
         setParams({ ...params, ...query })
-        func({ ...params, ...query }).then(({ error, data, msg }) => {
+        func({ ...params, ...query }).then(({ success, data, message }) => {
             setLoading(false)
-            if (error === false) {
+            if (success === true) {
                 setData(data)
             } else {
                 setData(undefined)
-                setError(msg)
+                setError(message)
             }
         }).catch(e => {
             // console.log(e)
@@ -35,31 +37,26 @@ export const useFetch = (func, query = {}, load = true) => {
     return [data, getData, { query: params, loading, error, clear }];
 }
 
-export const useAction = async (func, data, reload, alert = true, successMsg) => {
-    // showLoader()
-    const { error, msg, data: d } = await func({ ...data })
-    // hideLoader()
-    if (error === false) {
+export const useAction = async (func, data, reload, alert = true, t) => {
+
+    const { success, message, data: d } = await func({ ...data })
+
+    if (success === true) {
         if (reload) {
             reload(d)
         }
         if (alert) {
-            notification.success({ message: successMsg || msg || 'Success' })
+            notification.success({ message: 'Success', description: message || 'Successfully done' })
         }
     } else {
-        notification.error({ message: msg || 'Something went wrong' })
+        notification.error({ message: 'Failed', description: message || 'Something went wrong' })
     }
 }
 
-export const useActionConfirm = async (func, data, reload, message, confirmText, alert = true) => {
-    const { isConfirmed } = await Swal.fire({
-        title: 'Are you sure?',
-        text: message,
-        icon: 'warning',
-        showCancelButton: true,
-    })
+export const useActionConfirm = async (func, data, reload, message, confirmText, t, alert = true) => {
+    const { isConfirmed } = await swalAlert.confirm(t ? t(message) : message, t ? t(confirmText) : confirmText, t)
     if (isConfirmed) {
-        await useAction(func, data, reload, alert)
+        await useAction(func, data, reload, alert, t)
     }
 }
 

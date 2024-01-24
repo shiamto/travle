@@ -1,343 +1,244 @@
 "use client";
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Form, Row, Col, Button } from 'antd';
 import FormImage from '../../components/common/image';
 import FormInput from '../../components/form/input';
 import Card from '../../components/common/card';
 import { FiTrash } from 'react-icons/fi';
+import { useAction, useFetch } from '../../helpers/hooks';
+import { fetchLandingPage, postAdminLandingPage } from '../../helpers/backend';
+
 
 const LandingPage = () => {
     const [form] = Form.useForm()
 
-    
+    const [landingData, getLandingData] = useFetch(fetchLandingPage)
+    console.log("🚀 ~ LandingPage ~ landingData:", landingData)
+
+    useEffect(() => {
+        if(!!landingData?.content) {
+            form.setFieldsValue({
+                ...landingData
+            })
+        }
+    }, [landingData?.content])
 
     return (
         <div>
             <div className='bg-white shadow-lg p-4'>
                 <Form form={form} layout='vertical' onFinish={(values) => {
-                    const data = {
-                        hero_section: {
-                            images: values?.content?.hero_section?.images,
-                            title: values?.content?.hero_section?.title,
-                            sub_title: values?.content?.hero_section?.sub_title,
-                            card: {
-                                title: values?.content?.hero_section?.card?.title,
-                                sub_title: values?.content?.hero_section?.card?.sub_title,
-                            }
-                        },
-                        why_seciotn: {
-                            title: values?.content?.why_seciotn?.title,
-                            card: values?.content?.why_seciotn?.card?.map((card) => ({
-                                title: card?.title,
-                                description: card?.description,
-                                image: card?.image,
-                            })) || []
-                        },
-                        service_section: {
-                            heading: values?.content?.service_section?.heading,
-                            title: values?.content?.service_section?.title,
-                            description: values?.content?.service_section?.description,
-                            card: values?.content?.service_section?.service_card?.map((serviceCard) => ({
-                                title: serviceCard?.title,
-                                description: serviceCard?.description,
-                                icon: serviceCard?.icon,
-                            })) || []
-                        },
-                        discover_section: {
-                            heading: values?.content?.discover_section?.heading,
-                            title: values?.content?.discover_section?.title,
-                            description: values?.content?.discover_section?.description,
-                            card: values?.content?.discover_section?.discover_card?.map((discoverCard) => ({
-                                title: discoverCard?.title,
-                                image: discoverCard?.image,
-                                points: discoverCard?.points?.map((point) => point) || []
-                            })) || []
-                        },
-                        next_section: {
-                            image: values?.content?.next_section?.image,
-                            title: values?.content?.next_section?.title,
-                            sub_title: values?.content?.next_section?.sub_title,
-                        }
-                    }
-
-                    console.log("data", data)
+                    console.log("values", values);
+                    
+                    return useAction(postAdminLandingPage, { ...values, page: "Landing Page"}, () => {
+                        getLandingData()
+                    })
+                    
                 }}>
-                    {/* Hero Section */}
 
-                    <Form.Item name={['content', 'hero_section']}>
-                        <h1 className='text-2xl font-bold'>Hero Section</h1>
-                        <div>
-                            <div>
-                                <Form.Item name={['content', 'hero_section', 'images']} label="Images">
-                                    <FormInput />
-                                </Form.Item>
-                            </div>
-                            <div className="grid grid-cols-1 md:grid-col-2 gap-x-4">
-                                <Form.Item name={['content', 'hero_section', 'title']} label="Title">
-                                    <FormInput />
-                                </Form.Item>
-                                <Form.Item name={['content', 'hero_section', 'sub_title']} label="Sub Title">
-                                    <FormInput />
-                                </Form.Item>
-                            </div>
+                    <div>
+                        <h2 className='text-2xl font-bold'>Hero Section</h2>
+
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-4">
+                            <Form.Item label='Title' name={['content', 'hero_section', 'title']} >
+                                <FormInput />
+                            </Form.Item>
+                            <Form.Item label='Sub Title' name={['content', 'hero_section', 'sub_title']} >
+                                <FormInput />
+                            </Form.Item>
+                        </div>
+                        <h1 className='text-2xl font-bold'>Card</h1>
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-4">
+                            <Form.Item label='Card Title' name={['content', 'hero_section', 'card', 'title']} >
+                                <FormInput />
+                            </Form.Item>
+                            <Form.Item label='Card Sub Title' name={['content', 'hero_section', 'card', 'sub_title']} >
+                                <FormInput />
+                            </Form.Item>
                         </div>
 
-                        {/* Card Section within Hero Section */}
-                        <Form.Item name={['card']}>
-                            <h2 className='text-lg font-bold'>Card</h2>
-                            <div className='grid grid-cols-1 md:grid-cols-2 gap-x-4'>
-                                <div>
-                                    <Form.Item name={['title']}>
-                                        <p className='text-sm'>Card Title</p>
-                                        <FormInput />
-                                    </Form.Item>
-                                </div>
-                                <div>
-                                    <Form.Item name={['sub_title']}>
-                                        <p className='text-sm'>Card Subtitle</p>
-                                        <FormInput textArea={true} />
-                                    </Form.Item>
-                                </div>
-                            </div>
+                        <Form.Item label='Images' name={['content', 'hero_section', 'images']} >
+                            <FormInput />
                         </Form.Item>
-                    </Form.Item>
 
-                    {/* Why Section */}
-                    <Form.Item name={['content', 'why_seciotn']}>
-                        <h1 className='text-2xl font-bold'>Why Section</h1>
-                        <div>
-                            <Form.Item name={['title']}>
-                                <h2 className='text-sm'>Title</h2>
+
+
+                        <h2 className='text-2xl font-bold'>Why Section</h2>
+                        <Form.Item label='Title' name={['content', 'why_seciotn', 'title']} >
+                            <FormInput />
+                        </Form.Item>
+                        <Form.List name={['content', 'why_seciotn', 'card']}>
+                            {(fields, { add, remove }) => {
+                                return (
+                                    <div>
+                                        {fields.map((field, index) => (
+                                            <div key={field.key} className='grid grid-cols-1 lg:grid-cols-4 gap-x-4'>
+                                                <Form.Item label='Title' name={[field.name, 'title']} >
+                                                    <FormInput />
+                                                </Form.Item>
+                                                <Form.Item label='Description' name={[field.name, 'description']} >
+                                                    <FormInput />
+                                                </Form.Item>
+                                                <Form.Item label='Image' name={[field.name, 'image']} >
+                                                    <FormInput />
+                                                </Form.Item>
+                                                {/* <Button onClick={() => remove(field.name)}><FiTrash /></Button> */}
+                                                <div className='col-span-1 flex items-center'>
+                                                    <FiTrash
+                                                        onClick={() => remove(field.name)}
+                                                        className="text-secondary cursor-pointer"
+                                                        role="button" size={18}
+                                                        title='Remove file'
+                                                    />
+                                                </div>
+
+                                            </div>
+                                        ))}
+                                        <Button onClick={() => add()} className='mt-4 bg-indigo-400 hover:text-white text-white hover:bg-none'>Add Card Data</Button>
+                                    </div>
+                                )
+                            }}
+                        </Form.List>
+
+                        <h2 className='text-2xl font-bold'>Service Section</h2>
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-4">
+                            <Form.Item label='Heading' name={['content', 'service_section', 'heading']} >
                                 <FormInput />
                             </Form.Item>
 
-                            <Form.List label="Card" name={['why_card']}>
-                                {(fields, { add, remove }) => (
-                                    <>
-                                        {fields.map(({ key, name }) => (
-                                            <div key={key} className="grid grid-cols-1 md:grid-cols-4 items-center gap-4">
-                                                <div className="col-span-1">
-                                                    <h2 className='text-sm'>Title</h2>
-                                                    <FormInput
-                                                        name={[name, 'title']}
-                                                        placeholder="Write something.."
-                                                        required
-                                                    />
-                                                </div>
-                                                <div className="col-span-1 mt-4">
-                                                    <h2 className='text-sm'>Description</h2>
-                                                    <FormInput
-                                                        name={[name, 'description']}
-                                                        placeholder="Write something.."
-                                                        required
-                                                    />
-                                                </div>
-                                                <div className="col-span-1 mt-4">
-                                                    <Form.Item
-                                                        name={[name, 'image']}
-                                                    >
-                                                        <h2 className='text-sm'>Image</h2>
-                                                        <FormInput />
-                                                    </Form.Item>
-                                                </div>
-                                                <div className="col-span-1">
+                            <Form.Item label='Title' name={['content', 'service_section', 'title']} >
+                                <FormInput />
+                            </Form.Item>
+                        </div>
+
+                        <Form.Item label='Description' name={['content', 'service_section', 'description']} >
+                            <FormInput textArea />
+                        </Form.Item>
+
+                        <Form.List name={['content', 'service_section', 'service_card']}>
+                            {(fields, { add, remove }) => {
+                                return (
+                                    <div>
+                                        {fields.map((field, index) => (
+                                            <div key={field.key} className='grid grid-cols-1 lg:grid-cols-4 gap-x-4'>
+                                                <Form.Item label='Title' name={[field.name, 'title']} >
+                                                    <FormInput />
+                                                </Form.Item>
+                                                <Form.Item label='Description' name={[field.name, 'description']} >
+                                                    <FormInput />
+                                                </Form.Item>
+                                                <Form.Item label='Icon' name={[field.name, 'icon']} >
+                                                    <FormInput />
+                                                </Form.Item>
+                                                <div className='col-span-1 flex items-center'>
                                                     <FiTrash
-                                                        onClick={() => remove(name)}
-                                                        className="mt-2.5 text-danger cursor-pointer"
+                                                        onClick={() => remove(field.name)}
+                                                        className="text-secondary cursor-pointer"
                                                         role="button" size={18}
                                                         title='Remove file'
                                                     />
                                                 </div>
                                             </div>
                                         ))}
-                                        <Button type="button" className='bg-secondary text-white' onClick={() => add()}>Add</Button>
-                                    </>
-                                )}
-                            </Form.List>
-                        </div>
-                    </Form.Item>
+                                        <Button onClick={() => add()} className='mt-4'>Add Service Card</Button>
+                                    </div>
+                                )
+                            }}
+                        </Form.List>
 
-                    {/* Service Section */}
-                    <Form.Item name={['content', 'service_section']}>
-                        <h1 className='text-2xl font-bold'>Service Section</h1>
-                        <div>
-                            <Form.Item name={['heading']}>
-                                <h2 className='text-sm'>Heading</h2>
+                        <h2 className='text-2xl font-bold'>Discover Section</h2>
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-4">
+                            <Form.Item label='Heading' name={['content', 'discover_section', 'heading']} >
                                 <FormInput />
                             </Form.Item>
 
-                            <div className='grid grid-cols-2 gap-x-6'>
-                                <Form.Item name={['title']}>
-                                    <h2 className='text-sm'>Title</h2>
-                                    <FormInput />
-                                </Form.Item>
 
-                                <Form.Item name={['description']}>
-                                    <h2 className='text-sm'>Description</h2>
-                                    <FormInput textArea />
-                                </Form.Item>
-                            </div>
-
-                            <Form.List label="Card" name={['service_card']}>
-                                {(fields, { add, remove }) => (
-                                    <>
-                                        {fields.map(({ key, name }) => (
-                                            <div key={key} className="grid grid-cols-1 md:grid-cols-4 items-center gap-4">
-                                                <div className="col-span-1">
-                                                    <h2 className='text-sm'>Title</h2>
-                                                    <FormInput
-                                                        name={[name, 'title']}
-                                                        placeholder="Write something.."
-                                                        required
-                                                    />
-                                                </div>
-                                                <div className="col-span-1 mt-4">
-                                                    <h2 className='text-sm'>Description</h2>
-                                                    <FormInput
-                                                        name={[name, 'description']}
-                                                        placeholder="Write something.."
-                                                        required
-                                                    />
-                                                </div>
-                                                <div className="col-span-1 mt-4">
-                                                    <h2 className='text-sm'>Icon</h2>
-                                                    <Form.Item
-                                                        name={[name, 'icon']}
-                                                    >
-                                                        <FormInput />
-                                                    </Form.Item>
-                                                </div>
-                                                <div className="col-span-1">
-                                                    <FiTrash
-                                                        onClick={() => remove(name)}
-                                                        className="mt-2.5 text-danger cursor-pointer"
-                                                        role="button" size={18}
-                                                        title='Remove file'
-                                                    />
-                                                </div>
-                                            </div>
-                                        ))}
-                                        <Button type="button" className='bg-secondary text-white' onClick={() => add()}>Add</Button>
-                                    </>
-                                )}
-                            </Form.List>
-                        </div>
-                    </Form.Item>
-
-
-                    <Form.Item name={['content', 'discover_section']}>
-                        <h1 className='text-2xl font-bold'>Discover Section</h1>
-                        <div>
-                            <div className='grid grid-cols-2 gap-x-6'>
-                                <Form.Item name={['heading']}>
-                                    <h2 className='text-sm'>Heading</h2>
-                                    <FormInput />
-                                </Form.Item>
-
-                                <Form.Item name={['title']}>
-                                    <h2 className='text-sm'>Title</h2>
-                                    <FormInput />
-                                </Form.Item>
-                            </div>
-
-                            <Form.Item name={['description']}>
-                                <h2 className='text-sm'>Description</h2>
-                                <FormInput textArea />
+                            <Form.Item label='Title' name={['content', 'discover_section', 'title']} >
+                                <FormInput />
                             </Form.Item>
+                        </div>
 
-                            <Form.List label="Card" name={['discover_card']}>
-                                {(fields, { add, remove }) => (
-                                    <>
-                                        {fields.map(({ key, name }) => (
-                                            <div key={key} className="grid grid-cols-1 md:grid-cols-4 items-center gap-4">
-                                                <div className="col-span-1">
-                                                    <h2 className='text-sm'>Title</h2>
-                                                    <FormInput
-                                                        name={[name, 'title']}
-                                                        placeholder="Write something.."
-                                                        required
-                                                    />
-                                                </div>
-                                                <div className="col-span-1 mt-4">
-                                                    <h2 className='text-sm'>Image</h2>
-                                                    <Form.Item
-                                                        name={[name, 'image']}
-                                                    >
-                                                        <FormInput />
-                                                    </Form.Item>
-                                                </div>
-                                                <div className="col-span-1 mt-4">
-                                                    <h2 className='text-sm'>Points</h2>
-                                                    <Form.List name={[name, 'points']}>
-                                                        {(pointsFields, pointsOps) => (
-                                                            <>
-                                                                {pointsFields.map(({ key: pointsKey, name: pointsName, fieldKey, ...rest }) => (
-                                                                    <Form.Item
-                                                                        {...rest}
-                                                                        key={pointsKey}
-                                                                    >
-                                                                        <FormInput name={[pointsName]} placeholder="Write something.." required />
-                                                                    </Form.Item>
+                        <Form.Item label='Description' name={['content', 'discover_section', 'description']} >
+                            <FormInput />
+                        </Form.Item>
+
+                        <Form.List name={['content', 'discover_section', 'discover_card']}>
+                            {(fields, { add, remove }) => {
+                                return (
+                                    <div>
+                                        {fields.map((field, index) => (
+                                            <div key={field.key} className='grid grid-cols-1 lg:grid-cols-4 gap-x-4'>
+                                                <Form.Item label='Title' name={[field.name, 'title']} >
+                                                    <FormInput />
+                                                </Form.Item>
+                                                <Form.Item label='Image' name={[field.name, 'image']} >
+                                                    <FormInput />
+                                                </Form.Item>
+                                                <Form.List name={[field.name, 'points']}>
+                                                    {(fields, { add, remove }) => {
+                                                        return (
+                                                            <div>
+                                                                {fields.map((field, index) => (
+                                                                    <div key={field.key} className='flex items-center gap-x-2'>
+                                                                        <Form.Item label='Point' name={[field.name]} >
+                                                                            <FormInput />
+                                                                        </Form.Item>
+                                                                        <div className=''>
+                                                                            <FiTrash
+                                                                                onClick={() => remove(field.name)}
+                                                                                className="text-secondary cursor-pointer"
+                                                                                role="button" size={18}
+                                                                                title='Remove file'
+                                                                            />
+                                                                        </div>
+                                                                    </div>
                                                                 ))}
-                                                                <Button
-                                                                    type="button"
-                                                                    onClick={() => pointsOps.add()}
-                                                                >
-                                                                    Add Point
-                                                                </Button>
-                                                            </>
-                                                        )}
-                                                    </Form.List>
-                                                </div>
+                                                                <Button onClick={() => add()} className='mt-4'>Add</Button>
+                                                            </div>
+                                                        )
+                                                    }}
+                                                </Form.List>
 
-                                                <div className="col-span-1">
+                                                <div className='col-span-1 flex items-center'>
                                                     <FiTrash
-                                                        onClick={() => remove(name)}
-                                                        className="mt-2.5 text-danger cursor-pointer"
+                                                        onClick={() => remove(field.name)}
+                                                        className="text-secondary cursor-pointer"
                                                         role="button" size={18}
                                                         title='Remove file'
                                                     />
                                                 </div>
                                             </div>
                                         ))}
-                                        <Button type="button" className='bg-secondary text-white' onClick={() => add()}>Add</Button>
-                                    </>
-                                )}
-                            </Form.List>
+                                        <Button onClick={() => add()} className='mt-4'>Add Discover Card</Button>
+                                    </div>
+                                )
+                            }}
+                        </Form.List>
+
+                        <h2 className='text-2xl font-bold'>Next Section</h2>
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-4">
+                            <Form.Item label='Title' name={['content', 'next_section', 'title']} >
+                                <FormInput />
+                            </Form.Item>
+
+                            <Form.Item label='Sub Title' name={['content', 'next_section', 'sub_title']} >
+                                <FormInput />
+                            </Form.Item>
                         </div>
-                    </Form.Item>
+                        <Form.Item label='Image' name={['content', 'next_section', 'image']} >
+                            <FormInput />
+                        </Form.Item>
 
 
+                    </div>
 
-                    <Form.Item name={['content', 'next_section']}>
-                        <h1 className='text-2xl font-bold'>Next Section</h1>
-                        <div>
-                            <div>
-                                <Form.Item name={['image']}>
-                                    <h2 className='text-sm'>Image</h2>
-                                    <FormInput />
-                                </Form.Item>
-                            </div>
-                            <div className="grid grid-cols-1 md:grid-col-2 gap-x-4">
-                                <Form.Item name={['title']}>
-                                    <p className='text-sm'>Title</p>
-                                    <FormInput />
-                                </Form.Item>
-                                <Form.Item name={['sub_title']}>
-                                    <p className='text-sm'>Subtitle</p>
-                                    <FormInput />
-                                </Form.Item>
-                            </div>
-                        </div>
-
-                    </Form.Item>
-
-                    {/* Submit Button */}
                     <Form.Item>
-                        <Button type="primary" htmlType="submit">
-                            Save Changes
+                        <Button className='bg-indigo-500 text-white mt-2' type='primary' htmlType='submit'>
+                            Submit
                         </Button>
                     </Form.Item>
+
+
+
                 </Form>
             </div>
         </div>
