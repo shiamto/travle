@@ -75,60 +75,7 @@ const menu = [
             }
         ]
     },
-    {
-        label: "Sales",
-        icon: <FaCartPlus />,
-        child: [
-            {
-                label: "Sales",
-                href: "/sales",
-            },
-            {
-                label: "Customers",
-                href: "/customers",
-            }
-        ]
-    },
-    {
-        label: "Purchases",
-        icon: <FaWallet />,
-        child: [
-            {
-                label: "Purchases",
-                href: "/purchases",
-            },
-            {
-                label: "Vendors",
-                href: "/vendors",
-            }
-        ],
-    },
-    {
-        label: "Banking",
-        icon: <FaUniversity />,
-        child: [
-            {
-                label: "Accounts",
-                href: "/accounts",
-            },
-            {
-                label: "Currencies",
-                href: "/currencies",
-            },
-            {
-                label: "Transactions",
-                href: "/transactions",
-            },
-            {
-                label: "Transfer",
-                href: "/transfer",
-            },
-            {
-                label: "Reconciliations",
-                href: "/reconciliations",
-            }
-        ]
-    },
+    
     {
         label: "About Page",
         href: "/admin/about-page",

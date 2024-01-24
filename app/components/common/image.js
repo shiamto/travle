@@ -72,6 +72,7 @@ const FormImage = ({name, label, max = 1, required, disabled, ...rest }) => {
         //         }
         //     }
         // };
+        
 
         return (
             <>
@@ -113,7 +114,7 @@ const FormImage = ({name, label, max = 1, required, disabled, ...rest }) => {
                                 </Checkbox>
                             </div>
                         </div>
-                        <div className="grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 grid p-2 p-2">
+                        <div className="grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 grid p-2">
                             {images?.map((file, index) => (
                                 <div className="" key={index}>
                                     <div className="gallery-card" role="button" onClick={() => handleClick(file)}>

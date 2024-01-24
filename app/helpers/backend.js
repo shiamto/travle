@@ -28,3 +28,6 @@ export const fetchAboutPage = (data) => get('/about-page', data)
 
 export const postAdminAbout = (data) => postForm('admin/about-page', data)
 export const postAdminLandingPage = (data) => postForm('admin/landing-page', data)
+
+export const postAdminTour = (data) => postForm('admin/tour', data)
+export const fetchAdminTourList = (data) => get('admin/tour-list', data)

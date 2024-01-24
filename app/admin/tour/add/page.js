@@ -1,45 +1,51 @@
 "use client";
-import React from 'react';
+import React, { useState } from 'react';
 import { Form, Row, Col, Button, TimePicker } from 'antd';
 import FormImage from '../../../components/common/image';
 import { FiTrash } from 'react-icons/fi';
 import FormInput from '../../../components/form/input';
 import FormDatePicker from '../../../components/form/date_picker';
+import { useAction, useFetch } from '../../../helpers/hooks';
+import { fetchAdminTourList, postAdminTour } from '../../../helpers/backend';
 
 
 const TourPage = () => {
 	const [form] = Form.useForm()
+	const [tourData, getTourData] = useFetch(fetchAdminTourList)
+	console.log("🚀 ~ TourPage ~ tourData:", tourData)
 
 	return (
 		<div className="">
 			<div className='bg-white shadow-lg p-4'>
 				<Form form={form} layout='vertical' onFinish={(values) => {
-					const data = {
-						name: values.name,
-						category_id: values.category_id,
-						duration: values.duration,
-						explorer: values.explorer,
-						duration_details: JSON.stringify(values.duration_details),
-						locations: values?.locations?.map((location) => location),
-						min_day: values.min_day,
-						start_end_city: values.start_end_city,
-						start_price: values.start_price,
-						discount: values.discount,
-						is_percentage_discount: values.is_percentage_discount,
-						highlights: values.highlights,
-						notes: values.notes,
-						hotels: values?.hotels?.map((hotel) => hotel),
-						Hotel_notes: values.Hotel_notes,
-						images: values?.images?.map((image) => image),
-						places: values?.places?.map((place) => place),
-						destinations: values?.destinations?.map((destination) => destination),
-						itineraries: values?.itineraries?.map((itinerary) => itinerary),
-						plans: values?.plans?.map((plan) => plan),
-						departures: values?.departures?.map((departure) => departure),
+					// const data = {
+					// 	name: values.name,
+					// 	category_id: values.category_id,
+					// 	duration: values.duration,
+					// 	explorer: values.explorer,
+					// 	duration_details: JSON.stringify(values.duration_details),
+					// 	locations: values?.locations?.map((location) => location),
+					// 	min_day: values.min_day,
+					// 	start_end_city: values.start_end_city,
+					// 	start_price: values.start_price,
+					// 	discount: values.discount,
+					// 	is_percentage_discount: values.is_percentage_discount,
+					// 	highlights: values.highlights,
+					// 	notes: values.notes,
+					// 	hotels: values?.hotels?.map((hotel) => hotel),
+					// 	Hotel_notes: values.Hotel_notes,
+					// 	images: values?.images?.map((image) => image),
+					// 	places: values?.places?.map((place) => place),
+					// 	destinations: values?.destinations?.map((destination) => destination),
+					// 	itineraries: values?.itineraries?.map((itinerary) => itinerary),
+					// 	plans: values?.plans?.map((plan) => plan),
+					// 	departures: values?.departures?.map((departure) => departure),
 
-					}
+					// }
 
-					console.log("data", data)
+					return useAction(postAdminTour, { ...values }, () => {
+						getTourData()
+					})
 				}}>
 					{/* Hero Section */}
 
@@ -231,9 +237,8 @@ const TourPage = () => {
 						</div>
 
 						<div>
-							<Form.Item name={['images']} label="Images">
-								<FormInput />
-							</Form.Item>
+							<FormImage name={['images']} label="Images" />
+
 						</div>
 					</div>
 
@@ -245,12 +250,8 @@ const TourPage = () => {
 										<div key={key} className="grid grid-cols-1 lg:grid-cols-3 items-center gap-4">
 
 											<div className="col-span-1 mt-4">
-												<Form.Item
-													name={[name, 'image_id']}
-													label="Image"
-												>
-													<FormInput />
-												</Form.Item>
+												<FormImage name={[name, 'image_id']}
+													label="Image" />
 											</div>
 
 											<div className="col-span-1 mt-4">

@@ -7,32 +7,38 @@ import Card from '../../components/common/card';
 import { FiTrash } from 'react-icons/fi';
 import { useAction, useFetch } from '../../helpers/hooks';
 import { fetchLandingPage, postAdminLandingPage } from '../../helpers/backend';
+import { Loader } from '../../components/common/loader';
 
 
 const LandingPage = () => {
     const [form] = Form.useForm()
 
-    const [landingData, getLandingData] = useFetch(fetchLandingPage)
-    console.log("🚀 ~ LandingPage ~ landingData:", landingData)
+    const [landingData, getLandingData, { loading }] = useFetch(fetchLandingPage)
+    // console.log("🚀 ~ LandingPage ~ landingData:", landingData)
 
     useEffect(() => {
-        if(!!landingData?.content) {
+        if (!!landingData?.title) {
+            console.log(":", landingData)
             form.setFieldsValue({
                 ...landingData
             })
+            console.log("ddd", form.getFieldsValue())
         }
-    }, [landingData?.content])
+    }, [landingData?.title])
+
+    if (!!loading || landingData === undefined) {
+        return <Loader />
+    }
 
     return (
         <div>
             <div className='bg-white shadow-lg p-4'>
                 <Form form={form} layout='vertical' onFinish={(values) => {
-                    console.log("values", values);
-                    
-                    return useAction(postAdminLandingPage, { ...values, page: "Landing Page"}, () => {
+
+                    return useAction(postAdminLandingPage, { ...values, page: "Landing Page" }, () => {
                         getLandingData()
                     })
-                    
+
                 }}>
 
                     <div>
@@ -56,11 +62,8 @@ const LandingPage = () => {
                             </Form.Item>
                         </div>
 
-                        <Form.Item label='Images' name={['content', 'hero_section', 'images']} >
-                            <FormInput />
-                        </Form.Item>
 
-
+                        <FormImage label='Images' name={['content', 'hero_section', 'images']} />
 
                         <h2 className='text-2xl font-bold'>Why Section</h2>
                         <Form.Item label='Title' name={['content', 'why_seciotn', 'title']} >
@@ -79,7 +82,7 @@ const LandingPage = () => {
                                                     <FormInput />
                                                 </Form.Item>
                                                 <Form.Item label='Image' name={[field.name, 'image']} >
-                                                    <FormInput />
+                                                    <FormImage />
                                                 </Form.Item>
                                                 {/* <Button onClick={() => remove(field.name)}><FiTrash /></Button> */}
                                                 <div className='col-span-1 flex items-center'>
@@ -127,7 +130,7 @@ const LandingPage = () => {
                                                     <FormInput />
                                                 </Form.Item>
                                                 <Form.Item label='Icon' name={[field.name, 'icon']} >
-                                                    <FormInput />
+                                                    <FormImage />
                                                 </Form.Item>
                                                 <div className='col-span-1 flex items-center'>
                                                     <FiTrash
@@ -171,7 +174,7 @@ const LandingPage = () => {
                                                     <FormInput />
                                                 </Form.Item>
                                                 <Form.Item label='Image' name={[field.name, 'image']} >
-                                                    <FormInput />
+                                                    <FormImage />
                                                 </Form.Item>
                                                 <Form.List name={[field.name, 'points']}>
                                                     {(fields, { add, remove }) => {
@@ -225,7 +228,7 @@ const LandingPage = () => {
                             </Form.Item>
                         </div>
                         <Form.Item label='Image' name={['content', 'next_section', 'image']} >
-                            <FormInput />
+                            <FormImage />
                         </Form.Item>
 
 
