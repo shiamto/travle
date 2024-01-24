@@ -15,8 +15,8 @@ axiosApi.interceptors.response.use(
   error => Promise.reject(error)
 )
 
-export async function get(url, data, config = {}) {
-  axiosApi.defaults.headers.common["Authorization"] = `Bearer ${localStorage.getItem("token") ?? ''}`
+export async function get(url, data, config = {}, token_name = 'token') {
+  axiosApi.defaults.headers.common["Authorization"] = `Bearer ${localStorage.getItem(token_name) ?? ''}`
   return await axiosApi.get(url, { ...config, params: { ...data } }).then(response => response.data)
 }
 

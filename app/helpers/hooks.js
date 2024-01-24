@@ -19,13 +19,13 @@ export const useFetch = (func, query = {}, load = true) => {
         setLoading(true)
         setError('')
         setParams({ ...params, ...query })
-        func({ ...params, ...query }).then(({ error, data, msg }) => {
+        func({ ...params, ...query }).then(({ success, data, message }) => {
             setLoading(false)
-            if (error === false) {
+            if (success === true) {
                 setData(data)
             } else {
                 setData(undefined)
-                setError(msg)
+                setError(message)
             }
         }).catch(e => {
             // console.log(e)
@@ -37,17 +37,17 @@ export const useFetch = (func, query = {}, load = true) => {
 
 export const useAction = async (func, data, reload, alert = true, successMsg) => {
     // showLoader()
-    const { error, msg, data: d } = await func({ ...data })
+    const { success, message, data: d } = await func({ ...data })
     // hideLoader()
-    if (error === false) {
+    if (success === true) {
         if (reload) {
             reload(d)
         }
         if (alert) {
-            notification.success({ message: successMsg || msg || 'Success' })
+            notification.success({ message: successMsg || message || 'Success' })
         }
     } else {
-        notification.error({ message: msg || 'Something went wrong' })
+        notification.error({ message: message || 'Something went wrong' })
     }
 }
 

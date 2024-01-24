@@ -10,14 +10,9 @@ import { FiSearch, FiXCircle } from "react-icons/fi";
 import Pagination from "../common/pagination";
 import { AiOutlineCheckCircle } from "react-icons/ai";
 
-const FormImage = ({ 
-    name, label, max = 1, seller, required, disabled, ...rest }) => {
+const FormImage = ({name, label, max = 1, required, disabled, ...rest }) => {
     const [files, getFiles] = useFetch(fetchFiles)
     const [visible, setVisible] = useState(false)
-
-    useEffect(() => {
-        console.log("Files from API:", files);
-    }, [files]);
 
     let initRules = [
         { required: required, message: `Please provide ${typeof label === 'string' && label?.toLowerCase() || 'a value'}` },
@@ -26,15 +21,25 @@ const FormImage = ({
     const [tab, setTab] = useState('gallery')
     const [upload, setUpload] = useState([])
     const [showSelected, setShowSelected] = useState(false)
-
-
-    const onChangeRef = useRef()
     const [selected, setSelected] = useState([])
-    const onChange = onChangeRef.current || (() => {
-        console.log('onChange is not defined')
-    })
 
-    let images = showSelected ? selected : files?.data
+    // const onChangeRef = useRef()
+
+    // const onChange = onChangeRef.current || (() => {
+    //     console.log('onChange is not defined')
+    // })
+    const onChange = (selectedFiles) => {
+        setSelected(selectedFiles);
+        console.log("selectedFiles",selectedFiles)
+    };
+    
+
+    // const onChange = (selectedFiles) => {
+    //     console.log("selectedFiles",selectedFiles)
+    //     setSelected(selectedFiles);
+    // };
+
+    let images = showSelected ? selected : files
 
     const handleClick = (file) => {
         let find = selected?.find(d => d.id === file.id)
@@ -50,26 +55,38 @@ const FormImage = ({
     }
 
 
-    const Input = ({ value, onChange }) => {
-        onChangeRef.current = onChange
-        useEffect(() => {
-            setSelected(value)
-        }, [value])
+    const Input = () => {
+        // onChangeRef.current = onChange
+        // useEffect(() => {
+        //     onChange(value)
+        // }, [onChange])
+        // const handleClick = (file) => {
+        //     const find = value.find(d => d.id === file.id);
+        //     if (find) {
+        //         setValue(value.filter(d => d.id !== file.id));
+        //     } else {
+        //         if (value.length >= max) {
+        //             message.error(`You can select a maximum of ${max} file(s)`);
+        //         } else {
+        //             setValue([...value, file]);
+        //         }
+        //     }
+        // };
 
         return (
             <>
                 <div className="form-control form-image" role="button" onClick={() => !disabled && setVisible(true)}
                     style={{ opacity: disabled ? 0.6 : 1 }}>
                     <span>Browse</span>
-                    <span>{value?.length > 0 ? `${value?.length} file selected` : 'Select file'}</span>
+                    <span>{selected?.length > 0 ? `${selected?.length} file selected` : 'Select file'}</span>
                 </div>
-                <div className="d-flex flex-wrap my-2">
-                    {value?.map((file, index) => (
-                        <div className="p-4 position-relative" style={{ height: 140 }} key={index}>
+                <div className="flex flex-wrap my-2">
+                    {selected?.map((file, index) => (
+                        <div className="p-4 relative" style={{ height: 140 }} key={index}>
                             <FiXCircle
                                 role="button"
-                                onClick={() => onChange(value?.filter(d => d.id !== file.id))}
-                                className="position-absolute shadow-lg text-danger"
+                                onClick={() =>  setSelected(selected.filter(d => d.id !== file.id))}
+                                className="absolute shadow-lg text-red-500"
                                 style={{ right: 8, top: 8 }} size={20} />
                             <img style={{ maxHeight: '100%', width: 'auto' }} src={file.path} alt="" />
                         </div>
@@ -87,7 +104,7 @@ const FormImage = ({
             <Modal open={visible} onCancel={() => setVisible(false)} title={null} width={1200} footer={null}>
                 <Tabs activeKey={tab} onChange={setTab}>
                     <Tabs.TabPane tab="Gallery" key="gallery">
-                        <div className="d-flex justify-content-between align-items-center mb-2">
+                        <div className="flex mb-2">
                             <div>
                                 <Checkbox
                                     checked={showSelected}
@@ -95,20 +112,10 @@ const FormImage = ({
                                     Show Selected Only
                                 </Checkbox>
                             </div>
-                            <div className="position-relative mb-2.5 me-2">
-                                <input className="form-control form-control-sm text-gray-500 rounded-1 mb-0"
-                                    placeholder="Search"
-                                    onChange={(e) => {
-                                        getFiles({ search: e.target.value, page: 1 })
-                                    }}
-                                    style={{ width: 220, paddingLeft: 30 }} />
-                                <FiSearch className="position-absolute" color="#adb5bd"
-                                    style={{ top: 10, left: 10 }} />
-                            </div>
                         </div>
-                        <div className="row p-2">
+                        <div className="grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 grid p-2 p-2">
                             {images?.map((file, index) => (
-                                <div className="col-sm-2 col-md-4 col-lg-3 col-xl-2" key={index}>
+                                <div className="" key={index}>
                                     <div className="gallery-card" role="button" onClick={() => handleClick(file)}>
                                         <div className="options">
                                             {selected?.find(d => d.id === file.id) &&
@@ -124,7 +131,7 @@ const FormImage = ({
                         </div>
 
                         {images?.length === 0 && (
-                            <div className="d-flex justify-content-center align-items-center"
+                            <div className="flex justify-center items-center"
                                 style={{ height: 300 }}>
                                 <div className="text-center">
                                     <p className="ant-upload-drag-icon">
@@ -134,7 +141,7 @@ const FormImage = ({
                                 </div>
                             </div>
                         )}
-                        <div className="d-flex justify-content-between align-items-center">
+                        <div className="flex justify-between items-center">
                             <div>
                                 <div style={{ display: showSelected ? 'none' : 'block' }}>
                                     <Pagination
@@ -173,7 +180,7 @@ const FormImage = ({
                                 }}
                                 multiple={true}
                             >
-                                <div className="d-flex justify-content-center align-items-center"
+                                <div className="flex justify-center items-center"
                                     style={{ height: 300 }}>
                                     <div>
                                         <p className="ant-upload-drag-icon">
@@ -187,10 +194,10 @@ const FormImage = ({
                             {upload?.length > 0 && (
                                 <Button variant="primary" className="mt-3" onClick={async () => {
                                     try {
-                                        let galleries = upload?.map(d => d.originFileObj)
+                                        let files = upload?.map(d => d.originFileObj)
                                         // showLoader()
-                                        let func = seller ? postSellerFiles : postFiles
-                                        let { success, message } = await func({ galleries }, {
+                                        // let func = seller ? postSellerFiles : postFiles
+                                        let { success, message } = await postFiles({image: files[0]}, {
                                             headers: {
                                                 'Content-Type': 'multipart/form-data'
                                             }

@@ -13,7 +13,10 @@ export const fetchAllCountry = (data) => get("/countries", data);
 export const postAdminLogin = (data) => post("/admin/login", data);
 export const fetchUser = (data) => get("/admin/user-info", data);
 
-export const fetchFiles = data => get('/admin/gallery', data)
+// export const fetchFiles = (data) => get('/admin/gallery', data)
+export const fetchFiles = (data) => get('/admin/gallery', data,)
+
 export const postFiles = (data) => post('/admin/upload-image', data)
+export const deleteFile = (data) => del('/admin/remove-image', data)
 
 export const postGallery = (data) => post('/admin/gallery-page', data)
