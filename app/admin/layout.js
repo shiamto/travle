@@ -130,6 +130,16 @@ const menu = [
         ]
     },
     {
+        label: "Add Tours",
+        href: "/admin/tour",
+        icon: <FaPrint />,
+    },
+    {
+        label: "Landing Page",
+        href: "/admin/landing-page",
+        icon: <FaPrint />,
+    },
+    {
         label: "Gallery Page",
         href: "/admin/gallery",
         icon: <FaPrint />,
