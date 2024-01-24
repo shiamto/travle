@@ -42,7 +42,7 @@ const data =[
 
 const WhyChoose = () => {
     return (
-        <div className='py-20 pt-40'>
+        <div className='py-20 pt-30'>
             <div className="container mx-auto">
                 <h1 className='text-primary font-barlow text-[50px] font-semibold text-center'>Why Choose Wilh. Loesch?</h1>
                 

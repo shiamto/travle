@@ -67,7 +67,7 @@ const Discover = () => {
                 <p className='text-secondaryText mb-10' >Explore our handpicked destinations that promise to ignite your wanderlust. From exotic corners of Vietnam to renowned landmarks, our collection includes diverse landscapes, vibrant cultures and hidden gems waiting to be uncovered.</p>
             </div> 
             </div>
-            <div className="relative mx-10">
+            <div className="relative mx-10 discover ">
                     <Swiper
                         slidesPerView={1}
                         spaceBetween={24}
@@ -87,7 +87,8 @@ const Discover = () => {
                             },
                         }}
                         loop={true}
-                        modules={[Autoplay, FreeMode, Pagination, Navigation]}
+                        modules={[Pagination,Autoplay, FreeMode,  Navigation]}
+                        pagination={{ clickable: true }}
                         autoplay={{
                             delay: 1500,
                             disableOnInteraction: true,
@@ -100,7 +101,7 @@ const Discover = () => {
                     >
                         {discover?.map((val,i) => (
                             <SwiperSlide key={i}>
-                                <div className="group border">
+                                <div className="group border mb-10">
                                     <div className="w-full relative">
                                         <img src={val?.image} className='w-full  duration-500' alt="" />
                                         <div className="absolute top-5 right-5 bg-[rgba(0,0,0,0.5)] group-hover:bg-white group-hover:scale-105 rounded-full p-2 flex justify-center items-center ">

@@ -1,10 +1,11 @@
 "use client"
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { IoFilter } from "react-icons/io5";
 import { FaAngleDown } from "react-icons/fa6";
 import { Form, Modal, Slider } from 'antd';
 import TourCard from '../../components/frontend/TourCard';
 import Banner from '../../components/common/banner';
+import { fetchTourList } from "../../helpers/backend";
 
 const onChangeComplete = (value) => {
     console.log('onChangeComplete: ', value);
@@ -54,7 +55,6 @@ const tours = [
     }
 ]
 
-
 const page = () => {
     const [durationActive, setdurationActive] = useState(false);
     const [depratureActive, setDepratureActive] = useState(true);
@@ -64,6 +64,17 @@ const page = () => {
     const [max, setmax] = useState(20);
     const [pmin, setpmin] = useState(1000);
     const [pmax, setpmax] = useState(50000);
+
+    const [tourList, setTourList] = useState(null)
+
+useEffect(() => {
+    fetchTourList().then(({ success, data }) => {
+        if (success === true) {
+            setTourList(data)
+        } 
+    })
+}, [])
+console.log(tourList);
 
     return (
         <div className=''>
@@ -76,13 +87,10 @@ const page = () => {
                      <div className="container mx-auto">
                     <div className="">
                         <h1 className='text-2xl font-semibold'>Afica Tour Package</h1>
-                        <p className='text-xl my-3'>Sensational South Africa Kenya Tours</p>
-
-                        <p>Venture into the Wild! South Africa is one of the most enthralling destinations for travellers from all over the world, as it has seemingly endless numbers of natural parks, beautiful mountains, and lunar-like landscapes vigilantly carved by nature. With savannas and never-ending safari adventures, South Africa Kenya Tours are a must. From the wild grasslands of Kruger Park to prehistoric caves, from the pristine Boulders Beach to Gold Reef City, you really do have a world in one country. Kesari's South </p>
+                       
                     </div>
-                    <hr className='my-10' />
-                    <div className="lg:flex gap-10 my-10 " >
-                        <div className="md:min-w-[320px]">
+                    <div className="" >
+                        {/* <div className="md:min-w-[320px]">
                             <div className="text-[1.3rem] text-white bg-secondary px-5 py-4 flex items-center font-semibold rounded-md">
                                 <IoFilter className='mr-3 text-2xl' />
                                 <p>Sort & Filter</p>
@@ -218,11 +226,11 @@ const page = () => {
 
                                 </div>
                             </div>
-                        </div>
-                        <div className="">
+                        </div> */}
+                        <div className=" py-10">
                             {
-                                tours?.map(tour => (
-                                    <TourCard key={tour.id} item={tour} />
+                                tourList?.map((tour,i) => (
+                                    <TourCard key={tour?.id} item={tour} />
                                 ))
                             }
 

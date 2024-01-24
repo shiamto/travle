@@ -91,7 +91,7 @@ const FrontHeader = () => {
                     </ul>
                 </div>
             </div>
-            <header className='px-20 absolute md:top-10 top-0 left-0 right-0'>
+            <header className='md:px-20 px-5 absolute md:top-10 top-0 left-0 right-0'>
                 <div className="relative bg-transparent" style={{ zIndex: 999 }}>
                     <div className="relative">
                         <nav className={` items-center justify-between h-16 lg:h-20 ${isMenuOpen ? "fixed" : "flex"} `}>
@@ -122,55 +122,8 @@ const FrontHeader = () => {
 
                                 <Link href="/" title="" className="text-lg font-medium text-white"> Home </Link>
                                 <Link href="/about" title="" className="text-lg font-medium text-white"> About </Link>
-
-                                <div className="flex items-center justify-center gap-x-1" onClick={handleTour}>
-                                    <a href="#" title="" className="text-lg relative font-medium text-white"> Group Tours </a>
-                                    <GoChevronDown size={20} className='text-white font-bold cursor-pointer' />
-                                </div>
-
-                                {isGroupTour &&
-                                    <div className='absolute left-0 right-0 z-10 top-20'>
-                                        <div className='w-full shadow-xl'>
-                                            <div className="flex justify-between bg-white p-6 rounded-lg shadow-xl">
-                                                <div className='w-1/2'>
-                                                    <h1 className='text-secondary text-lg font-semibold'>International</h1>
-                                                    <div className="grid lg:grid-cols-3 gap-3 mt-2">
-                                                        <Link href="/tours" className='text-gray-500 hover:text-secondary cursor-pointer'>Africa</Link>
-                                                        <Link href="/tours" className='text-gray-500 hover:text-secondary cursor-pointer'>America</Link>
-                                                        <Link href="/tours" className='text-gray-500 hover:text-secondary cursor-pointer'>Australia</Link>
-                                                        <Link href="/tours" className='text-gray-500 hover:text-secondary cursor-pointer'>Newzealand</Link>
-                                                        <Link href="/tours" className='text-gray-500 hover:text-secondary cursor-pointer'>Bhutan</Link>
-                                                        <Link href="/tours" className='text-gray-500 hover:text-secondary cursor-pointer'>Dubai</Link>
-                                                        <Link href="/tours" className='text-gray-500 hover:text-secondary cursor-pointer'>MiddleEast</Link>
-                                                        <Link href="/tours" className='text-gray-500 hover:text-secondary cursor-pointer'>Nepal</Link>
-                                                        <Link href="/tours" className='text-gray-500 hover:text-secondary cursor-pointer'>Europe</Link>
-                                                    </div>
-                                                </div>
-
-                                                <div className='w-1/2'>
-                                                    <h1 className='text-secondary text-lg font-semibold'>Domestic</h1>
-                                                    <div className="grid lg:grid-cols-3 gap-3 mt-2">
-                                                        <Link href="/tours" className='text-gray-500 hover:text-secondary cursor-pointer'>Andaman</Link>
-                                                        <Link href="/tours" className='text-gray-500 hover:text-secondary cursor-pointer'>Goa</Link>
-                                                        <Link href="/tours" className='text-gray-500 hover:text-secondary cursor-pointer'>Himachal</Link>
-                                                        <Link href="/tours" className='text-gray-500 hover:text-secondary cursor-pointer'>Gujrat</Link>
-                                                        <Link href="/tours" className='text-gray-500 hover:text-secondary cursor-pointer'>Orissa</Link>
-                                                        <Link href="/tours" className='text-gray-500 hover:text-secondary cursor-pointer'>Punjab</Link>
-                                                        <Link href="/tours" className='text-gray-500 hover:text-secondary cursor-pointer'>Kashmir</Link>
-                                                        <Link href="/tours" className='text-gray-500 hover:text-secondary cursor-pointer'>Ladakh</Link>
-                                                        <Link href="/tours" className='text-gray-500 hover:text-secondary cursor-pointer'>Gangtok</Link>
-                                                        <Link href="/tours" className='text-gray-500 hover:text-secondary cursor-pointer'>Chennai</Link>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                }
-
+                                <Link href="/tours" title="" className="text-lg font-medium text-white">Vietnam Tours</Link>
                                 <Link href="/gallery" title="" className="text-lg font-medium text-white"> Gallery </Link>
-
                                 <Link href="/contact" title="" className="text-lg font-medium text-white"> Contact </Link>
                             </div>
 
@@ -215,15 +168,7 @@ const FrontHeader = () => {
 
                                 <Link href="/about" title="" className="flex w-full py-2 font-medium text-white transition-all duration-200 focus:text-opacity-70"> About </Link>
 
-                                <div className='py-2'>
-                                    <Dropdown arrow={false} overlay={(
-                                        <Menu onClick={onClick} style={{ width: 128 }} mode="vertical" items={items} />
-                                    )}>
-                                        <div className="flex gap-2 rounded md:max-h-[670px]">
-                                            <p className='text-base font-medium text-white'>Group Tours</p>
-                                        </div>
-                                    </Dropdown>
-                                </div>
+                                <Link href="/tours" title="" className="flex w-full py-2 font-medium text-white transition-all duration-200 focus:text-opacity-70">Vietnam tours</Link>
 
 
                                 <Link href="/gallery" title="" className="flex w-full py-2 font-medium text-white transition-all duration-200 focus:text-opacity-70"> Gallery </Link>
