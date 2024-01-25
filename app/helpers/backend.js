@@ -33,3 +33,7 @@ export const postAdminLandingPage = (data) => postForm('admin/landing-page', dat
 
 export const postAdminTour = (data) => postForm('admin/tour', data)
 export const fetchAdminTourList = (data) => get('admin/tour-list', data)
+
+// post settings page
+export const postAdminSettings = (data) => post('admin/setting', data)
+export const fetchSiteSettings = (data) => get('settings', data)
