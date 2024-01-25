@@ -2,7 +2,7 @@ module.exports = {
   env: {
     backend_url:
       process.env.NODE_ENV === "production"
-        ? "http://192.168.0.115:8000/"
+        ? "https://travelbackend.appstick.com.bd/"
         : "http://192.168.0.115:8000/",
   },
   images: {
