@@ -133,7 +133,7 @@ const Settings = () => {
 
                                         </div>
                                     ))}
-                                    <div onClick={() => add()} className='w-32 mt-4 bg-indigo-400 hover:text-white text-white hover:bg-none rounded px-4 py-2 text-sm font-medium'>Add Card Data</div>
+                                    <div onClick={() => add()} className='w-36 mt-4 bg-blue-400 hover:text-white text-white hover:bg-none rounded px-4 py-2 text-sm font-medium'>Add Social Link</div>
                                 </div>
                             )
                         }}

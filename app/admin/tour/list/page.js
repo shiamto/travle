@@ -7,7 +7,7 @@ import Table from '../../../components/common/table';
 
 const TourList = () => {
     const [data, getData] = useFetch(fetchTourList)
-
+    console.log("tourList", data)
     const columns = [
         { text: "Name", dataField: "name" },
         { text: "Explorer", dataField: "explorer" },
@@ -27,7 +27,7 @@ const TourList = () => {
                 columns={columns}
                 data={data}
                 onReload={getData}
-               
+                pagination
                 indexed
             />
         </div>
