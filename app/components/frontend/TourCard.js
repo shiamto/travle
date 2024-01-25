@@ -18,7 +18,7 @@ const TourCard = ({ item }) => {
         setIsModalOpen(false);
     };
     return (
-        <div className="md:flex justify-between items-center rounded-md " style={{ boxShadow: "0 0 12px #00000026" }}>
+        <div className="md:flex justify-between items-center rounded-md mb-6" style={{ boxShadow: "0 0 12px #00000026" }}>
             <div className="md:w-[400px] p-6">
                 <img src={item.image} className='w-full h-full' alt="" />
             </div>
@@ -76,7 +76,7 @@ const TourCard = ({ item }) => {
                         <button onClick={showModal} className='w-full hover:bg-secondary border-secondary border rounded-md hover:text-white text-secondary px-4 py-2 duration-300 mb-5  text-center'>Enquire Now</button>
                     </div>
                     <div className="flex gap-5">
-                        <button className='w-full bg-secondary text-white px-4 py-2  text-center rounded-md hover:opacity-90'>View Details</button>
+                        <a href={`/tours/${item?.slug}`} className='w-full bg-secondary text-white px-4 py-2  text-center rounded-md hover:opacity-90'>View Details</a>
                         <button onClick={() => setEmailm(!emailm)} className='w-full bg-secondary text-white px-4 py-2  text-center rounded-md hover:opacity-90'>Email Itinerary</button>
                     </div>
 

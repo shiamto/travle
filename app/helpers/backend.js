@@ -21,7 +21,9 @@ export const deleteFile = (data) => del('/admin/remove-image', data)
 
 export const postGallery = (data) => post('/admin/gallery-page', data)
 
-export const fetchTourList = (data) => get('/admin/tour-list', data)
+export const fetchTourList = (data) => get('/tour-list', data)
+export const fetchTour = slug => get('/tour/'+ slug)
+// export const fetchPageDetails = slug => get('/admin/page'+ slug, {}, {}, 'admin_token')
 
 export const fetchLandingPage = (data) => get('landing-page', data)
 export const fetchAboutPage = (data) => get('/about-page', data)
