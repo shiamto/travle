@@ -5,14 +5,16 @@ import { useEffect, useRef, useState } from "react";
 import { useFetch } from "../../helpers/hooks";
 import { fetchFiles, postFiles } from "../../helpers/backend";
 import { BiImages } from "react-icons/bi";
-import Button from "../common/button";
+import Button from "./button";
+// import {hideLoader, showLoader} from "../common/preloader";
 import { FiSearch, FiXCircle } from "react-icons/fi";
-import Pagination from "../common/pagination";
+import Pagination from "./pagination";
 import { AiOutlineCheckCircle } from "react-icons/ai";
 
-const FormImage = ({name, label, max = 1, required, disabled, ...rest }) => {
+const FormImage = ({ name, label, max = 1, required, disabled, ...rest }) => {
     const [files, getFiles] = useFetch(fetchFiles)
     const [visible, setVisible] = useState(false)
+
     let initRules = [
         { required: required, message: `Please provide ${typeof label === 'string' && label?.toLowerCase() || 'a value'}` },
     ]
@@ -20,23 +22,13 @@ const FormImage = ({name, label, max = 1, required, disabled, ...rest }) => {
     const [tab, setTab] = useState('gallery')
     const [upload, setUpload] = useState([])
     const [showSelected, setShowSelected] = useState(false)
+
+
+    const onChangeRef = useRef()
     const [selected, setSelected] = useState([])
-
-    // const onChangeRef = useRef()
-
-    // const onChange = onChangeRef.current || (() => {
-    //     console.log('onChange is not defined')
-    // })
-    const onChange = (selectedFiles) => {
-        setSelected(selectedFiles);
-        console.log("selectedFiles",selectedFiles)
-    };
-    
-
-    // const onChange = (selectedFiles) => {
-    //     console.log("selectedFiles",selectedFiles)
-    //     setSelected(selectedFiles);
-    // };
+    const onChange = onChangeRef.current || (() => {
+        console.log('onChange is not defined')
+    })
 
     let images = showSelected ? selected : files
 
@@ -54,38 +46,27 @@ const FormImage = ({name, label, max = 1, required, disabled, ...rest }) => {
     }
 
 
-    const Input = () => {
-        // onChangeRef.current = onChange
-        // useEffect(() => {
-        //     onChange(value)
-        // }, [onChange])
-        // const handleClick = (file) => {
-        //     const find = value.find(d => d.id === file.id);
-        //     if (find) {
-        //         setValue(value.filter(d => d.id !== file.id));
-        //     } else {
-        //         if (value.length >= max) {
-        //             message.error(`You can select a maximum of ${max} file(s)`);
-        //         } else {
-        //             setValue([...value, file]);
-        //         }
-        //     }
-        // };
-        
+
+
+    const Input = ({ value, onChange }) => {
+        onChangeRef.current = onChange
+        useEffect(() => {
+            setSelected(value)
+        }, [value])
 
         return (
             <>
                 <div className="form-control form-image" role="button" onClick={() => !disabled && setVisible(true)}
                     style={{ opacity: disabled ? 0.6 : 1 }}>
                     <span>Browse</span>
-                    <span>{selected?.length > 0 ? `${selected?.length} file selected` : 'Select file'}</span>
+                    <span>{value?.length > 0 ? `${value?.length} file selected` : 'Select file'}</span>
                 </div>
-                <div className="flex flex-wrap my-2">
-                    {selected?.map((file, index) => (
+                <div className="d-flex flex-wrap my-2">
+                    {value?.map((file, index) => (
                         <div className="p-4 relative" style={{ height: 140 }} key={index}>
                             <FiXCircle
                                 role="button"
-                                onClick={() =>  setSelected(selected.filter(d => d.id !== file.id))}
+                                onClick={() => onChange(value?.filter(d => d.id !== file.id))}
                                 className="absolute shadow-lg text-red-500"
                                 style={{ right: 8, top: 8 }} size={20} />
                             <img style={{ maxHeight: '100%', width: 'auto' }} src={file.path} alt="" />
@@ -112,6 +93,16 @@ const FormImage = ({name, label, max = 1, required, disabled, ...rest }) => {
                                     Show Selected Only
                                 </Checkbox>
                             </div>
+                            {/* <div className="position-relative mb-2.5 me-2">
+                                <input className="form-control form-control-sm text-gray-500 rounded-1 mb-0"
+                                       placeholder="Search"
+                                       onChange={(e) => {
+                                           getFiles({search: e.target.value, page: 1})
+                                       }}
+                                       style={{width: 220, paddingLeft: 30}}/>
+                                <FiSearch className="position-absolute" color="#adb5bd"
+                                          style={{top: 10, left: 10}}/>
+                            </div> */}
                         </div>
                         <div className="grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 grid p-2">
                             {images?.map((file, index) => (
@@ -194,10 +185,10 @@ const FormImage = ({name, label, max = 1, required, disabled, ...rest }) => {
                             {upload?.length > 0 && (
                                 <Button variant="primary" className="mt-3" onClick={async () => {
                                     try {
-                                        let files = upload?.map(d => d.originFileObj)
+                                        let galleries = upload?.map(d => d.originFileObj)
                                         // showLoader()
                                         // let func = seller ? postSellerFiles : postFiles
-                                        let { success, message } = await postFiles({image: files[0]}, {
+                                        let { success, message } = await postFiles({ image: files[0] }, {
                                             headers: {
                                                 'Content-Type': 'multipart/form-data'
                                             }
@@ -224,7 +215,47 @@ const FormImage = ({name, label, max = 1, required, disabled, ...rest }) => {
                                             description: 'Something went wrong'
                                         })
                                     }
-                                   
+                                    // try {
+                                    //     let galleries = upload?.map(async (d) => {
+                                    //         const compressedImage = await handleImageUploadCompression(d);
+                                    //         return new File([compressedImage], d.name, { type: compressedImage.type });
+                                    //     });
+
+                                    //     galleries = await Promise.all(galleries);
+
+                                    //     showLoader();
+
+                                    //     let func = seller ? postSellerFiles : postFiles;
+
+                                    //     let { success, message } = await func({ galleries }, {
+                                    //         headers: {
+                                    //             'Content-Type': 'multipart/form-data'
+                                    //         }
+                                    //     });
+
+                                    //     hideLoader();
+
+                                    //     if (success === true) {
+                                    //         setUpload([]);
+                                    //         getFiles();
+                                    //         setTab('gallery');
+                                    //         notification.success({
+                                    //             message: 'Success',
+                                    //             description: message || 'Successfully uploaded'
+                                    //         });
+                                    //     } else {
+                                    //         notification.error({
+                                    //             message: 'Error',
+                                    //             description: message || 'Something went wrong'
+                                    //         });
+                                    //     }
+                                    // } catch (e) {
+                                    //     hideLoader();
+                                    //     notification.error({
+                                    //         message: 'Error',
+                                    //         description: 'Something went wrong'
+                                    //     });
+                                    // }
                                 }}>Upload</Button>
                             )}
                         </div>
