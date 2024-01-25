@@ -48,10 +48,10 @@ const TourDetails = ({ params }) => {
 
                                 <div className="flex justify-between w-auto p-4 mt-12 bg-white border border-gray-200 rounded-lg shadow-lg overflow-scroll md:overflow-hidden gap-x-8">
                                     
-                                    <p className={`text-lg font-semibold text-gray-800 inline-block ${details && 'border-b-2 border-secondary inline-block'}`} onClick={() => {setDetails(true); setHigh(false); setItinerary(false); setHotels(false)}}> Tour Details</p>
-                                    <p className={`text-lg font-semibold text-gray-800 inline-block ${high && 'border-b-2 border-secondary inline-block'}`} onClick={() => {setDetails(false); setHigh(true); setItinerary(false); setHotels(false)}}>Highlights</p>
-                                    <p className={`text-lg font-semibold text-gray-800 inline-block ${itinerary && 'border-b-2 border-secondary inline-block'}`} onClick={() => {setDetails(false); setHigh(false); setItinerary(true); setHotels(false)}}>Itinerary</p>
-                                    <p className={`text-lg font-semibold text-gray-800 inline-block ${hotels && 'border-b-2 border-secondary inline-block'}`} onClick={() => {setDetails(false); setHigh(false); setItinerary(false); setHotels(true)}}>Hotels</p>
+                                    <p className={`text-lg cursor-pointer font-semibold text-gray-800 inline-block ${details && 'border-b-2 border-secondary inline-block'}`} onClick={() => {setDetails(true); setHigh(false); setItinerary(false); setHotels(false)}}> Tour Details</p>
+                                    <p className={`text-lg cursor-pointer font-semibold text-gray-800 inline-block ${high && 'border-b-2 border-secondary inline-block'}`} onClick={() => {setDetails(false); setHigh(true); setItinerary(false); setHotels(false)}}>Highlights</p>
+                                    <p className={`text-lg cursor-pointer font-semibold text-gray-800 inline-block ${itinerary && 'border-b-2 border-secondary inline-block'}`} onClick={() => {setDetails(false); setHigh(false); setItinerary(true); setHotels(false)}}>Itinerary</p>
+                                    <p className={`text-lg cursor-pointer font-semibold text-gray-800 inline-block ${hotels && 'border-b-2 border-secondary inline-block'}`} onClick={() => {setDetails(false); setHigh(false); setItinerary(false); setHotels(true)}}>Hotels</p>
                                 </div>
 
                                 <div className='mt-8'>
@@ -95,7 +95,23 @@ const TourDetails = ({ params }) => {
                                         </div>
                                     </div>}
                                     {high && <div className="">{tour?.highlights}</div>}
-                                    {itinerary && <div className="">itinerary</div>}
+                                    {itinerary && <div className="">
+                                        <h1 className='text-2xl mb-5 text-primary'>Tour Itinerary</h1>
+                                        <div className="flex gap-6">
+                                            <div className="inline-block bg-secondary text-white py-2 px-4 rounded-full">
+                                                <p>Jul 14, 2023 to Mar 31, 2024</p>
+                                            </div>
+                                            <div className="inline-block border border-secondary text-secondary py-2 px-4 rounded-full">
+                                                <p>Jul 14, 2023 to Mar 31, 2024</p>
+                                            </div>
+                                        </div>
+                                        <div className="">
+                                            <div className="">
+                                                9 Days * Nights 9 Cities 1 Country
+                                            </div>
+                                            <div className=""></div>
+                                        </div>
+                                    </div>}
                                     {hotels && <div className="">
                                         <h1 className='text-2xl mb-5 text-primary'>Hotels</h1>
                                         <table className='table border text-center w-full'>
