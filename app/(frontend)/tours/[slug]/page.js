@@ -1,19 +1,41 @@
 "use client";
 import React, { useEffect, useState } from 'react';
 import Banner from '../../../components/common/banner';
-import { Carousel, Button } from 'antd';
+import { Carousel, Button, Collapse } from 'antd';
 import { CiPhone, CiTimer } from 'react-icons/ci';
 import { FiChevronRight, FiChevronLeft } from 'react-icons/fi';
 import { BsCheck2Circle } from "react-icons/bs";
 import { fetchTour } from '../../../helpers/backend';
+const text = `
+  A dog is a type of domesticated animal.
+  Known for its loyalty and faithfulness,
+  it can be found as a welcome guest in many households across the world.
+`;
 
+const items = [
+  {
+    key: '1',
+    label: 'This is panel header 1',
+    children: <p>{text}</p>,
+  },
+  {
+    key: '2',
+    label: 'This is panel header 2',
+    children: <p>{text}</p>,
+  },
+  {
+    key: '3',
+    label: 'This is panel header 3',
+    children: <p>{text}</p>,
+  },
+];
 const TourDetails = ({ params }) => {
     const slug = params.slug;
     const [tour, setTour] = useState(null)
     const [tab, setTab] = useState("details")
-    const [details, setDetails] = useState(true)
+    const [details, setDetails] = useState(false)
     const [high, setHigh] = useState(false);
-    const [itinerary, setItinerary] = useState(false);
+    const [itinerary, setItinerary] = useState(true);
     const [hotels, setHotels] = useState(false);
 
     useEffect(() => {
@@ -23,6 +45,7 @@ const TourDetails = ({ params }) => {
             }
         })
     }, [])
+
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
     return (
         <>
@@ -47,52 +70,17 @@ const TourDetails = ({ params }) => {
                                 </Carousel>
 
                                 <div className="flex justify-between w-auto p-4 mt-12 bg-white border border-gray-200 rounded-lg shadow-lg overflow-scroll md:overflow-hidden gap-x-8">
-                                    
-                                    <p className={`text-lg cursor-pointer font-semibold text-gray-800 inline-block ${details && 'border-b-2 border-secondary inline-block'}`} onClick={() => {setDetails(true); setHigh(false); setItinerary(false); setHotels(false)}}> Tour Details</p>
-                                    <p className={`text-lg cursor-pointer font-semibold text-gray-800 inline-block ${high && 'border-b-2 border-secondary inline-block'}`} onClick={() => {setDetails(false); setHigh(true); setItinerary(false); setHotels(false)}}>Highlights</p>
-                                    <p className={`text-lg cursor-pointer font-semibold text-gray-800 inline-block ${itinerary && 'border-b-2 border-secondary inline-block'}`} onClick={() => {setDetails(false); setHigh(false); setItinerary(true); setHotels(false)}}>Itinerary</p>
-                                    <p className={`text-lg cursor-pointer font-semibold text-gray-800 inline-block ${hotels && 'border-b-2 border-secondary inline-block'}`} onClick={() => {setDetails(false); setHigh(false); setItinerary(false); setHotels(true)}}>Hotels</p>
+
+                                    <p className={`text-lg cursor-pointer font-semibold text-gray-800 inline-block ${high && 'border-b-2 border-secondary inline-block'}`} onClick={() => { setDetails(false); setHigh(true); setItinerary(false); setHotels(false) }}>Highlights</p>
+                                    <p className={`text-lg cursor-pointer font-semibold text-gray-800 inline-block ${itinerary && 'border-b-2 border-secondary inline-block'}`} onClick={() => { setDetails(false); setHigh(false); setItinerary(true); setHotels(false) }}>Itinerary</p>
+                                    <p className={`text-lg cursor-pointer font-semibold text-gray-800 inline-block ${hotels && 'border-b-2 border-secondary inline-block'}`} onClick={() => { setDetails(false); setHigh(false); setItinerary(false); setHotels(true) }}>Hotels</p>
+                                    <p className={`text-lg cursor-pointer font-semibold text-gray-800 inline-block ${details && 'border-b-2 border-secondary inline-block'}`} onClick={() => { setDetails(true); setHigh(false); setItinerary(false); setHotels(false) }}> Departure Date</p>
+
                                 </div>
 
                                 <div className='mt-8'>
                                     {details && <div className="">
-                                        <h2 className="text-xl font-semibold text-gray-800">Details</h2>
-                                        <div className="flex items-center gap-x-2 py-1 2">
-                                            <BsCheck2Circle size={18} />
-                                            <p className='text-sm text-primary'>Great Pyramids of Giza and also get a chance to enter the second Pyramid to see what lies inside.</p>
-                                        </div>
-                                        <div className="flex items-center gap-x-2 py-1">
-                                            <BsCheck2Circle size={18} />
-                                            <p className='text-sm text-primary'>Photograph yourself in the background of the giant figure of Sphinx.</p>
-                                        </div>
-                                        <div className="flex items-center gap-x-2 py-1">
-                                            <BsCheck2Circle size={18} />
-                                            <p className='text-sm text-primary'>Experience Life on water as you enjoy 3N on the famous Nile Cruise.</p>
-                                        </div>
-                                        <div className="flex items-center gap-x-2 py-1">
-                                            <BsCheck2Circle size={18} />
-                                            <p className='text-sm text-primary'>Kom Ombo Temple - An unusual double temple in the town of Kom Ombo.</p>
-                                        </div>
-                                        <div className="flex items-center gap-x-2 py-1">
-                                            <BsCheck2Circle size={18} />
-                                            <p className='text-sm text-primary'>Edfu Temple - One of the best preserved shrines in Egypt.</p>
-                                        </div>
-                                        <div className="flex items-center gap-x-2 py-1">
-                                            <BsCheck2Circle size={18} />
-                                            <p className='text-sm text-primary'>Enter in the Tomb of Tutunkhamun in Valley of the Kings - A Spectacular mummy over 3,300 years old.</p>
-                                        </div>
-                                        <div className="flex items-center gap-x-2 py-1">
-                                            <BsCheck2Circle size={18} />
-                                            <p className='text-sm text-primary'>Shopping at the bustling Khan El Khalili bazaar.</p>
-                                        </div>
-                                        <div className="flex items-center gap-x-2 py-1">
-                                            <BsCheck2Circle size={18} />
-                                            <p className='text-sm text-primary'>Egyptian Museum - home to an extensive collection of ancient Egyptian antiquities.</p>
-                                        </div>
-                                        <div className="flex items-center gap-x-2 py-1">
-                                            <BsCheck2Circle size={18} />
-                                            <p className='text-sm text-primary'>Dolphin Watching at Hurghada.</p>
-                                        </div>
+                                    
                                     </div>}
                                     {high && <div className="">{tour?.highlights}</div>}
                                     {itinerary && <div className="">
@@ -109,7 +97,9 @@ const TourDetails = ({ params }) => {
                                             <div className="">
                                                 9 Days * Nights 9 Cities 1 Country
                                             </div>
-                                            <div className=""></div>
+                                            <div className="">
+                                            <Collapse items={items} defaultActiveKey={['1']}  />
+                                            </div>
                                         </div>
                                     </div>}
                                     {hotels && <div className="">
@@ -123,17 +113,17 @@ const TourDetails = ({ params }) => {
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                            {
-                                                tour?.hotels?.map((hotel, index) => {
-                                                    return (
-                                                        <tr key={index} className='border'>
-                                                            <td className='border'>{hotel?.place}</td>
-                                                            <td>{hotel?.name}</td>
-                                                            <td>{hotel?.nights}</td>
-                                                        </tr>
-                                                    )
-                                                })
-                                            }
+                                                {
+                                                    tour?.hotels?.map((hotel, index) => {
+                                                        return (
+                                                            <tr key={index} className='border'>
+                                                                <td className='border'>{hotel?.place}</td>
+                                                                <td>{hotel?.name}</td>
+                                                                <td>{hotel?.nights}</td>
+                                                            </tr>
+                                                        )
+                                                    })
+                                                }
                                             </tbody>
                                         </table>
                                     </div>}
