@@ -1,7 +1,6 @@
 import React from 'react';
 
 const Explore = ({ explore }) => {
-	const isLast = explore.data.content.next_section.sub_title;
 	
 	return (
 		<div className="relative">

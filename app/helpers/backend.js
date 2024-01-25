@@ -26,10 +26,14 @@ export const fetchTour = slug => get('/tour/'+ slug)
 // export const fetchPageDetails = slug => get('/admin/page'+ slug, {}, {}, 'admin_token')
 
 export const fetchLandingPage = (data) => get('landing-page', data)
-export const fetchAboutPage = (data) => get('/about-page', data)
+export const fetchAboutPage = (data) => get('about-page', data)
 
 export const postAdminAbout = (data) => postForm('admin/about-page', data)
 export const postAdminLandingPage = (data) => postForm('admin/landing-page', data)
 
 export const postAdminTour = (data) => postForm('admin/tour', data)
 export const fetchAdminTourList = (data) => get('admin/tour-list', data)
+
+export const fetchSiteSettings = (data) => get('settings', data)
+
+export const postContact = (data) => post('contact', data)

@@ -4,12 +4,15 @@ import React from 'react';
 import 'react-medium-image-zoom/dist/styles.css'
 import dynamic from 'next/dynamic';
 import { FaEnvelope, FaInbox, FaMessage, FaPhone, FaRegEnvelope } from 'react-icons/fa6';
+import { useFetch } from '../../../helpers/hooks';
+import { fetchSiteSettings } from '../../../helpers/backend';
 
 const Zoom = dynamic(() => import('react-medium-image-zoom'), { ssr: false });
 
 
 const FrontFooter = () => {
     const currentYear = new Date().getFullYear();
+    const [site] = useFetch(fetchSiteSettings)
 
     return (
         <>
@@ -19,15 +22,21 @@ const FrontFooter = () => {
                     <div className="mx-auto container">
                         <div className="grid grid-cols-2 md:col-span-3 lg:grid-cols-6 gap-y-16 gap-x-12">
                             <div className="col-span-2 md:col-span-3 lg:col-span-2 lg:pr-8">
-                                <img className="w-auto h-9" src="/logo-dark.png" alt="" />
-                                <p className="text-base leading-relaxed  my-7">Embark on a discovery journey with Wilh. Loesch Travel, crafting bespoke experiences that transcend the ordinary.</p>
+                                <img className="w-auto h-9" src={site?.footer_logo[0]?.path} alt='logo' />
+                                <p className="text-base leading-relaxed  my-7">
+                                    {site?.footer_text}
+                                </p>
                                 <div className=" text-secondary cursor-pointer hover:text-primary duration-300 flex items-center">
                                     <FaRegEnvelope className='mr-2'/>
-                                    <p> travel@wilhloesch.com</p>
+                                    <p>
+                                        {site?.email}
+                                    </p>
                                 </div>
                                 <div className=" text-secondary cursor-pointer hover:text-primary duration-300 flex items-center mt-2">
                                     <FaPhone className='mr-2'/>
-                                    <p>+84 584072398</p>
+                                    <p>
+                                        {site?.phone}
+                                    </p>
                                 </div>
                             </div>
                             <div>

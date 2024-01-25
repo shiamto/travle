@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect } from 'react';
-import { Form, Row, Col, Button } from 'antd';
+import { Form, Row, Col, Button, Input } from 'antd';
 import FormImage from '../../components/common/image';
 import FormInput from '../../components/form/input';
 import Card from '../../components/common/card';
@@ -13,7 +13,7 @@ import { Loader } from '../../components/common/loader';
 const LandingPage = () => {
     const [form] = Form.useForm()
 
-    const [landingData, getLandingData, { loading }] = useFetch(fetchLandingPage)
+    const [landingData, getLandingData] = useFetch(fetchLandingPage)
     // console.log("🚀 ~ LandingPage ~ landingData:", landingData)
 
     useEffect(() => {
@@ -26,39 +26,48 @@ const LandingPage = () => {
         }
     }, [landingData?.title])
 
-    if (!!loading || landingData === undefined) {
-        return <Loader />
-    }
+
 
     return (
         <div>
             <div className='bg-white shadow-lg p-4'>
                 <Form form={form} layout='vertical' onFinish={(values) => {
-
-                    return useAction(postAdminLandingPage, { ...values, page: "Landing Page" }, () => {
-                        getLandingData()
-                    })
+                    console.log("🚀 ~ LandingPage ~ values:", values)
+                    // return useAction(postAdminLandingPage, { ...values, page: "Landing Page" }, () => {
+                    //     getLandingData()
+                    // })
 
                 }}>
 
+
+                    <Form.Item label='Title' name={['content', 'hero_section', 'title']} >
+                        <Input />
+                    </Form.Item>
+
+                    <Form.Item label='Card Sub Title' name={['content', 'hero_section', 'card', 'sub_title']} >
+                        <Input />
+                    </Form.Item>
                     <div>
                         <h2 className='text-2xl font-bold'>Hero Section</h2>
 
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-4">
                             <Form.Item label='Title' name={['content', 'hero_section', 'title']} >
-                                <FormInput />
+                                <Input />
                             </Form.Item>
                             <Form.Item label='Sub Title' name={['content', 'hero_section', 'sub_title']} >
-                                <FormInput />
+                                <Input />
                             </Form.Item>
                         </div>
+
+
                         <h1 className='text-2xl font-bold'>Card</h1>
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-4">
                             <Form.Item label='Card Title' name={['content', 'hero_section', 'card', 'title']} >
-                                <FormInput />
+                                <Input />
                             </Form.Item>
+
                             <Form.Item label='Card Sub Title' name={['content', 'hero_section', 'card', 'sub_title']} >
-                                <FormInput />
+                                <Input />
                             </Form.Item>
                         </div>
 

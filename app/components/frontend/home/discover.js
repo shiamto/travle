@@ -64,7 +64,7 @@ const Discover = ({ discovery }) => {
             <div className="container mx-auto">
                 <div className="mx-auto max-w-[1000px] text-center">
                     <h1 className='text-primary font-barlow text-[50px] font-semibold text-center'>
-                        {discovery?.data?.content?.discover_section?.title}
+                        {discovery?.discover_section?.title}
                     </h1>
                     <p className='text-secondaryText mb-10' >Explore our handpicked destinations that promise to ignite your wanderlust. From exotic corners of Vietnam to renowned landmarks, our collection includes diverse landscapes, vibrant cultures and hidden gems waiting to be uncovered.</p>
                 </div>
@@ -101,7 +101,7 @@ const Discover = ({ discovery }) => {
                     navigation={{ nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" }}
                     className="mySwiper"
                 >
-                    {discovery?.data?.content?.discover_section?.card?.map((val, i) => (
+                    {discovery?.discover_section?.card?.map((val, i) => (
                         <SwiperSlide key={i}>
                             <div className="group border mb-10">
                                 <div className="w-full relative">

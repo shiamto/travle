@@ -6,6 +6,8 @@ import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/ico
 
 import { GoChevronDown } from "react-icons/go";
 import { FaFacebook, FaInstagram, FaLinkedin, FaPhone, FaRegEnvelope, FaXTwitter } from 'react-icons/fa6';
+import { useFetch } from '../../../helpers/hooks';
+import { fetchSiteSettings } from '../../../helpers/backend';
 
 
 function getItem(label, key, icon, children, type) {
@@ -20,74 +22,34 @@ function getItem(label, key, icon, children, type) {
 
 
 const FrontHeader = () => {
+    const [site] = useFetch(fetchSiteSettings)
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [isNavbarFixed, setIsNavbarFixed] = useState(false);
-    const [isGroupTour, setIsGroupTour] = useState(false);
 
     const handleMenuToggle = () => {
         setIsMenuOpen((isMenuOpen) => !isMenuOpen);
     };
 
-    useEffect(() => {
-        const handleScroll = () => {
-            const scrollY = window.scrollY || document.documentElement.scrollTop;
-            setIsNavbarFixed(scrollY > 0);
-        };
-
-        window.addEventListener('scroll', handleScroll);
-
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, []);
-
-    const items = [
-        {
-            key: 'sub1',
-            label: <span className='text-primary'>International</span>,
-            children: [
-                { key: '1', label: 'Item 1', icon: null, children: [{ key: '1', label: 'Option 1' }, { key: '2', label: 'Option 2' }], type: 'group' },
-                { key: '2', label: 'Item 2', icon: null, children: [{ key: '3', label: 'Option 3' }, { key: '4', label: 'Option 4' }], type: 'group' },
-            ],
-        },
-        {
-            key: 'sub2',
-            label: <span className="text-primary">Domestic</span>,
-            children: [
-                { key: '5', label: 'Option 5', icon: null },
-                { key: '6', label: 'Option 6', icon: null },
-            ],
-        },
-    ];
-
-    const onClick = (e) => {
-        console.log('click', e);
-    };
-
-    const handleTour = () => {
-        setIsGroupTour((isGroupTour) => !isGroupTour);
-    }
-
-
+  
     return (
         <div className="relative">
             <div className="md:flex hidden justify-between bg-primary py-2 px-20 ">
                 <div className="flex items-center text-sm">
                     <div className=" text-gray-300 cursor-pointer hover:text-white duration-300 flex items-center">
                         <FaRegEnvelope className='mr-2' />
-                        <p> travel@wilhloesch.com</p>
+                        <p>{site?.email}</p>
                     </div>
                     <div className=" text-gray-300 cursor-pointer hover:text-white duration-300 flex items-center ml-5">
                         <FaPhone className='mr-2' />
-                        <p>+84 584072398</p>
+                        <p>{site?.phone}</p>
                     </div>
                 </div>
                 <div className="text-gray-300 ">
                     <ul className='flex space-x-4'>
-                        <li><Link href={"/"} className='hover:text-[#ffa801] duration-300'><FaFacebook/></Link></li>
-                        <li><Link href={"/"} className='hover:text-[#ffa801] duration-300'><FaXTwitter/></Link></li>
-                        <li><Link href={"/"} className='hover:text-[#ffa801] duration-300'><FaInstagram/></Link></li>
-                        <li><Link href={"/"} className='hover:text-[#ffa801] duration-300'><FaLinkedin/></Link></li>
+                        {
+                            site?.socials?.map((item) => (
+                                <li><Link href={item?.url} className='hover:text-[#ffa801] duration-300'><FaFacebook /></Link></li>
+                            ))
+                        }
                     </ul>
                 </div>
             </div>
@@ -97,7 +59,7 @@ const FrontHeader = () => {
                         <nav className={` items-center justify-between h-16 lg:h-20 ${isMenuOpen ? "fixed" : "flex"} `}>
                             <div className="flex-shrink-0">
                                 <Link href="/" title="" className="flex">
-                                    <img className="w-auto h-8 lg:h-10" src="../logo.png" alt="" />
+                                    <img className="w-auto h-8 lg:h-10" src={site?.main_logo[0]?.path} alt="Logo" />
                                 </Link>
                             </div>
                             <button

@@ -3,15 +3,26 @@ import React from 'react'
 import Banner from '../../components/common/banner'
 import { FaLocationDot, FaPhoneVolume } from "react-icons/fa6";
 import { IoMailOpenOutline } from "react-icons/io5";
-import { Form } from 'antd';
+import { Form, message as msg } from 'antd';
 import FormInput from '../../components/form/input';
+import { useFetch } from '../../helpers/hooks';
+import { fetchSiteSettings, postContact } from '../../helpers/backend';
 
 const page = () => {
-
     const [form] = Form.useForm();
 
-    const handleFinish = (values) => {
-        console.log('Form values:', values);
+    const [site] = useFetch(fetchSiteSettings)
+
+    const handleFinish = async (values) => {
+        const res = await postContact(values)
+        if (res?.success === true){
+            msg.success(res?.message)
+            form.resetFields()
+        }else{
+            msg.error(res?.message)
+            form.resetFields()
+        }
+        
     }
 
     return (
@@ -28,7 +39,7 @@ const page = () => {
                                 <span className='text-2xl'><FaLocationDot /></span>
                             </div>
                             <div className="">
-                                <p>50 Trang Thi, P. Hang Bong, Quan Hoan Kiem, Hanoi</p>
+                                <p>{site?.address}</p>
                             </div>
                         </div>
                         <div className="flex justify-center items-center border md:p-10 p-5  hover:shadow-[1px_2px_10px_0px_rgba(0,0,0,0.2)] duration-300 ">
@@ -36,7 +47,7 @@ const page = () => {
                                 <span className='text-2xl'><FaPhoneVolume /></span>
                             </div>
                             <div className="">
-                                <p>Mobile: +84 584072398</p>
+                                <p>Mobile: {site?.phone}</p>
                             </div>
                         </div>
                         <div className="flex justify-center items-center border md:p-10 p-5  hover:shadow-[1px_2px_10px_0px_rgba(0,0,0,0.2)] duration-300 ">
@@ -44,7 +55,9 @@ const page = () => {
                                 <span className='text-2xl'><IoMailOpenOutline /></span>
                             </div>
                             <div className="">
-                                <p>travel@wilhloesch.com</p>
+                                <p>
+                                    {site?.email}
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -99,11 +112,11 @@ const page = () => {
                         <div className="basis-1/2 lg:mt-0 mt-10">
                             <Form form={form} onFinish={handleFinish}>
                                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-3">
-                                    <FormInput  type="text" name='name' placeholder='Your Name' />
+                                    <FormInput type="text" name='name' placeholder='Your Name' />
                                     <FormInput isEmail name='email' placeholder='Email Address' className='text-secondaryText border-gray-300 text-lg outline-none border px-4 py-4 w-full' />
                                 </div>
                                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-3">
-                                    <FormInput type="number" name='number' placeholder='Phone Number' />
+                                    <FormInput type="number" name='phone' placeholder='Phone Number' />
                                     <FormInput type="text" name='subject' placeholder='Subject' />
                                 </div>
                                 <FormInput textArea name="message" id="" cols="30" placeholder="Write Your Message" />
@@ -115,7 +128,7 @@ const page = () => {
                 </div>
             </div>
             <div className="">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14895.475101446753!2d105.88203!3d21.037936!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135abf54b7ed745%3A0x2383e15e1aa8c276!2sLoesch%20Kaffee!5e0!3m2!1sen!2sin!4v1705833340880!5m2!1sen!2sin" width="100%" height="450" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe src={site?.map} width="100%" height="450" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
 
         </div>

@@ -37,20 +37,20 @@ const Services = ({ service }) => {
             <div className='container'>
                 <header className="text-center max-w-[1150px] mx-auto">
                     <h1 className='text-[#ffa801] font-semibold text-lg'>
-                        {service?.data?.content?.service_section?.heading}
+                        {service?.service_section?.heading}
                     </h1>
                     <h2 className="text-primary font-barlow text-[50px] font-semibold text-center">
-                        {service?.data?.content?.service_section?.title}
+                        {service?.service_section?.title}
                     </h2>
 
                     <p className="text-base mt-2 text-secondaryText">
-                        {service?.data?.content?.service_section?.description}
+                        {service?.service_section?.description}
                     </p>
                 </header>
 
                 <div className="flex flex-wrap flex-row -mx-4 text-center mt-12">
 
-                    {serviceData.map((service, index) => (
+                    {service?.service_section?.card?.map((service, index) => (
                         <div className="flex-shrink px-4 max-w-full w-full sm:w-1/2 lg:w-1/4 lg:px-6 wow fadeInUp cursor-pointer" data-wow-duration="1s" >
 
                             <div className="py-8 px-8 mb-12 bg-gray-50 border-b border-gray-100 transform transition duration-300 ease-in-out hover:-translate-y-2">

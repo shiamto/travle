@@ -9,12 +9,14 @@ const TourList = () => {
     const [data, getData] = useFetch(fetchTourList)
 
     const columns = [
-       
         { text: "Name", dataField: "name" },
-        {
-            text: "Vehicle Number",
-            dataField: "vehicle_number",
-        },
+        { text: "Explorer", dataField: "explorer" },
+        { text: "Duration", dataField: "duration" },
+        { text: "Highlights", dataField: "highlights" },
+        { text: "Offer Name", dataField: "offer_name" },
+        { text: "Start Price", dataField: "start_price" },
+        { text: "Offer Price", dataField: "offer_price" },
+        { text: "Facilities", dataField: "facilities" },
     ];
 
 
@@ -25,7 +27,7 @@ const TourList = () => {
                 columns={columns}
                 data={data}
                 onReload={getData}
-                pagination
+               
                 indexed
             />
         </div>

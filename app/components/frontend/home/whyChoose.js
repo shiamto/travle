@@ -45,13 +45,13 @@ const WhyChoose = ({ why }) => {
         <div className='py-20 pt-30'>
             <div className="container mx-auto">
                 <h1 className='text-primary font-barlow text-[50px] font-semibold text-center'>
-                    {why?.data?.content?.why_seciotn?.title}
+                    {why?.why_seciotn?.title}
                 </h1>
 
             </div>
             <div className="grid lg:grid-cols-6 md:grid-cols-3 grid-cols-1 gap-5 mt-12 mx-8">
                 {
-                    why?.data?.content?.why_seciotn?.card?.map((val, i) => (
+                    why?.why_seciotn?.card?.map((val, i) => (
                         <ChooseCard key={i} item={val} />
                     ))
                 }
