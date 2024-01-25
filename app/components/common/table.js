@@ -32,7 +32,7 @@ const Table = ({
                 <div className="flex justify-end gap-2.5">
                     {actions && actions(data)}
                     {onView && (
-                        <button className="btn btn-outline-success btn-sm focus:shadow-none"
+                        <button className="border border-green-700 text-green-700 p-2 rounded hover:bg-green-700 hover:text-white focus:shadow-none"
                             title="View" onClick={() => onView(data)}>
                             <FaEye />
                         </button>
@@ -49,7 +49,7 @@ const Table = ({
                             title="Delete" onClick={async () => {
                                 await useActionConfirm(
                                     onDelete,
-                                    { uid: data.uid },
+                                    { id: data.id },
                                     onReload, 'Are you sure you want to delete this item?', 'Yes, Delete')
                             }}>
                             <FaTrashAlt size={12} />
