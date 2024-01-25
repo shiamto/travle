@@ -177,10 +177,7 @@ const TourDetails = ({ params }) => {
                         </div>
                     </div>
                 </div>
-
             </div>
-
-
         </>
     );
 };

@@ -86,7 +86,7 @@ const page = () => {
                 <div className="bg-white py-20">
                     <div className="container mx-auto">
                         <div className="">
-                            <h1 className='text-2xl font-semibold'>Afica Tour Package</h1>
+                            <h1 className='text-2xl font-semibold'>Tour Lists</h1>
 
                         </div>
                         <div className="" >
@@ -229,7 +229,7 @@ const page = () => {
                         </div> */}
                             <div className=" py-10">
                                 {
-                                    tourList?.map((tour, i) => (
+                                    tourList?.data?.map((tour, i) => (
                                         <TourCard key={tour?.id} item={tour} />
                                     ))
                                 }

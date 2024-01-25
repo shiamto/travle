@@ -43,7 +43,7 @@ export const Hero = ({ hero }) => {
                 <div className="absolute top-0 left-0 right-0 bottom-0 flex justify-center items-center text-center hero-overlay">
                     <div className="relative">
                         <h1 className='text-secondary font-satisfy lg:text-[130px] md:text-[80px] text-[40px] absolute -top-20 right-0 left-0'>{ hero?.hero_section?.title }</h1>
-                        <h1 className='lg:text-[150px] md:text-[100px] text-[60px] font-barlow text-white font-extrabold'>{hero?.hero_section?.subtitle}</h1>
+                        <h1 className='lg:text-[150px] md:text-[100px] text-[60px] font-barlow text-white font-extrabold'>{hero?.hero_section?.sub_title}</h1>
                     </div>
                 </div>
             </div>
