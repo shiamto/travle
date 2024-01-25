@@ -92,6 +92,11 @@ const menu = [
         icon: <FaPrint />,
     },
     {
+        label: "Mail Setting",
+        href: "/admin/email/setting",
+        icon: <FaWrench />
+    },
+    {
         label: "Settings",
         href: "/admin/settings",
         icon: <FaWrench />

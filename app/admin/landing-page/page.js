@@ -33,9 +33,9 @@ const LandingPage = () => {
             <div className='bg-white shadow-lg p-4'>
                 <Form form={form} layout='vertical' onFinish={(values) => {
                     console.log("🚀 ~ LandingPage ~ values:", values)
-                    // return useAction(postAdminLandingPage, { ...values, page: "Landing Page" }, () => {
-                    //     getLandingData()
-                    // })
+                    return useAction(postAdminLandingPage, { ...values, page: "Landing Page" }, () => {
+                        getLandingData()
+                    })
 
                 }}>
 
@@ -76,7 +76,7 @@ const LandingPage = () => {
 
                         <h2 className='text-2xl font-bold'>Why Section</h2>
                         <Form.Item label='Title' name={['content', 'why_seciotn', 'title']} >
-                            <FormInput />
+                            <Input />
                         </Form.Item>
                         <Form.List name={['content', 'why_seciotn', 'card']}>
                             {(fields, { add, remove }) => {
@@ -93,6 +93,7 @@ const LandingPage = () => {
                                                 <Form.Item label='Image' name={[field.name, 'image']} >
                                                     <FormImage />
                                                 </Form.Item>
+                                                {/* <FormImage label='Image' name={[field.name, 'image']} /> */}
                                                 {/* <Button onClick={() => remove(field.name)}><FiTrash /></Button> */}
                                                 <div className='col-span-1 flex items-center'>
                                                     <FiTrash

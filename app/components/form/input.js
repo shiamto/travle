@@ -1,4 +1,5 @@
 import {DatePicker, Form} from 'antd';
+import { TimePicker } from "antd"
 
 const FormInput = ({label, name, placeholder, required, isEmail, initialValue, rules = [], textArea, type, readOnly, onChange}) => {
     let initRules = [
@@ -30,6 +31,8 @@ const FormInput = ({label, name, placeholder, required, isEmail, initialValue, r
 }
 
 export default FormInput;
+
+
 
 
 export const HiddenInput = ({name, initialValue,}) => {

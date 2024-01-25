@@ -7,6 +7,7 @@ import FormInput from '../../../components/form/input';
 import FormDatePicker from '../../../components/form/date_picker';
 import { useAction, useFetch } from '../../../helpers/hooks';
 import { fetchAdminTourList, postAdminTour } from '../../../helpers/backend';
+import TextEditor from '../../../components/form/editor';
 
 
 const TourPage = () => {
@@ -19,30 +20,30 @@ const TourPage = () => {
 			<div className='bg-white shadow-lg p-4'>
 				<Form form={form} layout='vertical' onFinish={(values) => {
 					console.log("🚀 ~ LandingPage ~ values:", values)
-					// const data = {
-					// 	name: values.name,
-					// 	category_id: values.category_id,
-					// 	duration: values.duration,
-					// 	explorer: values.explorer,
-					// 	duration_details: JSON.stringify(values.duration_details),
-					// 	locations: values?.locations?.map((location) => location),
-					// 	min_day: values.min_day,
-					// 	start_end_city: values.start_end_city,
-					// 	start_price: values.start_price,
-					// 	discount: values.discount,
-					// 	is_percentage_discount: values.is_percentage_discount,
-					// 	highlights: values.highlights,
-					// 	notes: values.notes,
-					// 	hotels: values?.hotels?.map((hotel) => hotel),
-					// 	Hotel_notes: values.Hotel_notes,
-					// 	images: values?.images?.map((image) => image),
-					// 	places: values?.places?.map((place) => place),
-					// 	destinations: values?.destinations?.map((destination) => destination),
-					// 	itineraries: values?.itineraries?.map((itinerary) => itinerary),
-					// 	plans: values?.plans?.map((plan) => plan),
-					// 	departures: values?.departures?.map((departure) => departure),
-
-					// }
+					const data = {
+						name: values.name,
+						category_id: values.category_id,
+						duration: values.duration,
+						explorer: values.explorer,
+						duration_details: JSON.stringify(values.duration_details),
+						locations: values?.locations?.map((location) => location),
+						min_day: values.min_day,
+						start_end_city: values.start_end_city,
+						start_price: values.start_price,
+						discount: values.discount,
+						is_percentage_discount: values.is_percentage_discount,
+						highlights: values.highlights,
+						notes: values.notes,
+						hotels: values?.hotels?.map((hotel) => hotel),
+						Hotel_notes: values.Hotel_notes,
+						images: values?.images?.map((image) => image),
+						places: values?.places?.map((place) => place),
+						destinations: values?.destinations?.map((destination) => destination),
+						itineraries: values?.itineraries?.map((itinerary) => itinerary),
+						plans: values?.plans?.map((plan) => plan),
+						departures: values?.departures?.map((departure) => departure),
+						
+					}
 					return useAction(postAdminTour, { ...values }, () => {
 						getTourData()
 					})
@@ -54,13 +55,12 @@ const TourPage = () => {
 					<h1 className='text-2xl font-bold'>Add Tour</h1>
 					<div className='grid sm:grid-cols-1 lg:grid-cols-3 gap-x-4'>
 						<div className=''>
-							<Form.Item name={['name']} label="Name">
-								<FormInput />
-							</Form.Item>
+							<FormInput name={['name']} label="Name" />
+
 						</div>
 
 						<div className=''>
-							<Form.Item name={['duration']} label="Duration" rules={[
+							<FormInput name={['duration']} label="Duration" rules={[
 								() => ({
 									validator(_, value) {
 										if (value && value < 0) {
@@ -77,15 +77,11 @@ const TourPage = () => {
 										return Promise.resolve()
 									}
 								})
-							]}>
-								<FormInput />
-							</Form.Item>
+							]} />
 						</div>
 
 						<div className=''>
-							<Form.Item name={['explorer']} label="Explorer">
-								<FormInput />
-							</Form.Item>
+							<FormInput name={['explorer']} label="Explorer" />
 						</div>
 					</div>
 
@@ -289,7 +285,7 @@ const TourPage = () => {
 					<div className='grid sm:grid-cols-1 lg:grid-cols-2 gap-x-4'>
 						<div>
 							<Form.Item name={['highlights']} label="Highlights">
-								<FormInput textArea={true} />
+								<TextEditor />
 							</Form.Item>
 						</div>
 						<div>

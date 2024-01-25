@@ -39,3 +39,6 @@ export const postAdminSettings = (data) => post('admin/setting', data)
 export const fetchSiteSettings = (data) => get('settings', data)
 
 export const postContact = (data) => post('contact', data)
+
+export const postAdminMailSetting = (data) => post('admin/email-setting', data)
+export const fetchMailSetting = (data) => get('admin/email-setting', data)
